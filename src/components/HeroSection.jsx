@@ -29,13 +29,13 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
         
         {/* Left: Copy */}
         <div
-          className="relative z-20 w-full lg:w-[50%] flex items-center justify-center lg:justify-start px-6 sm:px-10 lg:pl-14 xl:pl-24 py-20 lg:py-0 transition-all duration-1000"
+          className="relative z-20 w-full lg:w-[50%] flex items-center justify-center lg:justify-start px-6 sm:px-10 lg:pl-20 xl:pl-36 2xl:pl-44 py-20 lg:py-0 transition-all duration-1000"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-[440px]"
+            className="max-w-[480px] mt-12 lg:mt-20 xl:mt-28"
           >
             <div className="flex items-center gap-3 mb-6">
               <span className="w-8 h-px bg-charcoal" />
