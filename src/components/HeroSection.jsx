@@ -79,7 +79,7 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
             
             {/* 1. Static Background Square */}
             <div 
-              className="absolute inset-y-0 right-0 w-[65%] rounded-l-[80px] transition-colors duration-1000 shadow-2xl flex items-center overflow-hidden"
+              className="absolute inset-y-0 right-0 w-[55%] rounded-l-[80px] transition-colors duration-1000 shadow-2xl flex items-center overflow-hidden"
               style={{ backgroundColor: activeTheme?.bgDark || activeTheme?.bgLight }}
             >
               {/* 2. Static Name (with fade transition on text change) */}
