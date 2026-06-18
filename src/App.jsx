@@ -18,7 +18,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-offwhite overflow-x-hidden">
-      <AnnouncementBar />
       <Navbar activeTheme={activeTheme} />
       <main>
         <HeroSection activeTheme={activeTheme} setActiveTheme={setActiveTheme} />
