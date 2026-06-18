@@ -2,6 +2,7 @@ import { useState } from 'react'
 import AnnouncementBar from './components/AnnouncementBar'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
+import WhyEcovedaSection from './components/WhyEcovedaSection'
 import CollectionsSection from './components/CollectionsSection'
 import BestsellersSection from './components/BestsellersSection'
 import ComingSoonSection from './components/ComingSoonSection'
@@ -21,6 +22,7 @@ export default function App() {
       <Navbar activeTheme={activeTheme} />
       <main>
         <HeroSection activeTheme={activeTheme} setActiveTheme={setActiveTheme} />
+        <WhyEcovedaSection />
         <CollectionsSection />
         <BestsellersSection />
         <ComingSoonSection />
