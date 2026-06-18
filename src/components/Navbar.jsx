@@ -103,7 +103,7 @@ export default function Navbar({ activeTheme }) {
           {/* Logo */}
           <div 
             className={`absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] z-30 flex items-center ${
-              isScrolled ? 'left-1/2 -translate-x-[320px]' : 'left-0'
+              isScrolled ? 'left-[calc(50%-320px)]' : 'left-0'
             }`}
           >
             <EcovedaLogo compact={isScrolled} />
@@ -134,7 +134,7 @@ export default function Navbar({ activeTheme }) {
           {/* Right Icons Pill */}
           <div 
             className={`absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center z-30 ${
-              isScrolled ? 'left-1/2 translate-x-[200px]' : 'right-[12%]'
+              isScrolled ? 'left-[calc(50%+200px)]' : 'left-[calc(88%-90px)]'
             }`}
           >
             {/* Right Divider (Fade in when scrolled) */}
