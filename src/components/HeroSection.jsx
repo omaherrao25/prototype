@@ -1,142 +1,195 @@
-import { motion } from 'framer-motion'
-import Img from './shared/Img'
+import { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { soaps } from '../data/soaps'
 
-// ── Minimal line icons for the feature row ─────────────────────
-const IconLeaf = () => (
-  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-    <path d="M20 4C10 4 5 9 5 16c0 1 .2 2 .5 3M5 19c7 0 14-4 15-15" stroke="#2F4F3A" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-)
-const IconHand = () => (
-  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-    <path d="M8 13V6.5a1.5 1.5 0 0 1 3 0V12m0-1.5a1.5 1.5 0 0 1 3 0V12m0-1a1.5 1.5 0 0 1 3 0v4c0 3-2 5-5 5s-4-1-5.5-3L5 15.5a1.6 1.6 0 0 1 2.4-2.1L8 14" stroke="#2F4F3A" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-)
-const IconDrop = () => (
-  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-    <path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11Z" stroke="#2F4F3A" strokeWidth="1.3" strokeLinejoin="round"/>
-    <path d="M9 15a3 3 0 0 0 2 2.6" stroke="#2F4F3A" strokeWidth="1.3" strokeLinecap="round"/>
-  </svg>
-)
-const IconRabbit = () => (
-  <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
-    <path d="M9 21c-2.2 0-4-1.7-4-3.9 0-1.7 1-3 2.4-3.8M9 21h6m-6 0c0-2 1-3 1.5-3.6M15 21c2.2 0 4-1.7 4-3.9 0-1.7-1-3-2.4-3.8M15 21c0-2-1-3-1.5-3.6M7.4 13.3C6.6 11 7 6 9 4c.8 1.6 1.3 4 1.2 6M16.6 13.3C17.4 11 17 6 15 4c-.8 1.6-1.3 4-1.2 6" stroke="#2F4F3A" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
-)
+export default function HeroSection({ activeTheme, setActiveTheme }) {
+  const [activeIndex, setActiveIndex] = useState(0)
 
-const features = [
-  { Icon: IconLeaf,   title: 'Natural Ingredients', desc: 'Ethically sourced botanicals' },
-  { Icon: IconHand,   title: 'Handmade',            desc: 'Crafted in small batches' },
-  { Icon: IconDrop,   title: 'Chemical Free',       desc: 'No synthetic additives' },
-  { Icon: IconRabbit, title: 'Cruelty Free',        desc: 'Never tested on animals' },
-]
+  // Auto-play carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % soaps.length)
+    }, 4500)
+    return () => clearInterval(timer)
+  }, [])
 
-export default function HeroSection() {
+  // Sync theme
+  useEffect(() => {
+    if (setActiveTheme) {
+      setActiveTheme(soaps[activeIndex])
+    }
+  }, [activeIndex, setActiveTheme])
+
   return (
-    <section className="relative overflow-hidden" style={{ background: '#F4EDE0' }}>
-
-      {/* ── Main hero block ── */}
-      <div className="relative flex items-stretch min-h-[68vh] lg:min-h-[78vh]">
-
-        {/* Left: copy */}
+    <motion.section 
+      className="relative overflow-hidden transition-colors duration-1000 ease-in-out" 
+      style={{ backgroundColor: '#F4EDE0' }}
+    >
+      <div className="relative flex items-stretch min-h-[85vh] lg:min-h-[90vh]">
+        
+        {/* Left: Copy */}
         <div
-          className="relative z-20 w-full lg:w-[46%] flex items-center px-6 sm:px-10 lg:pl-14 xl:pl-24 lg:pr-8 py-20 lg:py-0"
-          style={{ background: 'linear-gradient(to right, #F4EDE0 68%, transparent)' }}
+          className="relative z-20 w-full lg:w-[50%] flex items-center justify-center lg:justify-start px-6 sm:px-10 lg:pl-14 xl:pl-24 py-20 lg:py-0 transition-all duration-1000"
         >
           <motion.div
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-[440px]"
           >
             <div className="flex items-center gap-3 mb-6">
-              <span className="rule" />
-              <span className="eyebrow">Natural Skincare · Est. 2019</span>
+              <span className="w-8 h-px bg-charcoal" />
+              <span className="text-sm tracking-widest uppercase font-medium text-charcoal">
+                Pure Botanicals
+              </span>
             </div>
 
             <h1
-              className="font-heading font-normal text-charcoal leading-[1.02] tracking-[-0.01em] mb-6"
+              className="font-heading font-normal leading-[1.02] tracking-[-0.01em] mb-6 text-charcoal"
               style={{ fontSize: 'clamp(2.8rem, 5.2vw, 5rem)' }}
             >
-              Skincare rooted<br />
-              in <span className="italic text-forest">nature.</span>
+              Handcrafted<br />
+              <span className="italic" style={{ color: activeTheme?.accent }}>artisan</span> soaps.
             </h1>
 
-            <p className="font-body text-[1rem] text-charcoal/55 leading-relaxed mb-9 max-w-[380px]">
-              Handcrafted soaps, serums and home rituals — made with pure botanicals
-              for skin that feels genuinely cared for.
+            <p 
+              className="font-body text-[1rem] leading-relaxed mb-9 max-w-[380px] text-charcoal opacity-80"
+            >
+              Experience the purest ingredients from nature. Our soaps are handcrafted to nourish, protect, and restore your skin naturally.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 mb-10">
-              <button className="btn-primary">Shop the Collection</button>
-              <button className="btn-outline">Our Story</button>
-            </div>
-
-            {/* Quiet trust line — no floating cards */}
-            <div className="flex items-center gap-4 text-charcoal/55">
-              <div className="flex gap-0.5">
-                {[1,2,3,4,5].map(i => (
-                  <svg key={i} viewBox="0 0 12 12" className="w-3 h-3 fill-gold">
-                    <path d="M6 0l1.5 4H12L8.5 6.5 10 11 6 8.5 2 11l1.5-4.5L0 4h4.5z"/>
-                  </svg>
-                ))}
-              </div>
-              <p className="font-body text-[12.5px]">
-                <span className="font-semibold text-charcoal">4.9</span> from 10,000+ happy customers
-              </p>
+            <div className="flex flex-wrap items-center gap-4 mb-10">
+              <button 
+                className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-300 hover:scale-105 text-white bg-charcoal rounded-sm"
+              >
+                Order Now
+              </button>
+              <button 
+                className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-300 hover:scale-105 border border-charcoal text-charcoal rounded-sm"
+              >
+                Learn More
+              </button>
             </div>
           </motion.div>
         </div>
 
-        {/* Right: portrait (desktop) */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-          className="hidden lg:block absolute right-0 top-0 bottom-0 w-[58%]"
-        >
-          <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-[#F4EDE0] to-transparent z-10 pointer-events-none" />
-          <Img
-            src="/images/hero.png"
-            alt="Woman holding an Ecoveda handmade soap bar"
-            className="w-full h-full"
-            gradient="linear-gradient(135deg,#EFE8DD 0%,#bfd4b1 100%)"
-          />
-        </motion.div>
-
-        {/* Mobile: image background */}
-        <div className="lg:hidden absolute inset-0 z-0">
-          <Img
-            src="/images/hero.png"
-            alt="Ecoveda natural skincare"
-            className="w-full h-full"
-            gradient="linear-gradient(135deg,#EFE8DD,#bfd4b1)"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F4EDE0]/90 via-[#F4EDE0]/65 to-[#F4EDE0]/92" />
-        </div>
-      </div>
-
-      {/* ── Feature row ── */}
-      <div className="relative z-10 bg-white border-t border-[#E5DCCB]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4">
-            {features.map(({ Icon, title, desc }, i) => (
-              <div
-                key={title}
-                className={`flex items-center gap-3.5 py-6 lg:py-7 px-2 lg:px-6 ${
-                  i !== 0 ? 'lg:border-l border-[#EFE7D8]' : ''
-                }`}
-              >
-                <Icon />
-                <div>
-                  <p className="font-body font-semibold text-[12.5px] text-charcoal leading-tight">{title}</p>
-                  <p className="font-body text-[11px] text-charcoal/45 mt-0.5">{desc}</p>
-                </div>
+        {/* Right: Carousel */}
+        <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[58%] overflow-hidden">
+          <div className="relative w-full h-full flex items-center justify-center">
+            
+            {/* 1. Static Background Square */}
+            <div 
+              className="absolute inset-y-0 right-0 w-[65%] rounded-l-[80px] transition-colors duration-1000 shadow-2xl flex items-center overflow-hidden"
+              style={{ backgroundColor: activeTheme?.bgDark || activeTheme?.bgLight }}
+            >
+              {/* 2. Static Name (with fade transition on text change) */}
+              <div className="absolute right-12 top-1/2 -translate-y-1/2">
+                <AnimatePresence mode="wait">
+                  <motion.p
+                    key={activeTheme?.name}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 0.6, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.5 }}
+                    className="font-heading text-[clamp(4rem,7vw,7rem)] whitespace-nowrap"
+                    style={{ 
+                      writingMode: 'vertical-rl', 
+                      color: activeTheme?.text
+                    }}
+                  >
+                    {activeTheme?.name}
+                  </motion.p>
+                </AnimatePresence>
               </div>
-            ))}
+            </div>
+
+            {/* 3. Soap Images with Circular Transition */}
+            <div className="absolute inset-0 flex items-center justify-center -ml-20">
+              <AnimatePresence mode="popLayout">
+                {soaps.map((soap, idx) => {
+                  const isActive = idx === activeIndex;
+                  const isNext = idx === (activeIndex + 1) % soaps.length;
+                  const isPrev = idx === (activeIndex - 1 + soaps.length) % soaps.length;
+
+                  if (!isActive && !isNext && !isPrev) return null;
+
+                  // Circular Transition
+                  let xPos = 0;
+                  let yPos = 0;
+                  let rotate = 0;
+                  let scale = 1;
+                  let opacity = 1;
+                  let zIndex = 10;
+
+                  if (isActive) {
+                    xPos = '-5%'; 
+                    yPos = '0%';
+                    rotate = 0;
+                    scale = 1.15;
+                    zIndex = 20;
+                    opacity = 1;
+                  } else if (isNext) {
+                    xPos = '50%';
+                    yPos = '50%';
+                    rotate = 45;
+                    scale = 0.8;
+                    zIndex = 10;
+                    opacity = 0; 
+                  } else if (isPrev) {
+                    xPos = '-50%';
+                    yPos = '-50%';
+                    rotate = -45;
+                    scale = 0.8;
+                    zIndex = 10;
+                    opacity = 0; 
+                  }
+
+                  return (
+                    <motion.div
+                      key={soap.id}
+                      className="absolute w-full h-full flex items-center justify-center max-w-[800px]"
+                      initial={{ x: '50%', y: '50%', rotate: 45, scale: 0.8, opacity: 0 }}
+                      animate={{ x: xPos, y: yPos, rotate: rotate, scale: scale, opacity: opacity }}
+                      exit={{ x: '-50%', y: '-50%', rotate: -45, scale: 0.8, opacity: 0 }}
+                      transition={{ duration: 1.2, ease: [0.25, 1, 0.35, 1] }}
+                      style={{ zIndex, transformOrigin: 'center center' }}
+                    >
+                      <img
+                        src={soap.image}
+                        alt={soap.name}
+                        className="w-auto h-auto max-w-[100%] max-h-[85%] object-contain drop-shadow-2xl"
+                        style={{ filter: isActive ? 'none' : 'brightness(0.8)' }}
+                      />
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </div>
+            
           </div>
         </div>
+
+        {/* Mobile: Image background (fallback) */}
+        <div className="lg:hidden absolute inset-0 z-0">
+           <AnimatePresence mode="popLayout">
+             <motion.img
+               key={activeIndex}
+               src={soaps[activeIndex].image}
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 0.3 }}
+               exit={{ opacity: 0 }}
+               transition={{ duration: 1 }}
+               className="w-full h-full object-cover"
+             />
+           </AnimatePresence>
+          <div 
+            className="absolute inset-0 transition-colors duration-1000" 
+            style={{ 
+              background: `linear-gradient(to bottom, #F4EDE0E6, #F4EDE0A6, #F4EDE0EB)` 
+            }} 
+          />
+        </div>
       </div>
-    </section>
+    </motion.section>
   )
 }

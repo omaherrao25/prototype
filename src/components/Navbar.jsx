@@ -1,16 +1,12 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, ShoppingBag, Heart, User, Menu, X } from 'lucide-react'
+import { ShoppingBag, User, Menu, X } from 'lucide-react'
 
 const navLinks = [
   { label: 'Home' },
-  { label: 'Shop' },
-  { label: 'Skincare' },
-  { label: 'Cosmetics' },
-  { label: 'Home Care' },
-  { label: 'Collections' },
-  { label: 'About Us' },
-  { label: 'Contact Us' },
+  { label: 'Products' },
+  { label: 'About' },
+  { label: 'Contact' },
 ]
 
 const EcovedaLogo = () => (
@@ -30,7 +26,7 @@ const EcovedaLogo = () => (
   </a>
 )
 
-export default function Navbar() {
+export default function Navbar({ activeTheme }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const cartCount = 2
@@ -41,107 +37,98 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Highlighted tab styles
+  const highlightedBg = isScrolled ? '#EFE6D5' : (activeTheme?.bgDark || '#EFEBE9');
+  const highlightedText = isScrolled ? '#2F4F3A' : (activeTheme?.text || '#4E342E');
+
   return (
     <motion.header
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-xl shadow-card border-b border-beige-dark/30'
-          : 'bg-white/80 backdrop-blur-md'
-      }`}
+      className="fixed top-0 w-full z-50 pt-6 px-4 sm:px-6 lg:px-8 transition-all duration-500 pointer-events-none"
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[68px] lg:h-[76px]">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
+        
+        {/* Branding */}
+        <EcovedaLogo />
 
-          <EcovedaLogo />
-
-          {/* Desktop nav */}
-          <div className="hidden xl:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href="#"
-                className="relative text-[12px] font-body font-medium tracking-[0.04em] text-charcoal/65 hover:text-forest transition-colors duration-300 py-1 group"
-              >
-                {link.label}
-                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-forest group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
+        {/* Desktop nav container */}
+        <div className={`hidden xl:flex items-center transition-all duration-500 ease-in-out ${
+          isScrolled 
+            ? 'bg-[#FDFBF7]/95 backdrop-blur-xl shadow-sm rounded-full p-1.5 gap-2 border border-beige-dark/20' 
+            : 'gap-4'
+        }`}>
+          
+          {/* Pill 1: Links */}
+          <div className={`flex items-center transition-all duration-500 ease-in-out ${
+            isScrolled ? 'gap-1' : 'bg-white/40 backdrop-blur-md rounded-full p-1.5 gap-1 shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-white/30'
+          }`}>
+            {navLinks.map((link, idx) => {
+              const isHighlighted = idx === 0;
+              return (
+                <a
+                  key={link.label}
+                  href="#"
+                  className={`px-5 py-2 rounded-full text-[13.5px] font-body font-medium transition-colors duration-500 ${
+                    !isHighlighted ? 'text-charcoal/70 hover:text-charcoal' : ''
+                  }`}
+                  style={isHighlighted ? { backgroundColor: highlightedBg, color: highlightedText } : {}}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
-          {/* Icons */}
-          <div className="flex items-center gap-0.5">
-            {[Search, Heart, User].map((Icon, i) => (
-              <motion.button
-                key={i}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.92 }}
-                className="hidden sm:flex p-2.5 text-charcoal/55 hover:text-charcoal rounded-full hover:bg-offwhite transition-all duration-200"
-              >
-                <Icon size={18} strokeWidth={1.6} />
-              </motion.button>
-            ))}
-
-            {/* Cart with badge */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.92 }}
-              className="relative p-2.5 text-charcoal/55 hover:text-charcoal rounded-full hover:bg-offwhite transition-all duration-200"
-            >
-              <ShoppingBag size={18} strokeWidth={1.6} />
+          {/* Pill 2: Icons */}
+          <div className={`flex items-center transition-all duration-500 ease-in-out ${
+            isScrolled ? 'gap-2 px-3' : 'bg-white/40 backdrop-blur-md rounded-full p-1.5 px-3 gap-2 shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-white/30'
+          }`}>
+            <button className="p-2 text-charcoal/70 hover:text-charcoal transition-colors">
+              <User size={19} strokeWidth={1.5} />
+            </button>
+            <button className="relative p-2 text-charcoal/70 hover:text-charcoal transition-colors">
+              <ShoppingBag size={19} strokeWidth={1.5} />
               {cartCount > 0 && (
-                <span className="absolute top-1.5 right-1.5 w-[17px] h-[17px] bg-forest text-white text-[9px] font-bold rounded-full flex items-center justify-center leading-none">
+                <span className="absolute top-1 right-0 w-[15px] h-[15px] bg-[#2F4F3A] text-white text-[9px] font-bold rounded-full flex items-center justify-center leading-none">
                   {cartCount}
                 </span>
               )}
-            </motion.button>
-
-            {/* Mobile menu */}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="xl:hidden p-2.5 text-charcoal/55 hover:text-charcoal rounded-full hover:bg-offwhite transition-all duration-200 ml-1"
-            >
-              {isMobileOpen ? <X size={20} strokeWidth={1.6} /> : <Menu size={20} strokeWidth={1.6} />}
-            </motion.button>
+            </button>
           </div>
+
         </div>
+
+        {/* Mobile menu toggle */}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          onClick={() => setIsMobileOpen(!isMobileOpen)}
+          className={`xl:hidden p-2.5 text-charcoal/70 hover:text-charcoal rounded-full backdrop-blur-md transition-all duration-200 border ${
+            isScrolled ? 'bg-[#FDFBF7]/95 shadow-sm border-beige-dark/20' : 'bg-white/40 border-white/30'
+          }`}
+        >
+          {isMobileOpen ? <X size={20} strokeWidth={1.6} /> : <Menu size={20} strokeWidth={1.6} />}
+        </motion.button>
       </nav>
 
-      {/* Mobile menu */}
+      {/* Mobile menu dropdown */}
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
-            key="mobile"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="xl:hidden overflow-hidden bg-white border-t border-beige-dark/30"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute top-full left-0 w-full mt-4 px-4 xl:hidden pointer-events-auto"
           >
-            <div className="px-5 py-5 space-y-0.5">
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.label}
-                  href="#"
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.04 }}
-                  className="flex items-center justify-between py-3 border-b border-beige-dark/20 text-[14px] font-body font-medium text-charcoal/70 hover:text-forest transition-colors"
-                >
-                  {link.label}
-                  <span className="text-charcoal/25 text-xs">›</span>
-                </motion.a>
-              ))}
-              <div className="flex items-center gap-3 pt-4">
-                {[Search, Heart, User].map((Icon, i) => (
-                  <button key={i} className="p-2 text-charcoal/40 hover:text-forest transition-colors">
-                    <Icon size={19} strokeWidth={1.5} />
-                  </button>
-                ))}
-              </div>
+            <div className="bg-[#FDFBF7]/95 backdrop-blur-xl border border-beige-dark/20 rounded-3xl p-5 shadow-xl">
+               <div className="space-y-1">
+                 {navLinks.map((link) => (
+                   <a key={link.label} href="#" className="block py-3 px-4 rounded-xl hover:bg-beige-dark/10 font-body font-medium text-charcoal/80">
+                     {link.label}
+                   </a>
+                 ))}
+               </div>
             </div>
           </motion.div>
         )}

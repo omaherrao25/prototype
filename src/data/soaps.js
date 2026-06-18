@@ -1,0 +1,38 @@
+export const soaps = [
+  {
+    id: 'coffee',
+    name: 'Coffee Soap',
+    image: '/images/Coffee soap without bg.png',
+    bgLight: '#EFEBE9',
+    bgDark: '#D7CCC8',
+    text: '#4E342E',
+    accent: '#795548',
+  },
+  {
+    id: 'neem',
+    name: 'Neem Soap',
+    image: '/images/Neem Soap without bg.png',
+    bgLight: '#E8F5E9',
+    bgDark: '#C8E6C9',
+    text: '#2E7D32',
+    accent: '#4CAF50',
+  },
+  {
+    id: 'rose',
+    name: 'Rose Soap',
+    image: '/images/Rose Soap without bg.png',
+    bgLight: '#FCE4EC',
+    bgDark: '#F8BBD0',
+    text: '#C2185B',
+    accent: '#E91E63',
+  },
+  {
+    id: 'turmeric',
+    name: 'Turmeric Soap',
+    image: '/images/Turmeric soap without bg.png',
+    bgLight: '#FFF8E1',
+    bgDark: '#FFECB3',
+    text: '#F57F17',
+    accent: '#FFC107',
+  },
+];
