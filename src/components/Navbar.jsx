@@ -103,10 +103,12 @@ export default function Navbar({ activeTheme }) {
           {/* Logo */}
           <div 
             className={`absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] z-30 flex items-center ${
-              isScrolled ? 'left-1/2 -translate-x-[260px]' : 'left-0'
+              isScrolled ? 'left-1/2 -translate-x-[320px]' : 'left-0'
             }`}
           >
             <EcovedaLogo compact={isScrolled} />
+            {/* Left Divider (Fade in when scrolled) */}
+            <div className={`absolute right-[10px] top-1/2 -translate-y-1/2 w-px h-6 bg-charcoal/10 transition-opacity duration-[700ms] ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
           </div>
 
           {/* Center Links Pill Wrapper (Also acts as the merged background container) */}
@@ -116,17 +118,11 @@ export default function Navbar({ activeTheme }) {
             <div 
               className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center rounded-full relative ${
                 isScrolled 
-                  ? 'bg-[#FDFBF7]/95 backdrop-blur-xl shadow-md border border-beige-dark/20 p-1.5 pl-[150px] pr-[100px]' 
+                  ? 'bg-[#FDFBF7]/95 backdrop-blur-xl shadow-md border border-beige-dark/20 p-1.5 pl-[190px] pr-[130px]' 
                   : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-white/40 p-1.5 pl-1.5 pr-1.5'
               }`}
             >
               
-              {/* Left Divider (Fade in when scrolled) */}
-              <div className={`absolute left-[130px] w-px h-6 bg-charcoal/10 transition-opacity duration-[700ms] ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
-              
-              {/* Right Divider (Fade in when scrolled) */}
-              <div className={`absolute right-[90px] w-px h-6 bg-charcoal/10 transition-opacity duration-[700ms] ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
-
               {/* Links Group */}
               <div className="flex items-center gap-1 z-10 px-2">
                 {linksGroup}
@@ -138,9 +134,12 @@ export default function Navbar({ activeTheme }) {
           {/* Right Icons Pill */}
           <div 
             className={`absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center z-30 ${
-              isScrolled ? 'left-1/2 translate-x-[150px]' : 'right-[22%]'
+              isScrolled ? 'left-1/2 translate-x-[200px]' : 'right-[12%]'
             }`}
           >
+            {/* Right Divider (Fade in when scrolled) */}
+            <div className={`absolute left-[5px] top-1/2 -translate-y-1/2 w-px h-6 bg-charcoal/10 transition-opacity duration-[700ms] ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
+            
             <div 
               className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center gap-2 ${
                 isScrolled 

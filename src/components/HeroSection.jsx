@@ -60,7 +60,8 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
 
             <div className="flex flex-wrap items-center gap-4 mb-10">
               <button 
-                className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-300 hover:scale-105 text-white bg-charcoal rounded-sm"
+                className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-1000 hover:scale-105 rounded-sm"
+                style={{ backgroundColor: activeTheme?.text || '#2F4F3A', color: '#FFFFFF' }}
               >
                 Order Now
               </button>
@@ -152,13 +153,13 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
                       animate={{ x: xPos, y: yPos, rotate: rotate, scale: scale, opacity: opacity }}
                       exit={{ x: '-50%', y: '-50%', rotate: -45, scale: 0.8, opacity: 0 }}
                       transition={{ duration: 1.2, ease: [0.25, 1, 0.35, 1] }}
-                      style={{ zIndex, transformOrigin: 'center center' }}
+                      style={{ zIndex, transformOrigin: 'center center', outline: '1px solid transparent', backfaceVisibility: 'hidden', transformStyle: 'preserve-3d' }}
                     >
                       <img
                         src={soap.image}
                         alt={soap.name}
                         className="w-auto h-auto max-w-[100%] max-h-[85%] object-contain drop-shadow-2xl"
-                        style={{ filter: isActive ? 'none' : 'brightness(0.8)' }}
+                        style={{ filter: isActive ? 'none' : 'brightness(0.8)', border: '1px solid transparent' }}
                       />
                     </motion.div>
                   );
