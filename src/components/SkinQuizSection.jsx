@@ -69,8 +69,8 @@ export default function SkinQuizSection() {
           transition={{ duration: 0.65 }}
           className="text-center mb-12 lg:mb-16"
         >
-          <p className="text-xs font-body tracking-[0.2em] uppercase text-sage mb-3">Personalized Skincare</p>
-          <h2 className="font-heading text-4xl sm:text-5xl lg:text-[3.2rem] font-medium text-charcoal leading-tight mb-4">
+
+          <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase mb-4">
             Not sure which product is<br className="hidden sm:block" /> right for your skin?
           </h2>
           <p className="text-charcoal/50 font-body text-base max-w-md mx-auto leading-relaxed">

@@ -57,12 +57,16 @@ export default function TestimonialsSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
-  const prev = () => setActive((a) => (a - 1 + testimonials.length) % testimonials.length)
-  const next = () => setActive((a) => (a + 1) % testimonials.length)
+  const canScrollLeft = active > 0
+  const canScrollRight = active < testimonials.length - 1
+
+  const prev = () => { if (canScrollLeft) setActive(a => a - 1) }
+  const next = () => { if (canScrollRight) setActive(a => a + 1) }
+
   const t = testimonials[active]
 
   return (
-    <section ref={ref} className="py-14 lg:py-20 bg-white overflow-hidden">
+    <section ref={ref} className="py-16 lg:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
 
@@ -73,11 +77,7 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.6 }}
             className="order-2 lg:order-1"
           >
-            <div className="flex items-center gap-3 mb-5">
-              <span className="rule" />
-              <span className="eyebrow">Reviews</span>
-            </div>
-            <h2 className="font-heading text-[2.5rem] sm:text-[3.25rem] font-normal text-charcoal leading-[1.05] tracking-tight mb-5">
+            <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase mb-5">
               Loved by real<br />people
             </h2>
             <div className="flex items-center gap-3 mb-8">
@@ -92,10 +92,11 @@ export default function TestimonialsSection() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
-                initial={{ opacity: 0, y: 12 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -12 }}
-                transition={{ duration: 0.4 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3 }}
+                className="min-h-[160px]"
               >
                 <Stars n={t.rating} />
                 <p className="font-heading text-xl sm:text-2xl text-charcoal/75 leading-relaxed italic mt-4 mb-6 min-h-[120px] sm:min-h-[110px]">
@@ -118,11 +119,27 @@ export default function TestimonialsSection() {
 
             {/* Controls + avatars */}
             <div className="flex items-center gap-4 mt-8">
-              <button onClick={prev} className="w-10 h-10 rounded-full border border-beige-dark hover:border-sage text-charcoal/40 hover:text-sage flex items-center justify-center transition-all">
-                <ChevronLeft size={18} />
+              <button 
+                onClick={prev} 
+                disabled={!canScrollLeft}
+                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                  !canScrollLeft 
+                    ? 'bg-transparent border border-gray-300 text-gray-300 cursor-not-allowed' 
+                    : 'bg-[#9C795C] text-white hover:bg-[#8A6A50]'
+                }`}
+              >
+                <ChevronLeft size={20} strokeWidth={1.5} />
               </button>
-              <button onClick={next} className="w-10 h-10 rounded-full border border-beige-dark hover:border-sage text-charcoal/40 hover:text-sage flex items-center justify-center transition-all">
-                <ChevronRight size={18} />
+              <button 
+                onClick={next} 
+                disabled={!canScrollRight}
+                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                  !canScrollRight 
+                    ? 'bg-transparent border border-gray-300 text-gray-300 cursor-not-allowed' 
+                    : 'bg-[#9C795C] text-white hover:bg-[#8A6A50]'
+                }`}
+              >
+                <ChevronRight size={20} strokeWidth={1.5} />
               </button>
 
               <div className="w-px h-7 bg-beige-dark/60 mx-1" />

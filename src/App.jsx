@@ -1,33 +1,24 @@
-import AnnouncementBar from './components/AnnouncementBar'
+import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import HeroSection from './components/HeroSection'
-import CollectionsSection from './components/CollectionsSection'
-import BestsellersSection from './components/BestsellersSection'
-import ComingSoonSection from './components/ComingSoonSection'
-import WhyChooseSection from './components/WhyChooseSection'
-import TestimonialsSection from './components/TestimonialsSection'
-import InstagramSection from './components/InstagramSection'
-import BlogSection from './components/BlogSection'
-import OfferSection from './components/OfferSection'
+import Home from './pages/Home/Home'
+import Shop from './pages/Shop/Shop'
 import Footer from './components/Footer'
+import { soaps } from './data/soaps'
 
 export default function App() {
+  const [activeTheme, setActiveTheme] = useState(soaps[0])
+
   return (
-    <div className="min-h-screen bg-offwhite overflow-x-hidden">
-      <AnnouncementBar />
-      <Navbar />
-      <main>
-        <HeroSection />
-        <CollectionsSection />
-        <BestsellersSection />
-        <ComingSoonSection />
-        <WhyChooseSection />
-        <TestimonialsSection />
-        <InstagramSection />
-        <BlogSection />
-        <OfferSection />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-offwhite overflow-x-hidden">
+        <Navbar activeTheme={activeTheme} />
+        <Routes>
+          <Route path="/" element={<Home activeTheme={activeTheme} setActiveTheme={setActiveTheme} />} />
+          <Route path="/shop" element={<Shop />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   )
 }

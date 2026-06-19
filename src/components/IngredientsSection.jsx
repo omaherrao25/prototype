@@ -85,8 +85,8 @@ export default function IngredientsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 lg:mb-16"
         >
-          <p className="text-xs font-body tracking-[0.2em] uppercase text-sage mb-3">The Science of Nature</p>
-          <h2 className="font-heading text-4xl sm:text-5xl font-medium text-charcoal leading-tight">
+
+          <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase">
             Want to know what goes<br className="hidden sm:block" /> on your skin?
           </h2>
           <p className="text-charcoal/45 font-body text-base mt-4 max-w-lg mx-auto">

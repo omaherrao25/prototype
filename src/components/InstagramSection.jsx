@@ -57,7 +57,7 @@ export default function InstagramSection() {
               <span className="rule" />
               <span className="eyebrow">@ecoveda_official</span>
             </div>
-            <h2 className="font-heading text-[2.5rem] sm:text-[3.25rem] font-normal text-charcoal leading-[1.05] tracking-tight">
+            <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase">
               From our community
             </h2>
           </div>
