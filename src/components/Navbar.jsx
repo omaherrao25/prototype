@@ -113,12 +113,14 @@ export default function Navbar({ activeTheme }) {
 
           {/* Center Links Pill Wrapper (Also acts as the merged background container) */}
           <div 
-            className="absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center z-20 left-1/2 -translate-x-1/2"
+            className={`absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center z-20 ${
+              isScrolled ? 'left-[calc(50%-8px)]' : 'left-1/2'
+            } -translate-x-1/2`}
           >
             <div 
               className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center rounded-full relative ${
                 isScrolled 
-                  ? 'bg-[#FDFBF7]/95 backdrop-blur-xl shadow-md border border-beige-dark/20 p-1.5 pl-[190px] pr-[130px]' 
+                  ? 'bg-[#FDFBF7]/95 backdrop-blur-xl shadow-md border border-beige-dark/20 p-1.5 pl-[190px] pr-[105px]' 
                   : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-white/40 p-1.5 pl-1.5 pr-1.5'
               }`}
             >
