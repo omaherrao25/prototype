@@ -6,10 +6,7 @@ import WhyEcovedaSection from './components/WhyEcovedaSection'
 import BestsellersSection from './components/BestsellersSection'
 import LifestyleBannerSection from './components/LifestyleBannerSection'
 import ComingSoonSection from './components/ComingSoonSection'
-import WhyChooseSection from './components/WhyChooseSection'
 import TestimonialsSection from './components/TestimonialsSection'
-import InstagramSection from './components/InstagramSection'
-import BlogSection from './components/BlogSection'
 import OfferSection from './components/OfferSection'
 import Footer from './components/Footer'
 import { soaps } from './data/soaps'
@@ -26,10 +23,7 @@ export default function App() {
         <BestsellersSection />
         <LifestyleBannerSection />
         <ComingSoonSection />
-        <WhyChooseSection />
         <TestimonialsSection />
-        <InstagramSection />
-        <BlogSection />
         <OfferSection />
       </main>
       <Footer />

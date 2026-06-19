@@ -20,10 +20,12 @@ function useCountdown(initialHours = 23, initialMins = 59, initialSecs = 52) {
 
 const TimeUnit = ({ value, label }) => (
   <div className="flex flex-col items-center">
-    <span className="font-heading text-5xl sm:text-6xl font-normal text-white tabular-nums leading-none">
-      {String(value).padStart(2, '0')}
-    </span>
-    <span className="font-body text-[10px] tracking-[0.22em] uppercase text-beige/40 mt-3">{label}</span>
+    <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-full border border-[#9C795C]/20 bg-white/40 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.03)] mb-4">
+      <span className="font-body text-4xl sm:text-[2.5rem] font-light text-[#314D3D] tabular-nums leading-none">
+        {String(value).padStart(2, '0')}
+      </span>
+    </div>
+    <span className="font-body text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-[#1C1C1C]/60 font-medium">{label}</span>
   </div>
 )
 
@@ -33,41 +35,42 @@ export default function OfferSection() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} className="bg-forest">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+    <section ref={ref} className="relative py-20 lg:py-28 bg-[#F6F1E9] overflow-hidden">
+      {/* Subtle decorative background blurs */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#EFE8DD] rounded-full blur-[100px] opacity-60 pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#EFE8DD] rounded-full blur-[100px] opacity-60 pointer-events-none transform -translate-x-1/3 translate-y-1/3"></div>
+
+      <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-12 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 22 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="text-center"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-
-
-          <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase mb-5">
-            Enjoy <span className="italic text-gold">10% off</span><br />your first order
+          <h2 className="font-heading text-[2.75rem] sm:text-5xl lg:text-[4rem] font-normal tracking-wide text-[#9C795C] uppercase mb-6 leading-[1.1]">
+            Enjoy <span className="italic text-[#314D3D] normal-case">10% off</span><br />your first order
           </h2>
 
-          <p className="font-body text-[14.5px] text-beige/55 leading-relaxed max-w-md mx-auto mb-12">
+          <p className="font-body text-[15px] sm:text-[17px] text-[#1C1C1C]/70 leading-relaxed max-w-lg mx-auto mb-14">
             Use code{' '}
-            <span className="text-gold font-medium tracking-[0.08em] border-b border-gold/40">ECOFIRST</span>
+            <span className="text-[#314D3D] font-bold tracking-[0.1em] border-b border-[#314D3D]/30 pb-0.5">ECOFIRST</span>
             {' '}at checkout. Free shipping on orders over ₹999.
           </p>
 
           {/* Countdown */}
-          <div className="flex items-start justify-center gap-7 sm:gap-12 mb-14">
+          <div className="flex items-start justify-center gap-6 sm:gap-10 mb-16">
             <TimeUnit value={h} label="Hours" />
-            <span className="font-heading text-4xl text-white/25 leading-none mt-1">:</span>
+            <span className="font-body text-4xl sm:text-[2.5rem] font-light text-[#9C795C]/30 leading-none mt-5 sm:mt-6">:</span>
             <TimeUnit value={m} label="Minutes" />
-            <span className="font-heading text-4xl text-white/25 leading-none mt-1">:</span>
+            <span className="font-body text-4xl sm:text-[2.5rem] font-light text-[#9C795C]/30 leading-none mt-5 sm:mt-6">:</span>
             <TimeUnit value={s} label="Seconds" />
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="inline-flex items-center gap-2 bg-gold text-forest font-body text-[12.5px] font-semibold tracking-[0.04em] px-9 py-4 rounded-[2px] hover:bg-[#d4b87f] transition-colors duration-300">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+            <button className="font-body px-10 py-4 sm:py-4.5 bg-[#314D3D] text-[#F6F1E9] rounded-full text-[12px] sm:text-[13px] tracking-[0.1em] uppercase font-semibold shadow-[0_10px_30px_rgba(49,77,61,0.2)] hover:bg-[#23382c] transition-all flex items-center justify-center gap-3 w-full sm:w-auto">
               Claim Your Offer <ArrowRight size={15} />
             </button>
-            <button className="font-body text-[12.5px] tracking-[0.04em] text-beige/60 hover:text-white border border-white/15 hover:border-white/35 px-8 py-4 rounded-[2px] transition-colors duration-300">
-              Shop All Products
+            <button className="font-body px-10 py-4 sm:py-4.5 text-[#314D3D] rounded-full text-[12px] sm:text-[13px] tracking-[0.1em] uppercase font-semibold border border-[#314D3D]/20 hover:border-[#314D3D] hover:bg-[#314D3D]/5 transition-all w-full sm:w-auto">
+              Shop All Soaps
             </button>
           </div>
         </motion.div>
