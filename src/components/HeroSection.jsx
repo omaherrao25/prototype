@@ -21,12 +21,12 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
   }, [activeIndex, setActiveTheme])
 
   return (
-    <motion.section 
-      className="relative overflow-hidden transition-colors duration-1000 ease-in-out" 
+    <motion.section
+      className="relative overflow-hidden transition-colors duration-1000 ease-in-out"
       style={{ backgroundColor: '#F4EDE0' }}
     >
       <div className="relative flex items-stretch min-h-[85vh] lg:min-h-[90vh]">
-        
+
         {/* Left: Copy */}
         <div
           className="relative z-20 w-full lg:w-[50%] flex items-center justify-center lg:justify-start px-6 sm:px-10 lg:pl-20 xl:pl-36 2xl:pl-44 py-20 lg:py-0 transition-all duration-1000"
@@ -45,27 +45,27 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
             </div>
 
             <h1
-              className="font-heading font-normal leading-[1.02] tracking-[-0.01em] mb-6 text-charcoal"
+              className="font-heading font-bold leading-[1.02] tracking-[-0.01em] mb-6 text-charcoal"
               style={{ fontSize: 'clamp(2.8rem, 5.2vw, 5rem)' }}
             >
               Handcrafted<br />
               <span className="italic" style={{ color: activeTheme?.accent }}>artisan</span> soaps.
             </h1>
 
-            <p 
+            <p
               className="font-body text-[1rem] leading-relaxed mb-9 max-w-[380px] text-charcoal opacity-80"
             >
               Experience the purest ingredients from nature. Our soaps are handcrafted to nourish, protect, and restore your skin naturally.
             </p>
 
             <div className="flex flex-wrap items-center gap-4 mb-10">
-              <button 
+              <button
                 className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-1000 hover:scale-105 rounded-sm"
                 style={{ backgroundColor: activeTheme?.text || '#2F4F3A', color: '#FFFFFF' }}
               >
                 Order Now
               </button>
-              <button 
+              <button
                 className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-300 hover:scale-105 border border-charcoal text-charcoal rounded-sm"
               >
                 Learn More
@@ -77,9 +77,9 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
         {/* Right: Carousel */}
         <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[58%] overflow-hidden">
           <div className="relative w-full h-full flex items-center justify-center">
-            
+
             {/* 1. Static Background Square */}
-            <div 
+            <div
               className="absolute inset-y-0 right-0 w-[55%] rounded-l-[80px] transition-colors duration-1000 shadow-2xl flex items-center overflow-hidden"
               style={{ backgroundColor: activeTheme?.bgDark || activeTheme?.bgLight }}
             >
@@ -93,8 +93,8 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.5 }}
                     className="font-heading text-[clamp(4rem,7vw,7rem)] whitespace-nowrap"
-                    style={{ 
-                      writingMode: 'vertical-rl', 
+                    style={{
+                      writingMode: 'vertical-rl',
                       color: activeTheme?.text
                     }}
                   >
@@ -123,7 +123,7 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
                   let zIndex = 10;
 
                   if (isActive) {
-                    xPos = '-5%'; 
+                    xPos = '-5%';
                     yPos = '0%';
                     rotate = 0;
                     scale = 1.15;
@@ -135,14 +135,14 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
                     rotate = 45;
                     scale = 0.8;
                     zIndex = 10;
-                    opacity = 0; 
+                    opacity = 0;
                   } else if (isPrev) {
                     xPos = '-50%';
                     yPos = '-50%';
                     rotate = -45;
                     scale = 0.8;
                     zIndex = 10;
-                    opacity = 0; 
+                    opacity = 0;
                   }
 
                   return (
@@ -166,28 +166,28 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
                 })}
               </AnimatePresence>
             </div>
-            
+
           </div>
         </div>
 
         {/* Mobile: Image background (fallback) */}
         <div className="lg:hidden absolute inset-0 z-0">
-           <AnimatePresence mode="popLayout">
-             <motion.img
-               key={activeIndex}
-               src={soaps[activeIndex].image}
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 0.3 }}
-               exit={{ opacity: 0 }}
-               transition={{ duration: 1 }}
-               className="w-full h-full object-cover"
-             />
-           </AnimatePresence>
-          <div 
-            className="absolute inset-0 transition-colors duration-1000" 
-            style={{ 
-              background: `linear-gradient(to bottom, #F4EDE0E6, #F4EDE0A6, #F4EDE0EB)` 
-            }} 
+          <AnimatePresence mode="popLayout">
+            <motion.img
+              key={activeIndex}
+              src={soaps[activeIndex].image}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.3 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              className="w-full h-full object-cover"
+            />
+          </AnimatePresence>
+          <div
+            className="absolute inset-0 transition-colors duration-1000"
+            style={{
+              background: `linear-gradient(to bottom, #F4EDE0E6, #F4EDE0A6, #F4EDE0EB)`
+            }}
           />
         </div>
       </div>
