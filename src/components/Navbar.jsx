@@ -108,7 +108,7 @@ export default function Navbar({ activeTheme }) {
           >
             <EcovedaLogo compact={isScrolled} />
             {/* Left Divider (Fade in when scrolled) */}
-            <div className={`absolute right-[10px] top-1/2 -translate-y-1/2 w-px h-6 bg-charcoal/10 transition-opacity duration-[700ms] ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
+            <div className={`absolute right-[20px] top-1/2 -translate-y-1/2 w-px h-6 bg-charcoal/10 transition-opacity duration-[700ms] ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
           </div>
 
           {/* Center Links Pill Wrapper (Also acts as the merged background container) */}
@@ -120,7 +120,7 @@ export default function Navbar({ activeTheme }) {
             <div 
               className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center rounded-full relative ${
                 isScrolled 
-                  ? 'bg-[#FDFBF7]/95 backdrop-blur-xl shadow-md border border-beige-dark/20 p-1.5 pl-[190px] pr-[105px]' 
+                  ? 'bg-[#FDFBF7]/95 backdrop-blur-xl shadow-md border border-beige-dark/20 p-1.5 pl-[170px] pr-[125px]' 
                   : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-white/40 p-1.5 pl-1.5 pr-1.5'
               }`}
             >
@@ -140,7 +140,7 @@ export default function Navbar({ activeTheme }) {
             }`}
           >
             {/* Right Divider (Fade in when scrolled) */}
-            <div className={`absolute left-[5px] top-1/2 -translate-y-1/2 w-px h-6 bg-charcoal/10 transition-opacity duration-[700ms] ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
+            <div className={`absolute left-[-5px] top-1/2 -translate-y-1/2 w-px h-6 bg-charcoal/10 transition-opacity duration-[700ms] ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
             
             <div 
               className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center gap-2 ${

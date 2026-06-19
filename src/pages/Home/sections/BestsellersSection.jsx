@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Heart, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react'
-import Img from './shared/Img'
+import Img from '../../../components/shared/Img'
 
 // Local soap photos from public/images (encode spaces in filenames)
 const img = (file) => encodeURI(`/images/${file}`)
@@ -139,7 +139,7 @@ export default function BestsellersSection() {
   }
 
   return (
-    <section ref={ref} className="py-14 lg:py-20 bg-white">
+    <section ref={ref} className="py-16 lg:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header row */}

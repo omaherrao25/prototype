@@ -3,7 +3,7 @@ import { Sprout, Syringe, Ban, Award, Leaf } from 'lucide-react'
 
 export default function WhyEcovedaSection() {
   return (
-    <section className="py-24 bg-white flex flex-col items-center justify-center text-center px-6">
+    <section className="py-16 lg:py-24 bg-white flex flex-col items-center justify-center text-center px-6">
       <div className="max-w-[1000px] mx-auto w-full">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

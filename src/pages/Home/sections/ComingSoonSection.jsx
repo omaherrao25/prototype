@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import Img from './shared/Img'
+import Img from '../../../components/shared/Img'
 
 // Local product photos from public/images (encode spaces in filenames)
 const img = (file) => encodeURI(`/images/${file}`)

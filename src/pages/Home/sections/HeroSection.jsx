@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { soaps } from '../data/soaps'
+import { soaps } from '../../../data/soaps'
 
 export default function HeroSection({ activeTheme, setActiveTheme }) {
   const [activeIndex, setActiveIndex] = useState(0)

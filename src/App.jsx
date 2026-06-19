@@ -1,13 +1,7 @@
 import { useState } from 'react'
 import AnnouncementBar from './components/AnnouncementBar'
 import Navbar from './components/Navbar'
-import HeroSection from './components/HeroSection'
-import WhyEcovedaSection from './components/WhyEcovedaSection'
-import BestsellersSection from './components/BestsellersSection'
-import LifestyleBannerSection from './components/LifestyleBannerSection'
-import ComingSoonSection from './components/ComingSoonSection'
-import TestimonialsSection from './components/TestimonialsSection'
-import OfferSection from './components/OfferSection'
+import Home from './pages/Home/Home'
 import Footer from './components/Footer'
 import { soaps } from './data/soaps'
 
@@ -17,15 +11,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-offwhite overflow-x-hidden">
       <Navbar activeTheme={activeTheme} />
-      <main>
-        <HeroSection activeTheme={activeTheme} setActiveTheme={setActiveTheme} />
-        <WhyEcovedaSection />
-        <BestsellersSection />
-        <LifestyleBannerSection />
-        <ComingSoonSection />
-        <TestimonialsSection />
-        <OfferSection />
-      </main>
+      <Home activeTheme={activeTheme} setActiveTheme={setActiveTheme} />
       <Footer />
     </div>
   )
