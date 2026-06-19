@@ -1,7 +1,8 @@
 import { useState } from 'react'
-import AnnouncementBar from './components/AnnouncementBar'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home/Home'
+import Shop from './pages/Shop/Shop'
 import Footer from './components/Footer'
 import { soaps } from './data/soaps'
 
@@ -9,10 +10,15 @@ export default function App() {
   const [activeTheme, setActiveTheme] = useState(soaps[0])
 
   return (
-    <div className="min-h-screen bg-offwhite overflow-x-hidden">
-      <Navbar activeTheme={activeTheme} />
-      <Home activeTheme={activeTheme} setActiveTheme={setActiveTheme} />
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-offwhite overflow-x-hidden">
+        <Navbar activeTheme={activeTheme} />
+        <Routes>
+          <Route path="/" element={<Home activeTheme={activeTheme} setActiveTheme={setActiveTheme} />} />
+          <Route path="/shop" element={<Shop />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   )
 }

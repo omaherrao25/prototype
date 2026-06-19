@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ShoppingBag, User, Menu, X } from 'lucide-react'
 
 const navLinks = [
-  { label: 'Home' },
-  { label: 'Products' },
-  { label: 'About' },
-  { label: 'Contact' },
+  { label: 'Home', path: '/' },
+  { label: 'Products', path: '/shop' },
+  { label: 'About', path: '/about' },
+  { label: 'Contact', path: '/contact' },
 ]
 
 const EcovedaLogo = ({ compact }) => (
-  <a href="#" className="flex items-center gap-2.5 cursor-pointer select-none group">
+  <Link to="/" className="flex items-center gap-2.5 cursor-pointer select-none group">
     <div className="relative flex items-center justify-center w-9 h-9 rounded-full bg-[#2F4F3A] text-white shadow-md transition-transform duration-300 group-hover:scale-105">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
@@ -25,12 +26,13 @@ const EcovedaLogo = ({ compact }) => (
         <span className="font-sans text-[8px] font-bold tracking-[0.35em] text-charcoal/45 uppercase block">pure botanicals</span>
       </div>
     </div>
-  </a>
+  </Link>
 )
 
 export default function Navbar({ activeTheme }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
+  const location = useLocation()
   const cartCount = 0
 
   useEffect(() => {
@@ -44,19 +46,20 @@ export default function Navbar({ activeTheme }) {
 
   const linksGroup = (
     <>
-      {navLinks.map((link, idx) => {
-        const isHighlighted = idx === 0
+      {navLinks.map((link) => {
+        const isHighlighted = location.pathname === link.path || (location.pathname === '/' && link.path === '/') && location.pathname !== '/shop'; // Simplistic highlight logic
+        const activeHighlight = location.pathname === link.path;
         return (
-          <a
+          <Link
             key={link.label}
-            href="#"
+            to={link.path}
             className={`px-5 py-2 rounded-full text-[13.5px] font-body font-medium transition-colors duration-500 ${
-              !isHighlighted ? 'text-charcoal/70 hover:text-charcoal' : ''
+              !activeHighlight ? 'text-charcoal/70 hover:text-charcoal' : ''
             }`}
-            style={isHighlighted ? { backgroundColor: highlightedBg, color: highlightedText } : {}}
+            style={activeHighlight ? { backgroundColor: highlightedBg, color: highlightedText } : {}}
           >
             {link.label}
-          </a>
+          </Link>
         )
       })}
     </>
@@ -168,9 +171,9 @@ export default function Navbar({ activeTheme }) {
             <div className="bg-[#FDFBF7]/95 backdrop-blur-xl border border-beige-dark/20 rounded-3xl p-5 shadow-xl">
                <div className="space-y-1">
                  {navLinks.map((link) => (
-                   <a key={link.label} href="#" className="block py-3 px-4 rounded-xl hover:bg-beige-dark/10 font-body font-medium text-charcoal/80">
+                   <Link key={link.label} to={link.path} onClick={() => setIsMobileOpen(false)} className="block py-3 px-4 rounded-xl hover:bg-beige-dark/10 font-body font-medium text-charcoal/80">
                      {link.label}
-                   </a>
+                   </Link>
                  ))}
                </div>
             </div>
