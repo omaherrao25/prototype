@@ -3,7 +3,6 @@ import AnnouncementBar from './components/AnnouncementBar'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import WhyEcovedaSection from './components/WhyEcovedaSection'
-import CollectionsSection from './components/CollectionsSection'
 import BestsellersSection from './components/BestsellersSection'
 import LifestyleBannerSection from './components/LifestyleBannerSection'
 import ComingSoonSection from './components/ComingSoonSection'
@@ -26,7 +25,6 @@ export default function App() {
         <WhyEcovedaSection />
         <BestsellersSection />
         <LifestyleBannerSection />
-        <CollectionsSection />
         <ComingSoonSection />
         <WhyChooseSection />
         <TestimonialsSection />
