@@ -62,8 +62,8 @@ export default function Footer() {
                   <Icon size={18} className="text-[#9C795C]" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <p className="font-body font-bold text-[11px] uppercase tracking-[0.12em] text-[#F6F1E9] leading-tight mb-0.5">{label}</p>
-                  <p className="font-body text-[12px] text-[#F6F1E9]/50">{sub}</p>
+                  <p className="font-body font-bold text-[12px] sm:text-[13px] uppercase tracking-[0.12em] text-[#F6F1E9] leading-tight mb-0.5">{label}</p>
+                  <p className="font-body text-[13px] sm:text-[14px] text-[#F6F1E9]/60">{sub}</p>
                 </div>
               </div>
             ))}
