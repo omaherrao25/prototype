@@ -5,6 +5,7 @@ import HeroSection from './components/HeroSection'
 import WhyEcovedaSection from './components/WhyEcovedaSection'
 import CollectionsSection from './components/CollectionsSection'
 import BestsellersSection from './components/BestsellersSection'
+import LifestyleBannerSection from './components/LifestyleBannerSection'
 import ComingSoonSection from './components/ComingSoonSection'
 import WhyChooseSection from './components/WhyChooseSection'
 import TestimonialsSection from './components/TestimonialsSection'
@@ -24,6 +25,7 @@ export default function App() {
         <HeroSection activeTheme={activeTheme} setActiveTheme={setActiveTheme} />
         <WhyEcovedaSection />
         <BestsellersSection />
+        <LifestyleBannerSection />
         <CollectionsSection />
         <ComingSoonSection />
         <WhyChooseSection />

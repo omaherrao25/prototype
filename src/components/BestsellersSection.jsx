@@ -174,7 +174,7 @@ export default function BestsellersSection() {
         <div
           ref={scrollRef}
           onScroll={checkScroll}
-          className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 pb-2"
+          className="flex gap-4 sm:gap-6 overflow-x-auto overflow-y-hidden scrollbar-hide -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 pb-2"
           style={{ scrollSnapType: 'x mandatory' }}
         >
           {products.map((prod, i) => (

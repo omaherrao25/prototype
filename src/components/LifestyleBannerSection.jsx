@@ -1,0 +1,84 @@
+import { useRef } from 'react'
+import { motion, useScroll, useTransform, useInView } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
+
+export default function LifestyleBannerSection() {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-100px' })
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start']
+  })
+
+  // Slow parallax effect for background
+  const y = useTransform(scrollYProgress, [0, 1], ['-8%', '8%'])
+
+  return (
+    <section 
+      ref={ref} 
+      className="relative w-full h-auto sm:h-[85vh] min-h-[700px] flex items-center overflow-hidden bg-[#F6F1E9]"
+    >
+      {/* Background Image with Parallax */}
+      <motion.div 
+        style={{ y }}
+        className="absolute inset-0 z-0 scale-110"
+      >
+        <img 
+          src={encodeURI('/images/lifestyle-banner.jpeg')} 
+          alt="Ecoveda Lifestyle" 
+          className="w-full h-full object-cover object-center"
+        />
+      </motion.div>
+
+      {/* Smooth Blur Overlay fading to right */}
+      <div className="absolute inset-0 z-10 backdrop-blur-[4px] [mask-image:linear-gradient(to_right,black_0%,black_40%,transparent_80%)]"></div>
+      
+      {/* Gradient Color Overlay for Text Readability */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#F6F1E9]/95 via-[#F6F1E9]/75 to-transparent"></div>
+      
+      {/* Additional soft dark gradient requested for cinematic depth */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/5 to-transparent mix-blend-overlay"></div>
+
+      {/* Content Container */}
+      <div className="relative z-20 w-full max-w-[1400px] mx-auto px-6 sm:px-12 lg:px-24 py-24 sm:py-0">
+        <motion.div 
+          initial={{ opacity: 0, x: -30, filter: 'blur(8px)' }}
+          animate={inView ? { opacity: 1, x: 0, filter: 'blur(0px)' } : {}}
+          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+          className="max-w-[580px]"
+        >
+
+          {/* Heading */}
+          <h2 className="font-heading text-[3.2rem] sm:text-[4.75rem] leading-[1.02] text-[#1C1C1C] mb-8 font-normal tracking-tight">
+            Rooted in nature.<br />
+            <span className="italic text-[#314D3D]">Crafted with intention.</span>
+          </h2>
+
+          {/* Description */}
+          <p className="font-body text-[15px] sm:text-[17px] leading-[1.85] text-[#1C1C1C]/80 mb-12">
+            Every Ecoveda product is handmade using skin-loving ingredients inspired by timeless wellness rituals. Designed to nourish your skin while bringing calm and balance to your daily self-care routine.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <motion.button 
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="font-body px-9 py-4 sm:px-10 sm:py-4.5 bg-[#314D3D] text-[#F6F1E9] rounded-full text-[12px] sm:text-[13px] tracking-[0.1em] uppercase font-semibold shadow-[0_12px_40px_rgba(49,77,61,0.25)] hover:bg-[#23382c] transition-colors flex items-center gap-3 group"
+            >
+              Explore Collection
+              <ArrowRight size={15} className="transform group-hover:translate-x-1 transition-transform" />
+            </motion.button>
+            
+            <motion.button 
+              whileHover={{ x: 5, color: '#314D3D' }}
+              className="font-body px-2 py-3 text-[#1C1C1C]/80 text-[12px] sm:text-[13px] tracking-[0.1em] uppercase font-semibold flex items-center gap-2 border-b border-transparent hover:border-[#C7A06C] transition-all"
+            >
+              Our Story
+            </motion.button>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}
