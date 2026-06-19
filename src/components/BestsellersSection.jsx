@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Heart, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react'
 import Img from './shared/Img'
@@ -67,8 +67,19 @@ const ProductCard = ({ p: prod, idx }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.45, delay: idx * 0.05 }}
-      className="flex-shrink-0 w-[260px] sm:w-[280px] group relative rounded-2xl bg-[#F8F8F8] p-4 h-[350px] flex flex-col items-center justify-center overflow-hidden"
+      className="flex-shrink-0 w-[260px] sm:w-[280px] group relative rounded-2xl bg-[#F8F8F8] h-[350px] flex flex-col overflow-hidden"
     >
+      {/* Product Image */}
+      <div className="absolute inset-0 z-0">
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full h-full"
+        >
+          <Img src={prod.image} alt={prod.name} className="w-full h-full object-cover" />
+        </motion.div>
+      </div>
+
       {/* Wishlist Button */}
       <button
         onClick={() => setWished(!wished)}
@@ -78,19 +89,8 @@ const ProductCard = ({ p: prod, idx }) => {
         <Heart size={14} className={wished ? 'text-[#9C795C]' : 'text-charcoal'} fill={wished ? '#9C795C' : 'none'} />
       </button>
 
-      {/* Product Image */}
-      <div className="relative w-[85%] aspect-square flex items-center justify-center mb-10">
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="w-full h-full"
-        >
-          <Img src={prod.image} alt={prod.name} className="w-full h-full object-contain" />
-        </motion.div>
-      </div>
-
       {/* Info Pill */}
-      <div className="absolute bottom-4 left-4 right-4 bg-white rounded-xl p-3 px-4 flex justify-between items-center shadow-[0_2px_10px_rgba(0,0,0,0.03)]">
+      <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-xl p-3 px-4 flex justify-between items-center shadow-[0_2px_10px_rgba(0,0,0,0.03)] z-10">
         <div className="text-left">
           <h3 className="font-body text-[13px] font-bold text-charcoal leading-none mb-1.5 truncate max-w-[160px]">{prod.name}</h3>
           <p className="font-body text-[10px] text-charcoal/50 leading-none">Price • ₹{prod.price}</p>
@@ -117,6 +117,23 @@ export default function BestsellersSection() {
   const scrollRef = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+
+  const checkScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
+      setCanScrollLeft(scrollLeft > 0)
+      setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 1)
+    }
+  }
+
+  useEffect(() => {
+    checkScroll()
+    window.addEventListener('resize', checkScroll)
+    return () => window.removeEventListener('resize', checkScroll)
+  }, [])
+
   const scroll = dir => {
     scrollRef.current?.scrollBy({ left: dir * 296, behavior: 'smooth' })
   }
@@ -130,28 +147,33 @@ export default function BestsellersSection() {
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="flex items-end justify-between mb-9 lg:mb-11"
+          className="relative flex items-center justify-center mb-9 lg:mb-11 min-h-[48px]"
         >
-          <div>
-            <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase">
-              Our Bestsellers
-            </h2>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-3">
-              <button onClick={() => scroll(-1)} aria-label="Previous" className="w-9 h-9 rounded-full bg-[#f4f4f4] hover:bg-[#e8e8e8] text-charcoal flex items-center justify-center transition-colors">
-                <ChevronLeft size={16} strokeWidth={1.5} />
-              </button>
-              <button onClick={() => scroll(1)} aria-label="Next" className="w-9 h-9 rounded-full bg-[#FACC15] hover:bg-[#EAB308] text-charcoal flex items-center justify-center transition-colors">
-                <ChevronRight size={16} strokeWidth={1.5} />
-              </button>
-            </div>
+          <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase text-center">
+            Our Bestsellers
+          </h2>
+          <div className="absolute right-0 hidden sm:flex items-center gap-3">
+            <button 
+              onClick={() => scroll(-1)} 
+              disabled={!canScrollLeft}
+              aria-label="Previous" 
+              className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${canScrollLeft ? 'bg-[#9C795C] hover:bg-[#85654C] text-white' : 'bg-[#e5e5e5] text-charcoal/30 cursor-not-allowed'}`}>
+              <ChevronLeft size={16} strokeWidth={1.5} />
+            </button>
+            <button 
+              onClick={() => scroll(1)} 
+              disabled={!canScrollRight}
+              aria-label="Next" 
+              className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${canScrollRight ? 'bg-[#9C795C] hover:bg-[#85654C] text-white' : 'bg-[#e5e5e5] text-charcoal/30 cursor-not-allowed'}`}>
+              <ChevronRight size={16} strokeWidth={1.5} />
+            </button>
           </div>
         </motion.div>
 
         {/* Scroll strip */}
         <div
           ref={scrollRef}
+          onScroll={checkScroll}
           className="flex gap-4 sm:gap-6 overflow-x-auto scrollbar-hide -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 pb-2"
           style={{ scrollSnapType: 'x mandatory' }}
         >
