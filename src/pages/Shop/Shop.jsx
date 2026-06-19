@@ -13,6 +13,7 @@ export default function Shop() {
     concerns: [],
     scents: []
   });
+  const [sortOption, setSortOption] = useState('Featured');
 
   // Scroll to top on mount
   useEffect(() => {
@@ -48,7 +49,7 @@ export default function Shop() {
   };
 
   const filteredProducts = useMemo(() => {
-    return products.filter(product => {
+    let result = products.filter(product => {
       // Check Categories
       if (activeFilters.categories.length > 0 && !activeFilters.categories.includes(product.category)) return false;
       
@@ -75,7 +76,25 @@ export default function Shop() {
 
       return true;
     });
-  }, [activeFilters]);
+
+    // Apply Sorting
+    switch (sortOption) {
+      case 'Price: Low to High':
+        result.sort((a, b) => a.price - b.price);
+        break;
+      case 'Price: High to Low':
+        result.sort((a, b) => b.price - a.price);
+        break;
+      case 'Best Selling':
+        result.sort((a, b) => (b.isBestSeller === a.isBestSeller) ? 0 : b.isBestSeller ? 1 : -1);
+        break;
+      // Featured, Newest, Most Loved can default to initial order for now
+      default:
+        break;
+    }
+
+    return result;
+  }, [activeFilters, sortOption]);
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] pt-32 pb-24">
@@ -113,6 +132,8 @@ export default function Shop() {
             onRemoveFilter={handleRemoveFilter} 
             onClearAll={handleClearAll}
             totalItems={filteredProducts.length}
+            sortOption={sortOption}
+            setSortOption={setSortOption}
           />
 
           {/* Product Grid */}
@@ -128,7 +149,7 @@ export default function Shop() {
               <p className="font-body text-[14px] text-charcoal/60 max-w-md">Try adjusting your filters or clearing them to see more products.</p>
               <button 
                 onClick={handleClearAll}
-                className="mt-8 px-8 py-3 bg-charcoal text-white font-body text-[11px] uppercase tracking-widest hover:bg-black transition-colors"
+                className="mt-8 px-8 py-3 bg-[#2F4F3A] text-white rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)] font-body text-[11px] uppercase tracking-widest hover:scale-105 transition-all duration-300"
               >
                 Clear Filters
               </button>
@@ -139,7 +160,7 @@ export default function Shop() {
           {filteredProducts.length > 0 && (
             <div className="mt-24 flex flex-col items-center">
               <p className="font-body text-[12px] text-charcoal/50 mb-6">Showing {filteredProducts.length} of {products.length} items</p>
-              <button className="px-12 py-4 bg-[#314D3D] text-[#F6F1E9] font-body text-[11px] font-bold uppercase tracking-[0.15em] hover:bg-[#23382c] transition-colors shadow-sm">
+              <button className="px-10 py-4 bg-[#2F4F3A] text-white rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)] font-body text-[11px] font-bold uppercase tracking-[0.15em] hover:scale-105 transition-all duration-300">
                 Load More
               </button>
             </div>
