@@ -22,7 +22,7 @@ export default function ProductCard({ product }) {
         <motion.img 
           src={product.image} 
           alt={product.name} 
-          className="w-[75%] h-[75%] object-contain drop-shadow-2xl transition-transform duration-700 ease-out group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
 
         {/* Add to Cart Overlay Button */}
