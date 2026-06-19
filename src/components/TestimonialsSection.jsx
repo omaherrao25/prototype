@@ -73,10 +73,6 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.6 }}
             className="order-2 lg:order-1"
           >
-            <div className="flex items-center gap-3 mb-5">
-              <span className="rule" />
-              <span className="eyebrow">Reviews</span>
-            </div>
             <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase mb-5">
               Loved by real<br />people
             </h2>
