@@ -32,6 +32,12 @@ const FilterSection = ({ title, options, activeFilters, onToggleFilter, defaultO
                 const isActive = activeFilters.includes(option);
                 return (
                   <label key={option} className="flex items-center gap-3 cursor-pointer group">
+                    <input 
+                      type="checkbox" 
+                      className="hidden" 
+                      checked={isActive} 
+                      onChange={() => onToggleFilter(option)} 
+                    />
                     <div className={`w-3.5 h-3.5 rounded-sm border flex items-center justify-center transition-colors ${isActive ? 'bg-charcoal border-charcoal' : 'border-charcoal/30 group-hover:border-charcoal/60'}`}>
                       {isActive && <Check size={10} className="text-white" strokeWidth={3} />}
                     </div>
