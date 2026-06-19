@@ -43,7 +43,7 @@ export default function OfferSection() {
         >
 
 
-          <h2 className="font-heading text-[2.75rem] sm:text-[4rem] font-normal text-white leading-[1.04] tracking-tight mb-5">
+          <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase mb-5">
             Enjoy <span className="italic text-gold">10% off</span><br />your first order
           </h2>
 

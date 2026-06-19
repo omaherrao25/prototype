@@ -88,7 +88,7 @@ export default function TrustSection() {
           className="text-center mb-16"
         >
 
-          <h2 className="font-heading text-4xl sm:text-5xl lg:text-[3.2rem] font-medium text-beige leading-tight">
+          <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase">
             Looking for safer skincare<br className="hidden sm:block" /> for your family?
           </h2>
           <p className="text-beige/45 font-body text-base mt-4 max-w-lg mx-auto">

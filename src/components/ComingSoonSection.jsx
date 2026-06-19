@@ -33,7 +33,7 @@ export default function ComingSoonSection() {
               <span className="rule" />
               <span className="eyebrow">Coming Soon</span>
             </div>
-            <h2 className="font-heading text-[2.5rem] sm:text-[3.25rem] font-normal text-charcoal leading-[1.05] tracking-tight mb-5">
+            <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase mb-5">
               New rituals,<br />arriving soon
             </h2>
             <p className="font-body text-[14.5px] text-charcoal/55 leading-relaxed mb-8 max-w-xs">

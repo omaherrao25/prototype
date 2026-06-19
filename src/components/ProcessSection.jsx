@@ -55,7 +55,7 @@ export default function ProcessSection() {
           className="text-center mb-14 lg:mb-20"
         >
 
-          <h2 className="font-heading text-4xl sm:text-5xl font-medium text-charcoal leading-tight">
+          <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase">
             Handmade with intention,<br className="hidden sm:block" /> from farm to face.
           </h2>
           <p className="text-charcoal/45 font-body text-base mt-4 max-w-md mx-auto">

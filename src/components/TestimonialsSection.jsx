@@ -77,7 +77,7 @@ export default function TestimonialsSection() {
               <span className="rule" />
               <span className="eyebrow">Reviews</span>
             </div>
-            <h2 className="font-heading text-[2.5rem] sm:text-[3.25rem] font-normal text-charcoal leading-[1.05] tracking-tight mb-5">
+            <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase mb-5">
               Loved by real<br />people
             </h2>
             <div className="flex items-center gap-3 mb-8">

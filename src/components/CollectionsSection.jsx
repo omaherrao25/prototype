@@ -30,7 +30,7 @@ export default function CollectionsSection() {
         >
           <div className="max-w-xl">
 
-            <h2 className="font-heading text-[2.5rem] sm:text-[3.25rem] font-normal text-charcoal leading-[1.05] tracking-tight">
+            <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase">
               Everything your skin<br className="hidden sm:block" /> has been asking for
             </h2>
           </div>

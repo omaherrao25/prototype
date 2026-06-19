@@ -23,8 +23,8 @@ export default function App() {
       <main>
         <HeroSection activeTheme={activeTheme} setActiveTheme={setActiveTheme} />
         <WhyEcovedaSection />
-        <CollectionsSection />
         <BestsellersSection />
+        <CollectionsSection />
         <ComingSoonSection />
         <WhyChooseSection />
         <TestimonialsSection />
