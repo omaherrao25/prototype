@@ -31,7 +31,7 @@ const EcovedaLogo = ({ compact }) => (
 export default function Navbar({ activeTheme }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
-  const cartCount = 2
+  const cartCount = 0
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 24)

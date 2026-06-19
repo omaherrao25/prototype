@@ -20,52 +20,67 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
     }
   }, [activeIndex, setActiveTheme])
 
+  // Left copy animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+    }
+  }
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
+  }
+
   return (
-    <motion.section
-      className="relative overflow-hidden transition-colors duration-1000 ease-in-out"
-      style={{ backgroundColor: '#F4EDE0' }}
-    >
-      <div className="relative flex items-stretch min-h-[85vh] lg:min-h-[90vh]">
+    <div className="bg-white">
+      <motion.section
+        className="relative overflow-hidden transition-colors duration-1000 ease-in-out rounded-bl-[80px] lg:rounded-bl-[120px]"
+        style={{ backgroundColor: '#F4EDE0' }}
+      >
+        <div className="relative flex items-stretch min-h-[85vh] lg:min-h-[95vh]">
 
         {/* Left: Copy */}
         <div
           className="relative z-20 w-full lg:w-[50%] flex items-center justify-center lg:justify-start px-6 sm:px-10 lg:pl-20 xl:pl-36 2xl:pl-44 py-20 lg:py-0 transition-all duration-1000"
         >
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
             className="max-w-[480px] mt-12 lg:mt-20 xl:mt-28"
           >
 
-
-            <h1
-              className="font-heading font-bold leading-[1.02] tracking-[-0.01em] mb-6 text-charcoal"
-              style={{ fontSize: 'clamp(2.8rem, 5.2vw, 5rem)' }}
+            <motion.h1
+              variants={itemVariants}
+              className="font-heading font-bold leading-[1.05] tracking-[-0.01em] mb-6 text-charcoal"
+              style={{ fontSize: 'clamp(3rem, 5.5vw, 5.5rem)' }}
             >
               Handcrafted<br />
-              <span className="italic" style={{ color: activeTheme?.accent }}>artisan</span> soaps.
-            </h1>
+              <span className="italic" style={{ color: activeTheme?.text, transition: 'color 1s ease' }}>artisan</span> soaps.
+            </motion.h1>
 
-            <p
-              className="font-body text-[1rem] leading-relaxed mb-9 max-w-[380px] text-charcoal opacity-80"
+            <motion.p
+              variants={itemVariants}
+              className="font-body text-[1rem] sm:text-[1.1rem] leading-relaxed mb-10 max-w-[380px] text-charcoal opacity-80"
             >
               Experience the purest ingredients from nature. Our soaps are handcrafted to nourish, protect, and restore your skin naturally.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap items-center gap-4 mb-10">
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-5 mb-10">
               <button
-                className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-1000 hover:scale-105 rounded-full"
+                className="px-8 py-4 text-[12px] sm:text-[13px] uppercase tracking-widest font-bold transition-all duration-500 hover:scale-105 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)]"
                 style={{ backgroundColor: activeTheme?.text || '#2F4F3A', color: '#FFFFFF' }}
               >
                 Order Now
               </button>
               <button
-                className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-300 hover:scale-105 border border-charcoal text-charcoal rounded-full"
+                className="px-8 py-4 text-[12px] sm:text-[13px] uppercase tracking-widest font-bold transition-all duration-300 hover:scale-105 border border-charcoal/40 hover:border-charcoal text-charcoal rounded-full"
               >
                 Learn More
               </button>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
 
@@ -75,19 +90,19 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
 
             {/* 1. Static Background Square */}
             <div
-              className="absolute inset-y-0 right-0 w-[55%] rounded-l-[80px] transition-colors duration-1000 shadow-2xl flex items-center overflow-hidden"
+              className="absolute right-0 top-0 bottom-0 w-[62%] rounded-bl-[120px] transition-colors duration-1000 overflow-hidden"
               style={{ backgroundColor: activeTheme?.bgDark || activeTheme?.bgLight }}
             >
-              {/* 2. Static Name (with fade transition on text change) */}
-              <div className="absolute right-12 top-1/2 -translate-y-1/2">
+              {/* 2. Static Name (with elegant vertical fade) */}
+              <div className="absolute right-12 top-1/2 -translate-y-1/2 select-none pointer-events-none">
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={activeTheme?.name}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 0.6, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.5 }}
-                    className="font-heading text-[clamp(4rem,7vw,7rem)] whitespace-nowrap"
+                    initial={{ opacity: 0, filter: 'blur(10px)' }}
+                    animate={{ opacity: 0.65, filter: 'blur(0px)' }}
+                    exit={{ opacity: 0, filter: 'blur(10px)' }}
+                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                    className="font-heading text-[clamp(4rem,7vw,7rem)] whitespace-nowrap leading-none mix-blend-multiply"
                     style={{
                       writingMode: 'vertical-rl',
                       color: activeTheme?.text
@@ -99,66 +114,25 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
               </div>
             </div>
 
-            {/* 3. Soap Images with Circular Transition */}
-            <div className="absolute inset-0 flex items-center justify-center -ml-20">
-              <AnimatePresence mode="popLayout">
-                {soaps.map((soap, idx) => {
-                  const isActive = idx === activeIndex;
-                  const isNext = idx === (activeIndex + 1) % soaps.length;
-                  const isPrev = idx === (activeIndex - 1 + soaps.length) % soaps.length;
-
-                  if (!isActive && !isNext && !isPrev) return null;
-
-                  // Circular Transition
-                  let xPos = 0;
-                  let yPos = 0;
-                  let rotate = 0;
-                  let scale = 1;
-                  let opacity = 1;
-                  let zIndex = 10;
-
-                  if (isActive) {
-                    xPos = '-5%';
-                    yPos = '0%';
-                    rotate = 0;
-                    scale = 1.15;
-                    zIndex = 20;
-                    opacity = 1;
-                  } else if (isNext) {
-                    xPos = '50%';
-                    yPos = '50%';
-                    rotate = 45;
-                    scale = 0.8;
-                    zIndex = 10;
-                    opacity = 0;
-                  } else if (isPrev) {
-                    xPos = '-50%';
-                    yPos = '-50%';
-                    rotate = -45;
-                    scale = 0.8;
-                    zIndex = 10;
-                    opacity = 0;
-                  }
-
-                  return (
-                    <motion.div
-                      key={soap.id}
-                      className="absolute w-full h-full flex items-center justify-center max-w-[800px]"
-                      initial={{ x: '50%', y: '50%', rotate: 45, scale: 0.8, opacity: 0 }}
-                      animate={{ x: xPos, y: yPos, rotate: rotate, scale: scale, opacity: opacity }}
-                      exit={{ x: '-50%', y: '-50%', rotate: -45, scale: 0.8, opacity: 0 }}
-                      transition={{ duration: 1.2, ease: [0.25, 1, 0.35, 1] }}
-                      style={{ zIndex, transformOrigin: 'center center', outline: '1px solid transparent', backfaceVisibility: 'hidden', transformStyle: 'preserve-3d' }}
-                    >
-                      <img
-                        src={soap.image}
-                        alt={soap.name}
-                        className="w-auto h-auto max-w-[100%] max-h-[85%] object-contain drop-shadow-2xl"
-                        style={{ filter: isActive ? 'none' : 'brightness(0.8)', border: '1px solid transparent' }}
-                      />
-                    </motion.div>
-                  );
-                })}
+            {/* 3. Soap Images with Elegant Crossfade & Float */}
+            <div className="absolute inset-0 flex items-center justify-center -ml-32 pointer-events-none">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeIndex}
+                  className="absolute w-full h-full flex items-center justify-center max-w-[800px]"
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -40, scale: 1.05 }}
+                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <motion.img
+                    src={soaps[activeIndex].image}
+                    alt={soaps[activeIndex].name}
+                    className="w-auto h-auto max-w-[100%] max-h-[85%] object-contain drop-shadow-2xl"
+                    animate={{ y: [0, -15, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </motion.div>
               </AnimatePresence>
             </div>
 
@@ -167,7 +141,7 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
 
         {/* Mobile: Image background (fallback) */}
         <div className="lg:hidden absolute inset-0 z-0">
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence mode="wait">
             <motion.img
               key={activeIndex}
               src={soaps[activeIndex].image}
@@ -187,5 +161,6 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
         </div>
       </div>
     </motion.section>
+    </div>
   )
 }

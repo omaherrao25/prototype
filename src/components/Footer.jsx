@@ -51,7 +51,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="overflow-hidden bg-[#314D3D] text-[#F6F1E9]">
+    <footer className="relative z-10 -mt-12 overflow-hidden bg-[#314D3D] text-[#F6F1E9] rounded-t-[40px] sm:rounded-t-[60px] lg:rounded-t-[80px]">
       {/* ── Service strip ── */}
       <div className="border-t border-[#F6F1E9]/10 border-b border-[#F6F1E9]/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-10">
