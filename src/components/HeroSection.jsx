@@ -55,13 +55,13 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
 
             <div className="flex flex-wrap items-center gap-4 mb-10">
               <button
-                className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-1000 hover:scale-105 rounded-sm"
+                className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-1000 hover:scale-105 rounded-full"
                 style={{ backgroundColor: activeTheme?.text || '#2F4F3A', color: '#FFFFFF' }}
               >
                 Order Now
               </button>
               <button
-                className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-300 hover:scale-105 border border-charcoal text-charcoal rounded-sm"
+                className="px-8 py-3.5 text-[13px] uppercase tracking-widest font-semibold transition-all duration-300 hover:scale-105 border border-charcoal text-charcoal rounded-full"
               >
                 Learn More
               </button>

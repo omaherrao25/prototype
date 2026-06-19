@@ -14,18 +14,18 @@ export default function LifestyleBannerSection() {
   const y = useTransform(scrollYProgress, [0, 1], ['-8%', '8%'])
 
   return (
-    <section 
-      ref={ref} 
+    <section
+      ref={ref}
       className="relative w-full h-auto sm:h-[85vh] min-h-[700px] flex items-center overflow-hidden bg-[#F6F1E9]"
     >
       {/* Background Image with Parallax */}
-      <motion.div 
+      <motion.div
         style={{ y }}
         className="absolute inset-0 z-0 scale-110"
       >
-        <img 
-          src={encodeURI('/images/lifestyle-banner.jpeg')} 
-          alt="Ecoveda Lifestyle" 
+        <img
+          src={encodeURI('/images/lifestyle-banner.jpeg')}
+          alt="Ecoveda Lifestyle"
           className="w-full h-full object-cover object-center"
         />
       </motion.div>
@@ -37,7 +37,7 @@ export default function LifestyleBannerSection() {
       <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
         <div className="w-full h-[150%] sm:w-[150%] max-w-[1200px] max-h-[1000px] backdrop-blur-[8px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]"></div>
       </div>
-      
+
       {/* Center Wide Color Overlay for Text Readability */}
       <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
         <div className="w-full h-[150%] sm:w-[150%] max-w-[1200px] max-h-[1000px] bg-[#F6F1E9]/85 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]"></div>
@@ -45,7 +45,7 @@ export default function LifestyleBannerSection() {
 
       {/* Content Container */}
       <div className="relative z-20 w-full h-full flex flex-col items-center justify-center px-6 sm:px-12 py-24 sm:py-0 pointer-events-none">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
           animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}
           transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
@@ -65,16 +65,16 @@ export default function LifestyleBannerSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-6">
-            <motion.button 
+            <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="font-body px-9 py-4 sm:px-10 sm:py-4.5 bg-[#314D3D] text-[#F6F1E9] rounded-full text-[12px] sm:text-[13px] tracking-[0.1em] uppercase font-semibold shadow-[0_12px_40px_rgba(49,77,61,0.25)] hover:bg-[#23382c] transition-colors flex items-center justify-center gap-3 group w-full sm:w-auto"
             >
-              Shop Our Soaps
+              Explore Products
               <ArrowRight size={15} className="transform group-hover:translate-x-1 transition-transform" />
             </motion.button>
-            
-            <motion.button 
+
+            <motion.button
               whileHover={{ y: -2, color: '#314D3D' }}
               className="font-body px-2 py-3 text-[#1C1C1C]/80 text-[12px] sm:text-[13px] tracking-[0.1em] uppercase font-semibold flex items-center justify-center gap-2 border-b border-transparent hover:border-[#C7A06C] transition-all"
             >
