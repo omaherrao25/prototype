@@ -29,10 +29,7 @@ export default function CollectionsSection() {
           className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-9 lg:mb-12"
         >
           <div className="max-w-xl">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="rule" />
-              <span className="eyebrow">Shop by Collection</span>
-            </div>
+
             <h2 className="font-heading text-[2.5rem] sm:text-[3.25rem] font-normal text-charcoal leading-[1.05] tracking-tight">
               Everything your skin<br className="hidden sm:block" /> has been asking for
             </h2>

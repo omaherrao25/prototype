@@ -54,7 +54,7 @@ export default function ProcessSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14 lg:mb-20"
         >
-          <p className="text-xs font-body tracking-[0.2em] uppercase text-sage mb-3">The Ecoveda Way</p>
+
           <h2 className="font-heading text-4xl sm:text-5xl font-medium text-charcoal leading-tight">
             Handmade with intention,<br className="hidden sm:block" /> from farm to face.
           </h2>

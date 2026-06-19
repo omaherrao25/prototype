@@ -37,12 +37,7 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-[480px] mt-12 lg:mt-20 xl:mt-28"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <span className="w-8 h-px bg-charcoal" />
-              <span className="text-sm tracking-widest uppercase font-medium text-charcoal">
-                Pure Botanicals
-              </span>
-            </div>
+
 
             <h1
               className="font-heading font-bold leading-[1.02] tracking-[-0.01em] mb-6 text-charcoal"

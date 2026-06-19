@@ -87,7 +87,7 @@ export default function TrustSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-xs font-body tracking-[0.2em] uppercase text-sage/80 mb-3">Trusted by Thousands</p>
+
           <h2 className="font-heading text-4xl sm:text-5xl lg:text-[3.2rem] font-medium text-beige leading-tight">
             Looking for safer skincare<br className="hidden sm:block" /> for your family?
           </h2>

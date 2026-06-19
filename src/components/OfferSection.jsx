@@ -41,11 +41,7 @@ export default function OfferSection() {
           transition={{ duration: 0.7 }}
           className="text-center"
         >
-          <div className="flex items-center justify-center gap-3 mb-7">
-            <span className="h-px w-9 bg-gold/50" />
-            <span className="font-body text-[11px] font-medium tracking-[0.28em] uppercase text-gold/90">Limited Time</span>
-            <span className="h-px w-9 bg-gold/50" />
-          </div>
+
 
           <h2 className="font-heading text-[2.75rem] sm:text-[4rem] font-normal text-white leading-[1.04] tracking-tight mb-5">
             Enjoy <span className="italic text-gold">10% off</span><br />your first order
