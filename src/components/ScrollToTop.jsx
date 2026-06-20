@@ -5,19 +5,33 @@ export default function ScrollToTop() {
   const { pathname } = useLocation()
 
   useEffect(() => {
-    // We want the new page to instantly start from the top, no animation.
-    const scrollOptions = { top: 0, left: 0, behavior: 'auto' }
+    // Disable browser's default scroll restoration to prevent it from fighting our custom logic
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
 
-    window.scrollTo(scrollOptions)
+    const resetScroll = () => {
+      window.scrollTo(0, 0)
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+      
+      const wrapper = document.querySelector('.overflow-x-hidden')
+      if (wrapper) wrapper.scrollTop = 0
+    }
 
-    // Fallback: sometimes the wrapper div handles the scroll instead of window
-    const wrapper = document.querySelector('.overflow-x-hidden')
-    if (wrapper) wrapper.scrollTo(scrollOptions)
+    // Fire immediately
+    resetScroll()
 
-    setTimeout(() => {
-      window.scrollTo(scrollOptions)
-      if (wrapper) wrapper.scrollTo(scrollOptions)
-    }, 10)
+    // Fire again slightly after paint to ensure it sticks
+    const timer1 = setTimeout(resetScroll, 10)
+    const timer2 = setTimeout(resetScroll, 50)
+    const timer3 = setTimeout(resetScroll, 100)
+
+    return () => {
+      clearTimeout(timer1)
+      clearTimeout(timer2)
+      clearTimeout(timer3)
+    }
   }, [pathname])
 
   return null
