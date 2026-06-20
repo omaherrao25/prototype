@@ -14,6 +14,7 @@ export default function Shop() {
     scents: []
   });
   const [sortOption, setSortOption] = useState('Featured');
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Scroll to top on mount
   useEffect(() => {
@@ -50,6 +51,13 @@ export default function Shop() {
 
   const filteredProducts = useMemo(() => {
     let result = products.filter(product => {
+      // Check Search Query
+      if (searchQuery.trim() !== '') {
+        if (!product.name.toLowerCase().includes(searchQuery.trim().toLowerCase())) {
+          return false;
+        }
+      }
+
       // Check Categories
       if (activeFilters.categories.length > 0 && !activeFilters.categories.includes(product.category)) return false;
       
@@ -94,7 +102,7 @@ export default function Shop() {
     }
 
     return result;
-  }, [activeFilters, sortOption]);
+  }, [activeFilters, sortOption, searchQuery]);
 
   return (
     <div className="min-h-screen bg-white pt-28 lg:pt-32 pb-20">
@@ -134,6 +142,8 @@ export default function Shop() {
             totalItems={filteredProducts.length}
             sortOption={sortOption}
             setSortOption={setSortOption}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
           />
 
           {/* Product Grid */}

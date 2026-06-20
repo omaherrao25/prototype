@@ -7,11 +7,14 @@ import Product from './pages/Product/Product'
 import Footer from './components/Footer'
 import { soaps } from './data/soaps'
 
+import ScrollToTop from './components/ScrollToTop'
+
 export default function App() {
   const [activeTheme, setActiveTheme] = useState(soaps[0])
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-offwhite overflow-x-hidden">
         <Navbar activeTheme={activeTheme} />
         <Routes>
