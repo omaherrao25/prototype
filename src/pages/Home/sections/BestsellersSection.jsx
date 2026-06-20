@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Heart, ShoppingBag, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import Img from '../../../components/shared/Img'
 
 // Local soap photos from public/images (encode spaces in filenames)
@@ -70,7 +71,7 @@ const ProductCard = ({ p: prod, idx }) => {
       className="flex-shrink-0 w-[260px] sm:w-[280px] group relative rounded-2xl bg-[#F8F8F8] h-[350px] flex flex-col overflow-hidden"
     >
       {/* Product Image */}
-      <div className="absolute inset-0 z-0">
+      <Link to={`/product/bestseller-${prod.id}`} className="absolute inset-0 z-0 block">
         <motion.div
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -78,7 +79,7 @@ const ProductCard = ({ p: prod, idx }) => {
         >
           <Img src={prod.image} alt={prod.name} className="w-full h-full object-cover" />
         </motion.div>
-      </div>
+      </Link>
 
       {/* Wishlist Button */}
       <button
@@ -92,7 +93,9 @@ const ProductCard = ({ p: prod, idx }) => {
       {/* Info Pill */}
       <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-xl p-3 px-4 flex justify-between items-center shadow-[0_2px_10px_rgba(0,0,0,0.03)] z-10">
         <div className="text-left">
-          <h3 className="font-body text-[13px] font-bold text-charcoal leading-none mb-1.5 truncate max-w-[160px]">{prod.name}</h3>
+          <Link to={`/product/bestseller-${prod.id}`} className="block hover:text-[#9C795C] transition-colors">
+            <h3 className="font-body text-[13px] font-bold text-charcoal leading-none mb-1.5 truncate max-w-[160px]">{prod.name}</h3>
+          </Link>
           <p className="font-body text-[10px] text-charcoal/50 leading-none">Price • ₹{prod.price}</p>
         </div>
         <button

@@ -1,3 +1,5 @@
+import { products } from './products'
+
 const p = (prompt, w = 600, h = 600, seed = 1) =>
   `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=${w}&height=${h}&nologo=true&seed=${seed}&model=flux`
 
@@ -89,6 +91,26 @@ export const productDetails = {
     ],
   },
 }
+
+// Automatically mock out the database by populating productDetails for all other products
+const baseTemplate = productDetails['bestseller-2']
+
+products.forEach(p => {
+  if (p.id !== 'bestseller-2') {
+    productDetails[p.id] = {
+      ...baseTemplate,
+      id: p.id,
+      name: p.name,
+      price: p.price,
+      originalPrice: p.price + 100, // mock original price
+      category: p.category,
+      skinType: p.skinType,
+      concern: p.concern,
+      images: [p.image, p.image], // Mock gallery using the same image twice
+      tagline: p.concern?.[0] || 'Natural Skincare',
+    }
+  }
+})
 
 export const recommendedProducts = [
   {
