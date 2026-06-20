@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Truck, RotateCcw, Sparkles, Sun, Droplets, Leaf, ShieldCheck, CheckCircle2 } from 'lucide-react'
 
 const tabs = [
   { id: 'howToUse', label: 'How to use' },
@@ -7,6 +8,22 @@ const tabs = [
   { id: 'ingredients', label: 'Ingredients' },
   { id: 'shipping', label: 'Return Policy' },
 ]
+
+// Map generic emojis to premium icons
+const getIcon = (emoji) => {
+  const props = { size: 16, strokeWidth: 1.5, className: 'text-charcoal/70' }
+  switch (emoji) {
+    case '✨': return <Sparkles {...props} />
+    case '☀️': return <Sun {...props} />
+    case '🧼': return <Droplets {...props} />
+    case '🌿': return <Leaf {...props} />
+    case '🥥': return <CheckCircle2 {...props} />
+    case '🫒': return <Leaf {...props} />
+    case '💧': return <Droplets {...props} />
+    case '🤲': return <ShieldCheck {...props} />
+    default: return <Leaf {...props} />
+  }
+}
 
 export default function ProductTabs({ product }) {
   const [activeTab, setActiveTab] = useState('howToUse')
@@ -77,7 +94,7 @@ export default function ProductTabs({ product }) {
                     transition={{ delay: idx * 0.05 }}
                     className="flex items-start gap-3 p-4 rounded-xl bg-beige/20 border border-beige-dark/10"
                   >
-                    <span className="text-xl flex-shrink-0">{benefit.icon}</span>
+                    <span className="flex-shrink-0 mt-0.5">{getIcon(benefit.icon)}</span>
                     <div>
                       <h4 className="font-body text-[12px] font-semibold text-charcoal mb-0.5">
                         {benefit.label}
@@ -108,7 +125,7 @@ export default function ProductTabs({ product }) {
                         borderColor: `${ing.color}20`,
                       }}
                     >
-                      <span>{ing.emoji}</span>
+                      <span className="opacity-70 scale-90">{getIcon(ing.emoji)}</span>
                       {ing.name}
                     </span>
                   ))}
@@ -118,8 +135,8 @@ export default function ProductTabs({ product }) {
 
             {activeTab === 'shipping' && (
               <div className="space-y-4">
-                <ShippingRow icon="🚚" title="Delivery" text={product.shippingInfo.delivery} />
-                <ShippingRow icon="↩️" title="Returns" text={product.shippingInfo.returns} />
+                <ShippingRow icon={<Truck size={16} strokeWidth={1.5} className="text-charcoal/70" />} title="Delivery" text={product.shippingInfo.delivery} />
+                <ShippingRow icon={<RotateCcw size={16} strokeWidth={1.5} className="text-charcoal/70" />} title="Returns" text={product.shippingInfo.returns} />
                 <div className="p-4 rounded-xl bg-beige/20 border border-beige-dark/10">
                   <p className="font-body text-[12px] text-charcoal/50 leading-relaxed">
                     We ship across India via trusted courier partners. For any return or shipping-related queries, please reach out to our support team within 7 days of delivery.
@@ -137,7 +154,7 @@ export default function ProductTabs({ product }) {
 function ShippingRow({ icon, title, text }) {
   return (
     <div className="flex items-start gap-3">
-      <span className="text-lg flex-shrink-0 mt-0.5">{icon}</span>
+      <span className="flex-shrink-0 mt-0.5">{icon}</span>
       <div>
         <h4 className="font-body text-[12px] font-semibold text-charcoal mb-0.5">{title}</h4>
         <p className="font-body text-[12px] text-charcoal/50">{text}</p>

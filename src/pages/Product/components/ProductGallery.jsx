@@ -12,30 +12,9 @@ export default function ProductGallery({ images, name }) {
   ]
 
   return (
-    <div className="flex flex-col gap-4 lg:flex-row lg:gap-3">
-      {/* Vertical Thumbnails (desktop only) */}
-      <div className="hidden lg:flex flex-col gap-2.5 order-1">
-        {galleryImages.map((img, idx) => (
-          <button
-            key={idx}
-            onClick={() => setActiveIndex(idx)}
-            className={`relative w-[62px] h-[62px] rounded-lg overflow-hidden flex-shrink-0 transition-all duration-300 ${
-              activeIndex === idx
-                ? 'ring-2 ring-forest ring-offset-2 ring-offset-offwhite shadow-luxury'
-                : 'ring-1 ring-beige-dark/30 opacity-50 hover:opacity-85 hover:ring-sage/40'
-            }`}
-          >
-            <img
-              src={img}
-              alt={`${name} thumbnail ${idx + 1}`}
-              className="w-full h-full object-cover"
-            />
-          </button>
-        ))}
-      </div>
-
+    <div className="flex flex-col gap-4">
       {/* Main Image */}
-      <div className="relative aspect-square lg:aspect-[5/6] max-h-[520px] bg-gradient-to-br from-[#F5F0E8] to-[#EDE7DD] rounded-2xl overflow-hidden group flex-1 order-2">
+      <div className="relative aspect-square lg:aspect-[5/6] max-h-[520px] bg-gradient-to-br from-[#F5F0E8] to-[#EDE7DD] rounded-2xl overflow-hidden group">
         {/* Soft ambient glow */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/[0.02] to-transparent pointer-events-none z-10" />
 
@@ -60,13 +39,13 @@ export default function ProductGallery({ images, name }) {
         </div>
       </div>
 
-      {/* Horizontal Thumbnails (mobile/tablet only) */}
-      <div className="flex lg:hidden gap-2.5 order-3">
+      {/* Horizontal Thumbnails (all screens) */}
+      <div className="flex gap-2.5 overflow-x-auto scrollbar-hide pb-1">
         {galleryImages.map((img, idx) => (
           <button
             key={idx}
             onClick={() => setActiveIndex(idx)}
-            className={`relative w-[58px] h-[58px] rounded-lg overflow-hidden flex-shrink-0 transition-all duration-300 ${
+            className={`relative w-[60px] h-[60px] sm:w-[72px] sm:h-[72px] rounded-lg overflow-hidden flex-shrink-0 transition-all duration-300 ${
               activeIndex === idx
                 ? 'ring-2 ring-forest ring-offset-2 ring-offset-offwhite shadow-luxury'
                 : 'ring-1 ring-beige-dark/30 opacity-50 hover:opacity-85 hover:ring-sage/40'

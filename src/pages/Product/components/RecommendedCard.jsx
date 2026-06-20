@@ -28,16 +28,13 @@ export default function RecommendedCard({ product, index }) {
             <Heart size={13} strokeWidth={1.8} />
           </button>
 
-          {/* Quick Add */}
-          <div className="absolute bottom-0 left-0 right-0 p-2.5 translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-out z-10">
-            <button
-              onClick={(e) => { e.preventDefault(); e.stopPropagation() }}
-              className="w-full py-2 bg-forest/90 backdrop-blur-md text-white text-[10px] font-body font-bold uppercase tracking-[0.12em] rounded-lg hover:bg-forest transition-colors duration-200 flex items-center justify-center gap-1.5"
-            >
-              <ShoppingBag size={12} strokeWidth={2} />
-              Add to Cart
-            </button>
-          </div>
+          {/* Quick Add Button */}
+          <button
+            onClick={(e) => { e.preventDefault(); e.stopPropagation() }}
+            className="absolute bottom-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-white/70 backdrop-blur-md flex items-center justify-center shadow-sm border border-white/50 text-charcoal/35 opacity-0 translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 hover:text-forest hover:bg-white"
+          >
+            <ShoppingBag size={13} strokeWidth={1.8} />
+          </button>
         </div>
 
         {/* Info */}
