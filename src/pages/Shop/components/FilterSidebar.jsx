@@ -63,7 +63,6 @@ export default function FilterSidebar({ activeFilters, onToggleFilter }) {
         options={filterOptions.categories} 
         activeFilters={activeFilters.categories || []} 
         onToggleFilter={(val) => onToggleFilter('categories', val)} 
-        defaultOpen={true} 
       />
       <FilterSection 
         title="Skin Type" 
@@ -76,7 +75,6 @@ export default function FilterSidebar({ activeFilters, onToggleFilter }) {
         options={filterOptions.ingredients} 
         activeFilters={activeFilters.ingredients || []} 
         onToggleFilter={(val) => onToggleFilter('ingredients', val)} 
-        defaultOpen={true}
       />
       <FilterSection 
         title="Scent" 
