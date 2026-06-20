@@ -1,6 +1,9 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
+const MotionLink = motion(Link);
 
 export default function LifestyleBannerSection() {
   const ref = useRef(null)
@@ -65,14 +68,15 @@ export default function LifestyleBannerSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-6">
-            <motion.button
+            <MotionLink
+              to="/shop"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="font-body px-9 py-4 sm:px-10 sm:py-4.5 bg-[#314D3D] text-[#F6F1E9] rounded-full text-[12px] sm:text-[13px] tracking-[0.1em] uppercase font-semibold shadow-[0_12px_40px_rgba(49,77,61,0.25)] hover:bg-[#23382c] transition-colors flex items-center justify-center gap-3 group w-full sm:w-auto"
             >
               Explore Products
               <ArrowRight size={15} className="transform group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            </MotionLink>
 
             <motion.button
               whileHover={{ y: -2, color: '#314D3D' }}
