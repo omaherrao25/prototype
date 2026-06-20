@@ -90,29 +90,29 @@ export default function Product() {
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:col-span-7 lg:sticky lg:top-28 pt-2"
+              className="lg:col-span-7 lg:sticky lg:top-28 pt-2 lg:pl-4"
             >
               {/* Skin Concern Tag */}
-              <div className="flex items-center gap-2 mb-4">
-                <span className="eyebrow">{product.tagline}</span>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="eyebrow !text-[10px]">{product.tagline}</span>
                 <span className="inline-block w-1 h-1 rounded-full bg-sage/50" />
-                <span className="font-body text-[11px] text-charcoal/35 uppercase tracking-wider font-medium">
+                <span className="font-body text-[10px] text-charcoal/35 uppercase tracking-wider font-semibold">
                   {product.category}
                 </span>
               </div>
 
               {/* Product Name */}
-              <h1 className="font-heading text-4xl sm:text-5xl font-normal text-charcoal tracking-wide leading-[1.15] mb-4">
+              <h1 className="font-heading text-3xl sm:text-4xl font-normal text-charcoal tracking-wide leading-[1.1] mb-3">
                 {product.name}
               </h1>
 
               {/* Rating */}
-              <div className="flex items-center gap-3 mb-5">
-                <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2.5 mb-5">
+                <div className="flex items-center gap-0.5">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
                       key={i}
-                      size={13}
+                      size={12}
                       className={
                         i < Math.floor(product.rating)
                           ? 'text-gold fill-gold'
@@ -121,30 +121,30 @@ export default function Product() {
                     />
                   ))}
                 </div>
-                <span className="font-body text-[13px] font-medium text-charcoal/60">
+                <span className="font-body text-[12px] font-medium text-charcoal/60">
                   {product.rating}
                 </span>
-                <span className="font-body text-[12px] text-charcoal/35">
+                <span className="font-body text-[11px] text-charcoal/35">
                   ({product.reviewCount} reviews)
                 </span>
               </div>
 
               {/* Short Description */}
-              <p className="font-body text-[15px] text-charcoal/55 leading-[1.75] mb-7 max-w-md">
+              <p className="font-body text-[13.5px] text-charcoal/55 leading-[1.6] mb-6 max-w-lg">
                 {product.shortDescription}
               </p>
 
               {/* Price */}
-              <div className="flex items-baseline gap-3 mb-7">
-                <span className="font-heading text-3xl font-medium text-charcoal">
+              <div className="flex items-baseline gap-2.5 mb-6">
+                <span className="font-heading text-2xl font-medium text-charcoal">
                   ₹{product.price}
                 </span>
                 {product.originalPrice && (
                   <>
-                    <span className="font-body text-[16px] text-charcoal/30 line-through">
+                    <span className="font-body text-[14px] text-charcoal/30 line-through">
                       ₹{product.originalPrice}
                     </span>
-                    <span className="inline-block bg-sage/10 text-sage-dark text-[11px] font-body font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                    <span className="inline-block bg-sage/10 text-sage-dark text-[10px] font-body font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
                       {discountPercent}% off
                     </span>
                   </>
@@ -152,35 +152,37 @@ export default function Product() {
               </div>
 
               {/* Benefit Badges */}
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {product.benefits.slice(0, 4).map((b) => (
                   <span
                     key={b.label}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-beige/50 border border-beige-dark/20 font-body text-[11px] font-medium text-charcoal/60 tracking-wide"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-beige/50 border border-beige-dark/20 font-body text-[10.5px] font-medium text-charcoal/60 tracking-wide"
                   >
-                    <span className="text-sm">{b.icon}</span>
+                    <span className="text-xs">{b.icon}</span>
                     {b.label}
                   </span>
                 ))}
               </div>
 
               {/* Divider */}
-              <div className="h-px bg-beige-dark/30 mb-7" />
+              <div className="h-px bg-beige-dark/30 mb-6" />
 
               {/* Quantity + Add to Cart */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-3">
                 <div>
-                  <p className="font-body text-[11px] font-bold uppercase tracking-widest text-charcoal/40 mb-2.5">
+                  <p className="font-body text-[10px] font-bold uppercase tracking-widest text-charcoal/40 mb-2">
                     Quantity
                   </p>
-                  <QuantitySelector value={quantity} onChange={setQuantity} />
+                  <div className="scale-90 origin-left">
+                    <QuantitySelector value={quantity} onChange={setQuantity} />
+                  </div>
                 </div>
 
-                <div className="flex-1 w-full sm:w-auto sm:pt-6">
+                <div className="flex-1 w-full sm:w-auto sm:pt-[22px]">
                   <motion.button
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full py-4 bg-forest text-white font-body text-[12.5px] font-bold uppercase tracking-[0.14em] rounded-full shadow-luxury hover:bg-forest-light hover:shadow-luxury-lg transition-all duration-400"
+                    className="w-full py-3 bg-forest text-white font-body text-[11.5px] font-bold uppercase tracking-[0.14em] rounded-full shadow-luxury hover:bg-forest-light hover:shadow-luxury-lg transition-all duration-400"
                   >
                     Add to Cart · ₹{product.price * quantity}
                   </motion.button>
@@ -191,14 +193,14 @@ export default function Product() {
               <motion.button
                 whileTap={{ scale: 0.97 }}
                 onClick={() => setIsWishlisted(!isWishlisted)}
-                className={`w-full py-3.5 rounded-full border font-body text-[12px] font-semibold uppercase tracking-[0.1em] flex items-center justify-center gap-2 transition-all duration-300 mb-8 ${
+                className={`w-full py-2.5 rounded-full border font-body text-[11px] font-semibold uppercase tracking-[0.1em] flex items-center justify-center gap-2 transition-all duration-300 mb-6 ${
                   isWishlisted
                     ? 'bg-rose-50 border-rose-200 text-rose-500'
                     : 'bg-white border-beige-dark/40 text-charcoal/50 hover:border-charcoal/20 hover:text-charcoal/70'
                 }`}
               >
                 <Heart
-                  size={15}
+                  size={14}
                   strokeWidth={1.8}
                   className={isWishlisted ? 'fill-rose-400' : ''}
                 />
@@ -206,31 +208,31 @@ export default function Product() {
               </motion.button>
 
               {/* Delivery Info */}
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center gap-3">
-                  <Truck size={16} strokeWidth={1.5} className="text-sage flex-shrink-0" />
-                  <span className="font-body text-[13px] text-charcoal/50">
+              <div className="space-y-2 mb-6">
+                <div className="flex items-center gap-2.5">
+                  <Truck size={14} strokeWidth={1.5} className="text-sage flex-shrink-0" />
+                  <span className="font-body text-[12px] text-charcoal/50">
                     {product.shippingInfo.delivery}
                   </span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <ShieldCheck size={16} strokeWidth={1.5} className="text-sage flex-shrink-0" />
-                  <span className="font-body text-[13px] text-charcoal/50">
+                <div className="flex items-center gap-2.5">
+                  <ShieldCheck size={14} strokeWidth={1.5} className="text-sage flex-shrink-0" />
+                  <span className="font-body text-[12px] text-charcoal/50">
                     {product.shippingInfo.returns}
                   </span>
                 </div>
               </div>
 
               {/* Natural Ingredients Tags */}
-              <div className="mb-6">
-                <p className="font-body text-[11px] font-bold uppercase tracking-widest text-charcoal/35 mb-3">
+              <div className="mb-5">
+                <p className="font-body text-[10px] font-bold uppercase tracking-widest text-charcoal/35 mb-2.5">
                   Key Ingredients
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5">
                   {product.ingredients.map((ing) => (
                     <span
                       key={ing.name}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-body font-medium border"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10.5px] font-body font-medium border"
                       style={{
                         backgroundColor: ing.bg,
                         color: ing.color,
@@ -244,7 +246,7 @@ export default function Product() {
               </div>
 
               {/* Trust Micro-badges */}
-              <div className="flex flex-wrap items-center gap-4 pt-5 border-t border-beige-dark/20">
+              <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-beige-dark/20">
                 {[
                   { icon: '🤲', text: 'Handmade' },
                   { icon: '🐰', text: 'Cruelty Free' },
@@ -252,9 +254,9 @@ export default function Product() {
                 ].map((item) => (
                   <span
                     key={item.text}
-                    className="flex items-center gap-1.5 font-body text-[11px] text-charcoal/40"
+                    className="flex items-center gap-1.5 font-body text-[10.5px] text-charcoal/40"
                   >
-                    <span className="text-sm">{item.icon}</span>
+                    <span className="text-xs">{item.icon}</span>
                     {item.text}
                   </span>
                 ))}
