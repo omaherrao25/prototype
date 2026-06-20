@@ -151,38 +151,22 @@ export default function Product() {
                 )}
               </div>
 
-              {/* Benefit Badges */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {product.benefits.slice(0, 4).map((b) => (
-                  <span
-                    key={b.label}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-beige/50 border border-beige-dark/20 font-body text-[10.5px] font-medium text-charcoal/60 tracking-wide"
-                  >
-                    <span className="text-xs">{b.icon}</span>
-                    {b.label}
-                  </span>
-                ))}
-              </div>
 
-              {/* Divider */}
-              <div className="h-px bg-beige-dark/30 mb-6" />
 
               {/* Quantity + Add to Cart */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 mb-3">
+              <div className="flex flex-col sm:flex-row items-start sm:items-end gap-3 mb-3">
                 <div>
                   <p className="font-body text-[10px] font-bold uppercase tracking-widest text-charcoal/40 mb-2">
                     Quantity
                   </p>
-                  <div className="scale-90 origin-left">
-                    <QuantitySelector value={quantity} onChange={setQuantity} />
-                  </div>
+                  <QuantitySelector value={quantity} onChange={setQuantity} />
                 </div>
 
-                <div className="flex-1 w-full sm:w-auto sm:pt-[22px]">
+                <div className="flex-1 w-full sm:w-auto">
                   <motion.button
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full py-3 bg-forest text-white font-body text-[11.5px] font-bold uppercase tracking-[0.14em] rounded-full shadow-luxury hover:bg-forest-light hover:shadow-luxury-lg transition-all duration-400"
+                    className="w-full h-10 flex items-center justify-center bg-forest text-white font-body text-[11px] font-bold uppercase tracking-[0.15em] rounded-full shadow-luxury hover:bg-forest-light hover:shadow-luxury-lg transition-all duration-400"
                   >
                     Add to Cart · ₹{product.price * quantity}
                   </motion.button>
@@ -193,85 +177,26 @@ export default function Product() {
               <motion.button
                 whileTap={{ scale: 0.97 }}
                 onClick={() => setIsWishlisted(!isWishlisted)}
-                className={`w-full py-2.5 rounded-full border font-body text-[11px] font-semibold uppercase tracking-[0.1em] flex items-center justify-center gap-2 transition-all duration-300 mb-6 ${
+                className={`w-full h-10 rounded-full border font-body text-[10.5px] font-semibold uppercase tracking-[0.1em] flex items-center justify-center gap-2 transition-all duration-300 mb-6 ${
                   isWishlisted
                     ? 'bg-rose-50 border-rose-200 text-rose-500'
-                    : 'bg-white border-beige-dark/40 text-charcoal/50 hover:border-charcoal/20 hover:text-charcoal/70'
+                    : 'bg-white border-beige-dark/50 text-charcoal/50 hover:border-charcoal/30 hover:text-charcoal/80'
                 }`}
               >
                 <Heart
-                  size={14}
-                  strokeWidth={1.8}
+                  size={13}
+                  strokeWidth={2}
                   className={isWishlisted ? 'fill-rose-400' : ''}
                 />
                 {isWishlisted ? 'Added to Wishlist' : 'Add to Wishlist'}
               </motion.button>
 
-              {/* Delivery Info */}
-              <div className="space-y-2 mb-6">
-                <div className="flex items-center gap-2.5">
-                  <Truck size={14} strokeWidth={1.5} className="text-sage flex-shrink-0" />
-                  <span className="font-body text-[12px] text-charcoal/50">
-                    {product.shippingInfo.delivery}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2.5">
-                  <ShieldCheck size={14} strokeWidth={1.5} className="text-sage flex-shrink-0" />
-                  <span className="font-body text-[12px] text-charcoal/50">
-                    {product.shippingInfo.returns}
-                  </span>
-                </div>
-              </div>
-
-              {/* Natural Ingredients Tags */}
-              <div className="mb-5">
-                <p className="font-body text-[10px] font-bold uppercase tracking-widest text-charcoal/35 mb-2.5">
-                  Key Ingredients
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {product.ingredients.map((ing) => (
-                    <span
-                      key={ing.name}
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10.5px] font-body font-medium border"
-                      style={{
-                        backgroundColor: ing.bg,
-                        color: ing.color,
-                        borderColor: `${ing.color}20`,
-                      }}
-                    >
-                      {ing.emoji} {ing.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Trust Micro-badges */}
-              <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-beige-dark/20">
-                {[
-                  { icon: '🤲', text: 'Handmade' },
-                  { icon: '🐰', text: 'Cruelty Free' },
-                  { icon: '🌿', text: 'Chemical Free' },
-                ].map((item) => (
-                  <span
-                    key={item.text}
-                    className="flex items-center gap-1.5 font-body text-[10.5px] text-charcoal/40"
-                  >
-                    <span className="text-xs">{item.icon}</span>
-                    {item.text}
-                  </span>
-                ))}
+              {/* Product Tabs (Moved directly below wishlist) */}
+              <div className="mt-8 pt-2">
+                <ProductTabs product={product} />
               </div>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* ──────────────────────────────────────────────── */}
-      {/* 3. PRODUCT CONTENT TABS                          */}
-      {/* ──────────────────────────────────────────────── */}
-      <section className="bg-white">
-        <div className="container-pad py-14 lg:py-20">
-          <ProductTabs product={product} />
         </div>
       </section>
 
