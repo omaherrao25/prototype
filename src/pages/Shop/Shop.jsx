@@ -57,7 +57,7 @@ export default function Shop() {
           return false;
         }
       }
-
+ 
       // Check Categories
       if (activeFilters.categories.length > 0 && !activeFilters.categories.includes(product.category)) return false;
       
