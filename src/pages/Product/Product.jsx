@@ -14,8 +14,7 @@ import ProductGallery from './components/ProductGallery'
 import QuantitySelector from './components/QuantitySelector'
 import ProductTabs from './components/ProductTabs'
 import RecommendedCard from './components/RecommendedCard'
-import IngredientHighlight from './components/IngredientHighlight'
-import TrustQualitySection from './components/TrustQualitySection'
+
 import LifestyleCTA from './components/LifestyleCTA'
 import { productDetails, recommendedProducts } from '../../data/productDetails'
 
@@ -75,22 +74,23 @@ export default function Product() {
       {/* ──────────────────────────────────────────────── */}
       <section className="pb-16 lg:pb-24">
         <div className="container-pad">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-start">
-            {/* LEFT — Gallery */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
+            {/* LEFT — Gallery (5 of 12 cols) */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="lg:col-span-5"
             >
               <ProductGallery images={product.images} name={product.name} />
             </motion.div>
 
-            {/* RIGHT — Product Info */}
+            {/* RIGHT — Product Info (7 of 12 cols) */}
             <motion.div
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="lg:sticky lg:top-28 pt-2"
+              className="lg:col-span-7 lg:sticky lg:top-28 pt-2"
             >
               {/* Skin Concern Tag */}
               <div className="flex items-center gap-2 mb-4">
@@ -274,9 +274,14 @@ export default function Product() {
       </section>
 
       {/* ──────────────────────────────────────────────── */}
-      {/* 4. RECOMMENDED PRODUCTS                          */}
+      {/* 4. LIFESTYLE CTA BANNER                          */}
       {/* ──────────────────────────────────────────────── */}
-      <section ref={recRef} className="section-pad bg-offwhite">
+      <LifestyleCTA />
+
+      {/* ──────────────────────────────────────────────── */}
+      {/* 5. RECOMMENDED PRODUCTS                          */}
+      {/* ──────────────────────────────────────────────── */}
+      <section ref={recRef} className="section-pad bg-offwhite pb-28 lg:pb-36">
         <div className="container-pad">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -297,21 +302,7 @@ export default function Product() {
           </div>
         </div>
       </section>
-
-      {/* ──────────────────────────────────────────────── */}
-      {/* 5. INGREDIENT HIGHLIGHT                          */}
-      {/* ──────────────────────────────────────────────── */}
-      <IngredientHighlight ingredients={product.ingredients} />
-
-      {/* ──────────────────────────────────────────────── */}
-      {/* 6. TRUST & QUALITY                               */}
-      {/* ──────────────────────────────────────────────── */}
-      <TrustQualitySection />
-
-      {/* ──────────────────────────────────────────────── */}
-      {/* 7. LIFESTYLE CTA BANNER                          */}
-      {/* ──────────────────────────────────────────────── */}
-      <LifestyleCTA />
     </main>
   )
 }
+
