@@ -38,11 +38,11 @@ export default function Product() {
     : 0
 
   return (
-    <main className="min-h-screen bg-offwhite">
+    <main className="min-h-screen bg-white">
       {/* ──────────────────────────────────────────────── */}
       {/* 1. BREADCRUMB                                    */}
       {/* ──────────────────────────────────────────────── */}
-      <div className="pt-28 sm:pt-32 pb-6">
+      <div className="pt-24 sm:pt-28 pb-4">
         <div className="container-pad">
           <motion.nav
             initial={{ opacity: 0, y: 8 }}
@@ -72,7 +72,7 @@ export default function Product() {
       {/* ──────────────────────────────────────────────── */}
       {/* 2. MAIN PRODUCT LAYOUT — TWO COLUMNS             */}
       {/* ──────────────────────────────────────────────── */}
-      <section className="pb-16 lg:pb-24">
+      <section className="pb-12 lg:pb-16">
         <div className="container-pad">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-start">
             {/* LEFT — Gallery (5 of 12 cols) */}
@@ -208,7 +208,7 @@ export default function Product() {
       {/* ──────────────────────────────────────────────── */}
       {/* 5. RECOMMENDED PRODUCTS                          */}
       {/* ──────────────────────────────────────────────── */}
-      <section ref={recRef} className="section-pad bg-offwhite pb-28 lg:pb-36">
+      <section ref={recRef} className="pt-16 lg:pt-20 bg-white pb-28 lg:pb-36">
         <div className="container-pad">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
