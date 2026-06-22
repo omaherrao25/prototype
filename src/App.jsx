@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home/Home'
 import Shop from './pages/Shop/Shop'
 import Product from './pages/Product/Product'
+import About from './pages/About/About'
 import Footer from './components/Footer'
 import { soaps } from './data/soaps'
 
@@ -20,6 +21,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home activeTheme={activeTheme} setActiveTheme={setActiveTheme} />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/about" element={<About />} />
           <Route path="/product/:id" element={<Product />} />
         </Routes>
         <Footer />
