@@ -14,7 +14,7 @@ export default function CraftsmanshipSection() {
     <section
       ref={ref}
       className="relative py-24 lg:py-36 overflow-hidden"
-      style={{ backgroundColor: '#EFE7DC' }}
+      style={{ backgroundColor: '#EFE8DD' }}
     >
       {/* Organic texture */}
       <div className="absolute inset-0 opacity-[0.03]"
@@ -44,7 +44,7 @@ export default function CraftsmanshipSection() {
                   alt="Ecoveda handcrafted soap making process"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1E1E1E]/15 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/15 to-transparent" />
               </motion.div>
 
               {/* Layered accent image */}
@@ -62,7 +62,7 @@ export default function CraftsmanshipSection() {
               </motion.div>
 
               {/* Decorative frame */}
-              <div className="absolute -top-3 -left-3 w-20 h-20 border-t border-l border-[#C7A06C]/25" />
+              <div className="absolute -top-3 -left-3 w-20 h-20 border-t border-l border-gold/25" />
             </div>
           </motion.div>
 
@@ -74,8 +74,8 @@ export default function CraftsmanshipSection() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               className="flex items-center gap-4 mb-8"
             >
-              <div className="h-px w-10 bg-[#C7A06C]/50" />
-              <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-[#C7A06C]"
+              <div className="h-px w-10 bg-gold/50" />
+              <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold"
                 style={{ fontFamily: "'Manrope', sans-serif" }}
               >
                 Craftsmanship
@@ -86,19 +86,19 @@ export default function CraftsmanshipSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="font-heading font-light text-[#1E1E1E] leading-[1.15] mb-8"
+              className="font-heading font-light text-charcoal leading-[1.15] mb-8"
               style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)' }}
             >
-              Crafted <span className="italic text-[#314D3D]">slowly</span>.
+              Crafted <span className="italic text-forest">slowly</span>.
               <br />
-              Made <span className="italic text-[#314D3D]">mindfully</span>.
+              Made <span className="italic text-forest">mindfully</span>.
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[#1E1E1E]/55 leading-[1.9] mb-10 max-w-lg"
+              className="text-charcoal/55 leading-[1.9] mb-10 max-w-lg"
               style={{ fontFamily: "'Manrope', sans-serif", fontSize: '1rem' }}
             >
               Every Ecoveda product is carefully handcrafted in small batches to
@@ -125,17 +125,17 @@ export default function CraftsmanshipSection() {
                   }}
                   className="flex items-start gap-5 group"
                 >
-                  <span className="font-heading text-[#C7A06C]/40 text-xl font-light mt-0.5 transition-colors duration-300 group-hover:text-[#C7A06C]">
+                  <span className="font-heading text-gold/40 text-xl font-light mt-0.5 transition-colors duration-300 group-hover:text-gold">
                     {step.num}
                   </span>
                   <div>
                     <h4
-                      className="font-heading text-[#1E1E1E] text-base font-normal mb-1 transition-colors duration-300 group-hover:text-[#314D3D]"
+                      className="font-heading text-charcoal text-base font-normal mb-1 transition-colors duration-300 group-hover:text-forest"
                     >
                       {step.label}
                     </h4>
                     <p
-                      className="text-[#1E1E1E]/40 text-sm leading-relaxed"
+                      className="text-charcoal/40 text-sm leading-relaxed"
                       style={{ fontFamily: "'Manrope', sans-serif" }}
                     >
                       {step.desc}

@@ -43,7 +43,7 @@ export default function IngredientsSection() {
     <section
       ref={ref}
       className="relative py-24 lg:py-36 overflow-hidden"
-      style={{ backgroundColor: '#FFFFFF' }}
+      style={{ backgroundColor: '#FAF8F3' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -54,31 +54,31 @@ export default function IngredientsSection() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="flex items-center justify-center gap-4 mb-8"
           >
-            <div className="h-px w-8 bg-[#C7A06C]/40" />
-            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-[#C7A06C]"
+            <div className="h-px w-8 bg-gold/40" />
+            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold"
               style={{ fontFamily: "'Manrope', sans-serif" }}
             >
               Nature&apos;s Finest
             </span>
-            <div className="h-px w-8 bg-[#C7A06C]/40" />
+            <div className="h-px w-8 bg-gold/40" />
           </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="font-heading font-light text-[#1E1E1E] leading-[1.15] mb-5"
+            className="font-heading font-light text-charcoal leading-[1.15] mb-5"
             style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)' }}
           >
             Powered by ingredients your skin{' '}
-            <span className="italic text-[#314D3D]">understands</span>.
+            <span className="italic text-forest">understands</span>.
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[#1E1E1E]/45 max-w-lg mx-auto leading-relaxed"
+            className="text-charcoal/45 max-w-lg mx-auto leading-relaxed"
             style={{ fontFamily: "'Manrope', sans-serif", fontSize: '0.95rem' }}
           >
             Every ingredient is carefully selected from nature for its purity,
@@ -101,7 +101,7 @@ export default function IngredientsSection() {
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
               className="group relative rounded-lg overflow-hidden cursor-pointer"
-              style={{ backgroundColor: '#F7F3EE' }}
+              style={{ backgroundColor: '#FAF8F3' }}
             >
               {/* Image */}
               <div className="relative aspect-[3/4] overflow-hidden">
@@ -122,11 +122,11 @@ export default function IngredientsSection() {
 
               {/* Text */}
               <div className="p-4 lg:p-5">
-                <h3 className="font-heading text-lg font-normal text-[#1E1E1E] mb-1.5 transition-colors duration-300 group-hover:text-[#314D3D]">
+                <h3 className="font-heading text-lg font-normal text-charcoal mb-1.5 transition-colors duration-300 group-hover:text-forest">
                   {item.name}
                 </h3>
                 <p
-                  className="text-[#1E1E1E]/45 text-[13px] leading-relaxed"
+                  className="text-charcoal/45 text-[13px] leading-relaxed"
                   style={{ fontFamily: "'Manrope', sans-serif" }}
                 >
                   {item.benefit}
@@ -135,7 +135,7 @@ export default function IngredientsSection() {
 
               {/* Hover border accent */}
               <div
-                className="absolute inset-0 border border-transparent rounded-lg transition-all duration-500 group-hover:border-[#314D3D]/10"
+                className="absolute inset-0 border border-transparent rounded-lg transition-all duration-500 group-hover:border-forest/10"
               />
             </motion.div>
           ))}

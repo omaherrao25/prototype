@@ -41,8 +41,8 @@ export default function LifestyleBannerSection() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="flex items-center gap-4 mb-8"
           >
-            <div className="h-px w-10 bg-[#C7A06C]/60" />
-            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-[#C7A06C]"
+            <div className="h-px w-10 bg-gold/60" />
+            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold"
               style={{ fontFamily: "'Manrope', sans-serif" }}
             >
               Mindful Living
@@ -57,7 +57,7 @@ export default function LifestyleBannerSection() {
             style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}
           >
             Self-care should feel{' '}
-            <span className="italic text-[#C7A06C]">intentional</span>.
+            <span className="italic text-gold">intentional</span>.
           </motion.h2>
 
           <motion.p

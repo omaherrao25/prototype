@@ -18,12 +18,12 @@ export default function OurStorySection() {
     <section
       ref={ref}
       className="relative py-24 lg:py-36 overflow-hidden"
-      style={{ backgroundColor: '#FFFFFF' }}
+      style={{ backgroundColor: '#FAF8F3' }}
     >
       {/* Subtle texture */}
       <div className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, #314D3D 1px, transparent 0)',
+          backgroundImage: 'radial-gradient(circle at 1px 1px, #2F4F3A 1px, transparent 0)',
           backgroundSize: '40px 40px'
         }}
       />
@@ -39,8 +39,8 @@ export default function OurStorySection() {
               custom={0}
               className="flex items-center gap-4 mb-8"
             >
-              <div className="h-px w-10 bg-[#C7A06C]/50" />
-              <span className="font-body text-[11px] font-medium tracking-[0.3em] uppercase text-[#C7A06C]"
+              <div className="h-px w-10 bg-gold/50" />
+              <span className="font-body text-[11px] font-medium tracking-[0.3em] uppercase text-gold"
                 style={{ fontFamily: "'Manrope', sans-serif" }}
               >
                 Our Story
@@ -52,12 +52,12 @@ export default function OurStorySection() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               custom={1}
-              className="font-heading font-light text-[#1E1E1E] leading-[1.15] mb-8"
+              className="font-heading font-light text-charcoal leading-[1.15] mb-8"
               style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)' }}
             >
               We believe skincare should feel{' '}
-              <span className="italic text-[#314D3D]">natural</span>,{' '}
-              <span className="italic text-[#314D3D]">intentional</span>, and{' '}
+              <span className="italic text-forest">natural</span>,{' '}
+              <span className="italic text-forest">intentional</span>, and{' '}
               deeply nourishing.
             </motion.h2>
 
@@ -66,7 +66,7 @@ export default function OurStorySection() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               custom={2}
-              className="text-[#1E1E1E]/55 leading-[1.9] mb-8 max-w-lg"
+              className="text-charcoal/55 leading-[1.9] mb-8 max-w-lg"
               style={{ fontFamily: "'Manrope', sans-serif", fontSize: '1rem' }}
             >
               Ecoveda began with a simple belief — skincare should not overwhelm
@@ -80,7 +80,7 @@ export default function OurStorySection() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               custom={3}
-              className="text-[#1E1E1E]/45 leading-[1.9] max-w-lg"
+              className="text-charcoal/45 leading-[1.9] max-w-lg"
               style={{ fontFamily: "'Manrope', sans-serif", fontSize: '0.95rem' }}
             >
               What started as a passion for creating gentle, plant-based formulas
@@ -96,8 +96,8 @@ export default function OurStorySection() {
               custom={4}
               className="mt-10 flex items-center gap-4"
             >
-              <div className="w-12 h-px bg-[#314D3D]/20" />
-              <span className="font-heading italic text-[#314D3D]/50 text-sm">
+              <div className="w-12 h-px bg-forest/20" />
+              <span className="font-heading italic text-forest/50 text-sm">
                 est. 2024
               </span>
             </motion.div>
@@ -119,15 +119,15 @@ export default function OurStorySection() {
                   className="w-full h-full object-cover transition-transform duration-[1.5s] hover:scale-105"
                 />
                 {/* Soft overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1E1E1E]/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 to-transparent" />
               </div>
 
               {/* Decorative accent */}
               <div
-                className="absolute -bottom-4 -left-4 w-24 h-24 border border-[#C7A06C]/20 rounded-sm -z-10"
+                className="absolute -bottom-4 -left-4 w-24 h-24 border border-gold/20 rounded-sm -z-10"
               />
               <div
-                className="absolute -top-4 -right-4 w-32 h-32 border border-[#314D3D]/10 rounded-sm -z-10"
+                className="absolute -top-4 -right-4 w-32 h-32 border border-forest/10 rounded-sm -z-10"
               />
             </div>
           </motion.div>

@@ -46,7 +46,7 @@ export default function SustainabilitySection() {
     <section
       ref={ref}
       className="relative py-24 lg:py-36 overflow-hidden"
-      style={{ backgroundColor: '#F7F3EE' }}
+      style={{ backgroundColor: '#FAF8F3' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 lg:mb-20">
@@ -56,23 +56,23 @@ export default function SustainabilitySection() {
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="flex items-center justify-center gap-4 mb-8"
           >
-            <div className="h-px w-8 bg-[#314D3D]/30" />
-            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-[#314D3D]/60"
+            <div className="h-px w-8 bg-forest/30" />
+            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-forest/60"
               style={{ fontFamily: "'Manrope', sans-serif" }}
             >
               Our Commitment
             </span>
-            <div className="h-px w-8 bg-[#314D3D]/30" />
+            <div className="h-px w-8 bg-forest/30" />
           </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="font-heading font-light text-[#1E1E1E] leading-[1.15]"
+            className="font-heading font-light text-charcoal leading-[1.15]"
             style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)' }}
           >
-            Rooted in <span className="italic text-[#314D3D]">Sustainability</span>.
+            Rooted in <span className="italic text-forest">Sustainability</span>.
           </motion.h2>
         </div>
 
@@ -86,18 +86,18 @@ export default function SustainabilitySection() {
               custom={i}
               className="group relative flex flex-col items-center text-center p-8 rounded-lg transition-all duration-500 hover:bg-white/40"
             >
-              <div className="w-16 h-16 rounded-full bg-[#EFE7DC] flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110">
+              <div className="w-16 h-16 rounded-full bg-beige flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110">
                 <item.icon
                   size={24}
                   strokeWidth={1.2}
-                  className="text-[#314D3D]"
+                  className="text-forest"
                 />
               </div>
-              <h3 className="font-heading text-xl font-normal text-[#1E1E1E] mb-3">
+              <h3 className="font-heading text-xl font-normal text-charcoal mb-3">
                 {item.title}
               </h3>
               <p
-                className="text-[#1E1E1E]/50 text-[13.5px] leading-relaxed max-w-[240px]"
+                className="text-charcoal/50 text-[13.5px] leading-relaxed max-w-[240px]"
                 style={{ fontFamily: "'Manrope', sans-serif" }}
               >
                 {item.description}
