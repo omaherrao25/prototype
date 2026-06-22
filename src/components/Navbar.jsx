@@ -47,7 +47,6 @@ export default function Navbar({ activeTheme }) {
   const linksGroup = (
     <>
       {navLinks.map((link) => {
-        const isHighlighted = location.pathname === link.path || (location.pathname === '/' && link.path === '/') && location.pathname !== '/shop'; // Simplistic highlight logic
         const activeHighlight = location.pathname === link.path;
         return (
           <Link
@@ -119,7 +118,7 @@ export default function Navbar({ activeTheme }) {
           >
             <div
               className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center rounded-full relative ${isScrolled
-                  ? 'bg-[#FDFBF7]/95 backdrop-blur-xl shadow-md border border-beige-dark/20 p-1.5 pl-[170px] pr-[125px]'
+                  ? 'bg-[#FDFBF7]/60 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/60 p-1.5 pl-[170px] pr-[125px]'
                   : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-white/40 p-1.5 pl-1.5 pr-1.5'
                 }`}
             >
