@@ -115,9 +115,9 @@ export default function Footer() {
             </div>
             <div className="space-y-3">
               {[
-                [Phone, '+91 98765 43210'],
-                [Mail, 'hello@ecoveda.com'],
-                [MapPin, 'Mumbai, India 400001'],
+                [Phone, '+91 9876543210'],
+                [Mail, 'ecoveda@gmail.com'],
+                [MapPin, 'Nashik, India 422009'],
               ].map(([Icon, text]) => (
                 <div key={text} className="flex items-center gap-3 text-[#F6F1E9]/50 text-[13px] font-body">
                   <Icon size={14} className="flex-shrink-0" strokeWidth={1.5} />
