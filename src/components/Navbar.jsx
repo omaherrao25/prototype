@@ -118,8 +118,8 @@ export default function Navbar({ activeTheme }) {
           >
             <div
               className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center rounded-full relative ${isScrolled
-                  ? 'bg-[#FDFBF7]/60 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/60 p-1.5 pl-[170px] pr-[125px]'
-                  : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-white/40 p-1.5 pl-1.5 pr-1.5'
+                ? 'bg-[#FDFBF7]/60 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/60 p-1.5 pl-[170px] pr-[125px]'
+                : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-white/40 p-1.5 pl-1.5 pr-1.5'
                 }`}
             >
 
@@ -141,8 +141,8 @@ export default function Navbar({ activeTheme }) {
 
             <div
               className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center gap-2 ${isScrolled
-                  ? 'p-1.5 px-3 bg-transparent shadow-none border-transparent'
-                  : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] rounded-full p-1.5 px-3 border border-white/40'
+                ? 'p-1.5 px-3 bg-transparent shadow-none border-transparent'
+                : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] rounded-full p-1.5 px-3 border border-white/40'
                 }`}
             >
               {iconsGroup}
