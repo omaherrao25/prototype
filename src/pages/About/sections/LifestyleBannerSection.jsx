@@ -32,14 +32,6 @@ export default function LifestyleBannerSection() {
         }}
       />
 
-      {/* Leaf shadow texture */}
-      <div className="absolute inset-0 z-[2] opacity-[0.06]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='300' height='300' viewBox='0 0 300 300' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='150' cy='80' rx='60' ry='90' transform='rotate(-25 150 80)' fill='%23F7F3EE'/%3E%3Cellipse cx='230' cy='220' rx='45' ry='75' transform='rotate(15 230 220)' fill='%23F7F3EE'/%3E%3C/svg%3E")`,
-          backgroundSize: '500px',
-        }}
-      />
-
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-44">
         <div className="max-w-2xl">

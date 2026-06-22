@@ -11,33 +11,6 @@ const fadeUp = {
   })
 }
 
-// Floating botanical leaf SVG
-const FloatingLeaf = ({ className, delay = 0, duration = 8 }) => (
-  <motion.svg
-    className={`absolute pointer-events-none opacity-[0.07] ${className}`}
-    width="120" height="120" viewBox="0 0 120 120" fill="none"
-    animate={{ y: [0, -20, 0], rotate: [0, 5, -3, 0] }}
-    transition={{ duration, delay, repeat: Infinity, ease: "easeInOut" }}
-  >
-    <path
-      d="M60 10C60 10 20 40 20 70C20 90 38 110 60 110C82 110 100 90 100 70C100 40 60 10 60 10Z"
-      fill="#314D3D"
-    />
-    <path
-      d="M60 10C60 10 60 110 60 110"
-      stroke="#F7F3EE" strokeWidth="1" opacity="0.4"
-    />
-    <path
-      d="M60 40C60 40 40 55 35 70"
-      stroke="#F7F3EE" strokeWidth="0.5" opacity="0.3"
-    />
-    <path
-      d="M60 55C60 55 80 65 85 80"
-      stroke="#F7F3EE" strokeWidth="0.5" opacity="0.3"
-    />
-  </motion.svg>
-)
-
 export default function HeroSection() {
   const ref = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -72,23 +45,6 @@ export default function HeroSection() {
           className="w-full h-full object-cover opacity-[0.12]"
         />
       </motion.div>
-
-      {/* Leaf shadow overlay */}
-      <div
-        className="absolute inset-0 z-[1] opacity-[0.04]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='200' cy='100' rx='80' ry='120' transform='rotate(-30 200 100)' fill='%23314D3D'/%3E%3Cellipse cx='300' cy='280' rx='60' ry='100' transform='rotate(20 300 280)' fill='%23314D3D'/%3E%3C/svg%3E")`,
-          backgroundSize: '600px',
-          backgroundRepeat: 'repeat',
-        }}
-      />
-
-      {/* Floating leaves */}
-      <FloatingLeaf className="top-[10%] left-[5%] w-16 h-16 lg:w-24 lg:h-24" delay={0} duration={9} />
-      <FloatingLeaf className="top-[15%] right-[8%] w-20 h-20 lg:w-28 lg:h-28 rotate-45" delay={2} duration={7} />
-      <FloatingLeaf className="bottom-[20%] left-[12%] w-14 h-14 lg:w-20 lg:h-20 -rotate-30" delay={1} duration={10} />
-      <FloatingLeaf className="bottom-[15%] right-[15%] w-12 h-12 lg:w-16 lg:h-16 rotate-90" delay={3} duration={8} />
-      <FloatingLeaf className="top-[45%] right-[3%] w-10 h-10 lg:w-14 lg:h-14 -rotate-15" delay={1.5} duration={11} />
 
       {/* Content */}
       <motion.div

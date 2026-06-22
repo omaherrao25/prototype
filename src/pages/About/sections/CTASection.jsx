@@ -12,24 +12,6 @@ export default function CTASection() {
       className="relative py-32 lg:py-48 overflow-hidden"
       style={{ backgroundColor: '#EFE7DC' }}
     >
-      {/* Decorative leaf shadows */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.06]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='200' cy='100' rx='80' ry='120' transform='rotate(45 200 100)' fill='%23314D3D'/%3E%3C/svg%3E")`,
-          backgroundPosition: 'top right',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: '800px',
-        }}
-      />
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.04]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='200' cy='100' rx='80' ry='120' transform='rotate(-60 200 100)' fill='%23314D3D'/%3E%3C/svg%3E")`,
-          backgroundPosition: 'bottom left',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: '600px',
-        }}
-      />
-
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
