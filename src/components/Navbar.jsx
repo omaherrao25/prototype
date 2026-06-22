@@ -41,9 +41,8 @@ export default function Navbar({ activeTheme }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const isHomePage = location.pathname === '/'
-  const highlightedBg = (isScrolled || !isHomePage) ? '#EFE6D5' : (activeTheme?.bgDark || '#EFEBE9')
-  const highlightedText = (isScrolled || !isHomePage) ? '#2F4F3A' : (activeTheme?.text || '#4E342E')
+  const highlightedBg = isScrolled ? '#EFE6D5' : (activeTheme?.bgDark || '#EFEBE9')
+  const highlightedText = isScrolled ? '#2F4F3A' : (activeTheme?.text || '#4E342E')
 
   const linksGroup = (
     <>
