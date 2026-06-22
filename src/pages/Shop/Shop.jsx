@@ -16,10 +16,7 @@ export default function Shop() {
   const [sortOption, setSortOption] = useState('Featured');
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Scroll to top on mount
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
 
   const handleToggleFilter = (category, value) => {
     setActiveFilters(prev => {

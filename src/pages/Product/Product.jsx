@@ -17,6 +17,7 @@ import RecommendedCard from './components/RecommendedCard'
 
 import LifestyleCTA from './components/LifestyleCTA'
 import { productDetails, recommendedProducts } from '../../data/productDetails'
+import { products } from '../../data/products'
 
 export default function Product() {
   const { id } = useParams()
@@ -25,13 +26,12 @@ export default function Product() {
   const recRef = useRef(null)
   const recInView = useInView(recRef, { once: true, margin: '-60px' })
 
-  // Scroll to top on mount or product change
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [id])
+
 
   // Get product data — fallback to Turmeric Glow Soap
   const product = productDetails[id] || productDetails['bestseller-2']
+  const baseProduct = products.find(p => p.id === product.id)
+  const isBestSeller = baseProduct?.isBestSeller || false
 
   const discountPercent = product.originalPrice
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
@@ -82,7 +82,7 @@ export default function Product() {
               transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
               className="lg:col-span-5"
             >
-              <ProductGallery images={product.images} name={product.name} />
+              <ProductGallery images={product.images} name={product.name} isBestSeller={isBestSeller} />
             </motion.div>
 
             {/* RIGHT — Product Info (7 of 12 cols) */}

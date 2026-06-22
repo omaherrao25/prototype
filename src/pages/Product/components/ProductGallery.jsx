@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function ProductGallery({ images, name }) {
+export default function ProductGallery({ images, name, isBestSeller }) {
   const [activeIndex, setActiveIndex] = useState(0)
 
   const galleryImages = [
@@ -32,11 +32,13 @@ export default function ProductGallery({ images, name }) {
         </AnimatePresence>
 
         {/* Badge */}
-        <div className="absolute top-4 left-4 z-20">
-          <span className="inline-block bg-forest/90 text-white text-[9px] font-body font-bold uppercase tracking-[0.15em] px-3 py-1.5 rounded-full backdrop-blur-sm">
-            Best Seller
-          </span>
-        </div>
+        {isBestSeller && (
+          <div className="absolute top-4 left-4 z-20">
+            <span className="inline-block bg-forest/90 text-white text-[9px] font-body font-bold uppercase tracking-[0.15em] px-3 py-1.5 rounded-full backdrop-blur-sm">
+              Best Seller
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Horizontal Thumbnails (all screens) */}
