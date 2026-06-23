@@ -13,20 +13,6 @@ export default function CTASection() {
       style={{ backgroundColor: '#FFFFFF' }}
     >
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="flex items-center justify-center gap-4 mb-10"
-        >
-          <div className="h-px w-12 bg-gold/60" />
-          <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-forest"
-            style={{ fontFamily: "'Manrope', sans-serif" }}
-          >
-            Your Ritual Awaits
-          </span>
-          <div className="h-px w-12 bg-gold/60" />
-        </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 40 }}

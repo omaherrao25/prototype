@@ -35,19 +35,6 @@ export default function LifestyleBannerSection() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-44">
         <div className="max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center gap-4 mb-8"
-          >
-            <div className="h-px w-10 bg-gold/60" />
-            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-gold"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
-            >
-              Mindful Living
-            </span>
-          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 40 }}

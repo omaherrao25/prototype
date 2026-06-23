@@ -32,20 +32,6 @@ export default function OurStorySection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left: Text */}
           <div className="order-2 lg:order-1">
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
-              custom={0}
-              className="flex items-center gap-4 mb-8"
-            >
-              <div className="h-px w-10 bg-gold/50" />
-              <span className="font-body text-[11px] font-medium tracking-[0.3em] uppercase text-gold"
-                style={{ fontFamily: "'Manrope', sans-serif" }}
-              >
-                Our Story
-              </span>
-            </motion.div>
 
             <motion.h2
               variants={fadeUp}

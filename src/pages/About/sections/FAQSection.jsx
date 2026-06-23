@@ -38,20 +38,6 @@ export default function FAQSection() {
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 lg:mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="flex items-center justify-center gap-4 mb-8"
-          >
-            <div className="h-px w-8 bg-forest/30" />
-            <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-forest/60"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
-            >
-              Curiosity
-            </span>
-            <div className="h-px w-8 bg-forest/30" />
-          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
