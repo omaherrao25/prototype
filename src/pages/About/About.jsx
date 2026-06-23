@@ -6,7 +6,6 @@ import IngredientsSection from './sections/IngredientsSection'
 import CraftsmanshipSection from './sections/CraftsmanshipSection'
 import LifestyleBannerSection from './sections/LifestyleBannerSection'
 import SustainabilitySection from './sections/SustainabilitySection'
-import CommunitySection from './sections/CommunitySection'
 import FAQSection from './sections/FAQSection'
 import CTASection from './sections/CTASection'
 
@@ -26,7 +25,6 @@ export default function About() {
       <CraftsmanshipSection />
       <LifestyleBannerSection />
       <SustainabilitySection />
-      <CommunitySection />
       <FAQSection />
       <CTASection />
     </motion.main>

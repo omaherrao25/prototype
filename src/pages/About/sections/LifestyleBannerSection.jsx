@@ -25,34 +25,42 @@ export default function LifestyleBannerSection() {
         />
       </motion.div>
 
-      {/* Warm overlay */}
+      {/* Light warm overlay for dark text readability */}
       <div className="absolute inset-0 z-[1]"
         style={{
-          background: 'linear-gradient(to right, rgba(30,30,30,0.65), rgba(30,30,30,0.35))'
+          background: 'linear-gradient(to right, rgba(246,241,233,0.85), rgba(246,241,233,0.55))'
+        }}
+      />
+
+      {/* Smooth center blur for premium text readability without hard edges */}
+      <div className="absolute inset-0 z-[2] backdrop-blur-md"
+        style={{
+          maskImage: 'radial-gradient(ellipse at center, black 0%, transparent 60%)',
+          WebkitMaskImage: 'radial-gradient(ellipse at center, black 0%, transparent 60%)'
         }}
       />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-44">
-        <div className="max-w-2xl">
+        <div className="relative max-w-2xl mx-auto text-center flex flex-col items-center">
 
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="font-heading font-light text-white leading-[1.1] mb-6"
+            className="font-heading font-light text-[#1C1C1C] leading-[1.1] mb-6"
             style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}
           >
             Self-care should feel{' '}
-            <span className="italic text-gold">intentional</span>.
+            <span className="italic text-[#314D3D]">intentional</span>.
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="text-white/60 leading-[1.8] mb-10 max-w-lg"
-            style={{ fontFamily: "'Manrope', sans-serif", fontSize: '1rem' }}
+            className="text-[#1C1C1C]/80 leading-[1.8] mb-10 max-w-lg mx-auto"
+            style={{ fontFamily: "'Inter', sans-serif", fontSize: '1rem' }}
           >
             Designed to bring calm, balance, and nourishment into your daily ritual.
           </motion.p>
@@ -64,8 +72,8 @@ export default function LifestyleBannerSection() {
           >
             <Link
               to="/shop"
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[11.5px] font-medium tracking-[0.15em] uppercase rounded-full transition-all duration-500 hover:bg-white/20 hover:border-white/40"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-[#314D3D] text-[#F6F1E9] text-[11.5px] font-semibold tracking-[0.15em] uppercase rounded-full shadow-[0_12px_40px_rgba(49,77,61,0.25)] transition-all duration-500 hover:bg-[#23382c]"
+              style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Discover Bestsellers
               <svg

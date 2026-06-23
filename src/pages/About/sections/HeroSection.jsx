@@ -75,7 +75,7 @@ export default function HeroSection() {
             animate="visible"
             custom={2}
             className="font-body text-[1rem] sm:text-[1.1rem] lg:text-[1.15rem] leading-[1.8] text-charcoal/60 max-w-xl mx-auto mb-12"
-            style={{ fontFamily: "'Manrope', sans-serif" }}
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Ecoveda was created to bring calm, honesty, and mindful self-care back
             into everyday skincare through handcrafted products inspired by timeless
@@ -93,7 +93,7 @@ export default function HeroSection() {
             <Link
               to="/shop"
               className="group relative px-8 py-4 bg-forest text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(49,77,61,0.25)]"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
+              style={{ fontFamily: "'Inter', sans-serif" }}
             >
               <span className="relative z-10">Explore Products</span>
               <div className="absolute inset-0 bg-forest-light transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100" />
@@ -101,7 +101,7 @@ export default function HeroSection() {
             <Link
               to="/shop"
               className="px-8 py-4 border border-charcoal/15 text-charcoal/60 text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full transition-all duration-500 hover:border-forest/40 hover:text-forest"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
+              style={{ fontFamily: "'Inter', sans-serif" }}
             >
               Our Ingredients
             </Link>

@@ -53,7 +53,7 @@ export default function OurStorySection() {
               animate={isInView ? "visible" : "hidden"}
               custom={2}
               className="text-charcoal/55 leading-[1.9] mb-8 max-w-lg"
-              style={{ fontFamily: "'Manrope', sans-serif", fontSize: '1rem' }}
+              style={{ fontFamily: "'Inter', sans-serif", fontSize: '1rem' }}
             >
               Ecoveda began with a simple belief — skincare should not overwhelm
               your skin with chemicals or complexity. Every soap and skincare
@@ -67,7 +67,7 @@ export default function OurStorySection() {
               animate={isInView ? "visible" : "hidden"}
               custom={3}
               className="text-charcoal/45 leading-[1.9] max-w-lg"
-              style={{ fontFamily: "'Manrope', sans-serif", fontSize: '0.95rem' }}
+              style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.95rem' }}
             >
               What started as a passion for creating gentle, plant-based formulas
               has grown into a mindful wellness brand trusted by thousands who value

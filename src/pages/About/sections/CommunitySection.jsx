@@ -56,7 +56,7 @@ export default function CommunitySection() {
         >
           <p
             className="text-charcoal/50 text-sm tracking-wide"
-            style={{ fontFamily: "'Manrope', sans-serif" }}
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Share your rituals with us{' '}
             <a href="#" className="text-forest hover:text-forest-light transition-colors border-b border-forest/30 hover:border-forest">

@@ -57,7 +57,7 @@ export default function IngredientsSection() {
             style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)' }}
           >
             Powered by ingredients your skin{' '}
-            <span className="italic text-forest">understands</span>.
+            <span className="italic text-[#9C795C]">understands</span>.
           </motion.h2>
 
           <motion.p
@@ -65,7 +65,7 @@ export default function IngredientsSection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="text-charcoal/45 max-w-lg mx-auto leading-relaxed"
-            style={{ fontFamily: "'Manrope', sans-serif", fontSize: '0.95rem' }}
+            style={{ fontFamily: "'Inter', sans-serif", fontSize: '0.95rem' }}
           >
             Every ingredient is carefully selected from nature for its purity,
             potency, and time-tested benefits.
@@ -113,7 +113,7 @@ export default function IngredientsSection() {
                 </h3>
                 <p
                   className="text-charcoal/45 text-[13px] leading-relaxed"
-                  style={{ fontFamily: "'Manrope', sans-serif" }}
+                  style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   {item.benefit}
                 </p>

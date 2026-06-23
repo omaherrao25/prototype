@@ -43,7 +43,7 @@ export default function FAQSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="font-heading font-light text-charcoal leading-[1.15]"
+            className="font-heading font-light text-[#9C795C] leading-[1.15]"
             style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)' }}
           >
             Frequently Asked <span className="italic text-forest">Questions</span>
@@ -82,7 +82,7 @@ export default function FAQSection() {
                   >
                     <p
                       className="pb-6 text-charcoal/55 text-[14.5px] leading-relaxed pr-8 lg:pr-12"
-                      style={{ fontFamily: "'Manrope', sans-serif" }}
+                      style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       {faq.answer}
                     </p>

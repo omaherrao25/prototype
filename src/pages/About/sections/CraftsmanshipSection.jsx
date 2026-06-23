@@ -76,9 +76,9 @@ export default function CraftsmanshipSection() {
               className="font-heading font-light text-charcoal leading-[1.15] mb-8"
               style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)' }}
             >
-              Crafted <span className="italic text-forest">slowly</span>.
+              Crafted <span className="italic text-[#9C795C]">slowly</span>.
               <br />
-              Made <span className="italic text-forest">mindfully</span>.
+              Made <span className="italic text-[#9C795C]">mindfully</span>.
             </motion.h2>
 
             <motion.p
@@ -86,7 +86,7 @@ export default function CraftsmanshipSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="text-charcoal/55 leading-[1.9] mb-10 max-w-lg"
-              style={{ fontFamily: "'Manrope', sans-serif", fontSize: '1rem' }}
+              style={{ fontFamily: "'Inter', sans-serif", fontSize: '1rem' }}
             >
               Every Ecoveda product is carefully handcrafted in small batches to
               preserve purity, texture, and effectiveness while maintaining the
@@ -123,7 +123,7 @@ export default function CraftsmanshipSection() {
                     </h4>
                     <p
                       className="text-charcoal/40 text-sm leading-relaxed"
-                      style={{ fontFamily: "'Manrope', sans-serif" }}
+                      style={{ fontFamily: "'Inter', sans-serif" }}
                     >
                       {step.desc}
                     </p>

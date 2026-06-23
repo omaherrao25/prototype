@@ -22,7 +22,7 @@ export default function CTASection() {
           style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}
         >
           Ready to experience <br />
-          <span className="italic text-forest">mindful</span> skincare?
+          <span className="italic text-[#9C795C]">mindful</span> skincare?
         </motion.h2>
 
         <motion.p
@@ -30,7 +30,7 @@ export default function CTASection() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="text-charcoal/60 leading-[1.8] mb-12 max-w-lg mx-auto"
-          style={{ fontFamily: "'Manrope', sans-serif", fontSize: '1.05rem' }}
+          style={{ fontFamily: "'Inter', sans-serif", fontSize: '1.05rem' }}
         >
           Explore handcrafted skincare inspired by nature and designed for everyday rituals.
         </motion.p>
@@ -44,7 +44,7 @@ export default function CTASection() {
           <Link
             to="/shop"
             className="group relative px-10 py-4 sm:py-5 bg-forest text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_12px_40px_rgba(49,77,61,0.25)] hover:-translate-y-1"
-            style={{ fontFamily: "'Manrope', sans-serif" }}
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             <span className="relative z-10">Explore Collection</span>
             <div className="absolute inset-0 bg-forest transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100" />
@@ -52,7 +52,7 @@ export default function CTASection() {
           <Link
             to="/shop"
             className="px-10 py-4 sm:py-5 border border-charcoal/20 text-charcoal text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full transition-all duration-500 hover:border-forest hover:text-forest hover:-translate-y-1 bg-white/10 backdrop-blur-sm"
-            style={{ fontFamily: "'Manrope', sans-serif" }}
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Shop Bestsellers
           </Link>

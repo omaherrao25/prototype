@@ -55,7 +55,7 @@ export default function SustainabilitySection() {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="font-heading font-light text-charcoal leading-[1.15]"
+            className="font-heading font-light text-[#9C795C] leading-[1.15]"
             style={{ fontSize: 'clamp(1.8rem, 3.5vw, 3rem)' }}
           >
             Rooted in <span className="italic text-forest">Sustainability</span>.
@@ -84,7 +84,7 @@ export default function SustainabilitySection() {
               </h3>
               <p
                 className="text-charcoal/50 text-[13.5px] leading-relaxed max-w-[240px]"
-                style={{ fontFamily: "'Manrope', sans-serif" }}
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {item.description}
               </p>
