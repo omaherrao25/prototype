@@ -57,7 +57,7 @@ export default function CTASection() {
         >
           <Link
             to="/shop"
-            className="group relative px-10 py-4 sm:py-5 bg-forest text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-sm overflow-hidden transition-all duration-500 hover:shadow-[0_12px_40px_rgba(49,77,61,0.25)] hover:-translate-y-1"
+            className="group relative px-10 py-4 sm:py-5 bg-forest text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_12px_40px_rgba(49,77,61,0.25)] hover:-translate-y-1"
             style={{ fontFamily: "'Manrope', sans-serif" }}
           >
             <span className="relative z-10">Explore Collection</span>
@@ -65,7 +65,7 @@ export default function CTASection() {
           </Link>
           <Link
             to="/shop"
-            className="px-10 py-4 sm:py-5 border border-charcoal/20 text-charcoal text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-sm transition-all duration-500 hover:border-forest hover:text-forest hover:-translate-y-1 bg-white/10 backdrop-blur-sm"
+            className="px-10 py-4 sm:py-5 border border-charcoal/20 text-charcoal text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full transition-all duration-500 hover:border-forest hover:text-forest hover:-translate-y-1 bg-white/10 backdrop-blur-sm"
             style={{ fontFamily: "'Manrope', sans-serif" }}
           >
             Shop Bestsellers

@@ -51,21 +51,8 @@ export default function HeroSection() {
         className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32"
         style={{ y: textY }}
       >
-        <div className="max-w-3xl mx-auto text-center">
-          {/* Eyebrow */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={0}
-            className="flex items-center justify-center gap-4 mb-10"
-          >
-            <div className="h-px w-8 bg-gold/40" />
-            <span className="font-body text-[11px] font-medium tracking-[0.3em] uppercase text-forest/60">
-              About Ecoveda
-            </span>
-            <div className="h-px w-8 bg-gold/40" />
-          </motion.div>
+        <div className="w-full mx-auto text-center">
+
 
           {/* Main Heading */}
           <motion.h1
@@ -74,7 +61,7 @@ export default function HeroSection() {
             animate="visible"
             custom={1}
             className="font-heading font-light text-charcoal mb-8 leading-[1.1]"
-            style={{ fontSize: 'clamp(2.8rem, 6vw, 5.5rem)' }}
+            style={{ fontSize: 'clamp(2.5rem, 5.5vw, 4.8rem)' }}
           >
             Rooted in Nature.
             <br />
@@ -105,37 +92,22 @@ export default function HeroSection() {
           >
             <Link
               to="/shop"
-              className="group relative px-8 py-4 bg-forest text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-sm overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(49,77,61,0.25)]"
+              className="group relative px-8 py-4 bg-forest text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(49,77,61,0.25)]"
               style={{ fontFamily: "'Manrope', sans-serif" }}
             >
-              <span className="relative z-10">Explore Collection</span>
+              <span className="relative z-10">Explore Products</span>
               <div className="absolute inset-0 bg-forest-light transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100" />
             </Link>
             <Link
               to="/shop"
-              className="px-8 py-4 border border-charcoal/15 text-charcoal/60 text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-sm transition-all duration-500 hover:border-forest/40 hover:text-forest"
+              className="px-8 py-4 border border-charcoal/15 text-charcoal/60 text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full transition-all duration-500 hover:border-forest/40 hover:text-forest"
               style={{ fontFamily: "'Manrope', sans-serif" }}
             >
               Our Ingredients
             </Link>
           </motion.div>
 
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2, duration: 1 }}
-            className="mt-20 lg:mt-28 flex flex-col items-center gap-3"
-          >
-            <span className="text-[10px] tracking-[0.25em] uppercase text-charcoal/30 font-body">
-              Scroll to explore
-            </span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-px h-8 bg-gradient-to-b from-gold/50 to-transparent"
-            />
-          </motion.div>
+
         </div>
       </motion.div>
     </section>

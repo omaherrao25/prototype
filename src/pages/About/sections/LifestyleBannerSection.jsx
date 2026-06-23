@@ -77,7 +77,7 @@ export default function LifestyleBannerSection() {
           >
             <Link
               to="/shop"
-              className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[11.5px] font-medium tracking-[0.15em] uppercase rounded-sm transition-all duration-500 hover:bg-white/20 hover:border-white/40"
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[11.5px] font-medium tracking-[0.15em] uppercase rounded-full transition-all duration-500 hover:bg-white/20 hover:border-white/40"
               style={{ fontFamily: "'Manrope', sans-serif" }}
             >
               Discover Bestsellers
