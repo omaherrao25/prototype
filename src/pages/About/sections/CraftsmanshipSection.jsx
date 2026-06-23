@@ -14,7 +14,7 @@ export default function CraftsmanshipSection() {
     <section
       ref={ref}
       className="relative py-24 lg:py-36 overflow-hidden"
-      style={{ backgroundColor: '#EFE8DD' }}
+      style={{ backgroundColor: '#FFFFFF' }}
     >
       {/* Organic texture */}
       <div className="absolute inset-0 opacity-[0.03]"

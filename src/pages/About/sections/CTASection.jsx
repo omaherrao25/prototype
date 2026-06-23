@@ -10,7 +10,7 @@ export default function CTASection() {
     <section
       ref={ref}
       className="relative py-32 lg:py-48 overflow-hidden"
-      style={{ backgroundColor: '#EFE8DD' }}
+      style={{ backgroundColor: '#FFFFFF' }}
     >
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div

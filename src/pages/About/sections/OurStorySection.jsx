@@ -18,7 +18,7 @@ export default function OurStorySection() {
     <section
       ref={ref}
       className="relative py-24 lg:py-36 overflow-hidden"
-      style={{ backgroundColor: '#FAF8F3' }}
+      style={{ backgroundColor: '#FFFFFF' }}
     >
       {/* Subtle texture */}
       <div className="absolute inset-0 opacity-[0.02]"

@@ -24,7 +24,7 @@ export default function HeroSection() {
     <section
       ref={ref}
       className="relative min-h-[100vh] flex items-center overflow-hidden"
-      style={{ backgroundColor: '#FAF8F3' }}
+      style={{ backgroundColor: '#FFFFFF' }}
     >
       {/* Soft gradient overlay */}
       <div

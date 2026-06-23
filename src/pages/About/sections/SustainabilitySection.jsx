@@ -46,7 +46,7 @@ export default function SustainabilitySection() {
     <section
       ref={ref}
       className="relative py-24 lg:py-36 overflow-hidden"
-      style={{ backgroundColor: '#FAF8F3' }}
+      style={{ backgroundColor: '#FFFFFF' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 lg:mb-20">
@@ -84,7 +84,7 @@ export default function SustainabilitySection() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               custom={i}
-              className="group relative flex flex-col items-center text-center p-8 rounded-lg transition-all duration-500 hover:bg-white/40"
+              className="group relative flex flex-col items-center text-center p-8 rounded-lg bg-[#FAF8F3] transition-all duration-500 hover:-translate-y-1 hover:shadow-md"
             >
               <div className="w-16 h-16 rounded-full bg-beige flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110">
                 <item.icon

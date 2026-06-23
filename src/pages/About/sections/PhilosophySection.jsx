@@ -56,7 +56,7 @@ export default function PhilosophySection() {
     <section
       ref={ref}
       className="relative py-24 lg:py-36 overflow-hidden"
-      style={{ backgroundColor: '#FAF8F3' }}
+      style={{ backgroundColor: '#FFFFFF' }}
     >
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -96,7 +96,7 @@ export default function PhilosophySection() {
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               custom={i}
-              className="group relative bg-white/60 backdrop-blur-sm border border-beige/80 rounded-lg p-8 lg:p-10 transition-all duration-500 hover:shadow-[0_12px_40px_rgba(49,77,61,0.08)] hover:-translate-y-1 hover:border-forest/10"
+              className="group relative bg-[#FAF8F3] border border-beige/80 rounded-lg p-8 lg:p-10 transition-all duration-500 hover:shadow-[0_12px_40px_rgba(49,77,61,0.08)] hover:-translate-y-1 hover:border-forest/10"
             >
               {/* Icon */}
               <div className="w-12 h-12 rounded-full bg-beige/60 flex items-center justify-center mb-6 transition-all duration-500 group-hover:bg-forest/8">

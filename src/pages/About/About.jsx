@@ -17,7 +17,7 @@ export default function About() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
-      className="bg-offwhite min-h-screen"
+      className="bg-white min-h-screen"
     >
       <HeroSection />
       <OurStorySection />

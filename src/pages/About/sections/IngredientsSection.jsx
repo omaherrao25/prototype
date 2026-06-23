@@ -43,7 +43,7 @@ export default function IngredientsSection() {
     <section
       ref={ref}
       className="relative py-24 lg:py-36 overflow-hidden"
-      style={{ backgroundColor: '#FAF8F3' }}
+      style={{ backgroundColor: '#FFFFFF' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -101,7 +101,7 @@ export default function IngredientsSection() {
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
               className="group relative rounded-lg overflow-hidden cursor-pointer"
-              style={{ backgroundColor: '#FAF8F3' }}
+              style={{ backgroundColor: '#FFFFFF' }}
             >
               {/* Image */}
               <div className="relative aspect-[3/4] overflow-hidden">
