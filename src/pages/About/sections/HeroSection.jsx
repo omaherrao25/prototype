@@ -23,7 +23,7 @@ export default function HeroSection() {
   return (
     <section
       ref={ref}
-      className="relative min-h-[100vh] flex items-center overflow-hidden"
+      className="relative min-h-[85vh] flex items-center overflow-hidden"
       style={{ backgroundColor: '#FFFFFF' }}
     >
       {/* Soft gradient overlay */}
@@ -48,7 +48,7 @@ export default function HeroSection() {
 
       {/* Content */}
       <motion.div
-        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 lg:pt-40 lg:pb-32"
+        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 lg:pt-32 lg:pb-16"
         style={{ y: textY }}
       >
         <div className="w-full mx-auto text-center">

@@ -36,7 +36,7 @@ export default function LifestyleBannerSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-44">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="relative max-w-3xl mx-auto text-center flex flex-col items-center py-16 px-4 sm:px-12">
 
           <motion.h2
