@@ -41,8 +41,9 @@ export default function Navbar({ activeTheme }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const highlightedBg = isScrolled ? '#EFE6D5' : (activeTheme?.bgDark || '#EFEBE9')
-  const highlightedText = isScrolled ? '#2F4F3A' : (activeTheme?.text || '#4E342E')
+  const isLightPages = ['/shop', '/about', '/contact'].includes(location.pathname)
+  const highlightedBg = isLightPages ? '#EFE6D5' : (isScrolled ? '#EFE6D5' : (activeTheme?.bgDark || '#EFEBE9'))
+  const highlightedText = isLightPages ? '#2F4F3A' : (isScrolled ? '#2F4F3A' : (activeTheme?.text || '#4E342E'))
 
   const linksGroup = (
     <>

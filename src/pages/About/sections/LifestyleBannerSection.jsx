@@ -25,24 +25,19 @@ export default function LifestyleBannerSection() {
         />
       </motion.div>
 
-      {/* Light warm overlay for dark text readability */}
-      <div className="absolute inset-0 z-[1]"
-        style={{
-          background: 'linear-gradient(to right, rgba(246,241,233,0.85), rgba(246,241,233,0.55))'
-        }}
-      />
+      {/* Center Wide Blur Effect */}
+      <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
+        <div className="w-full h-[150%] sm:w-[150%] max-w-[1200px] max-h-[1000px] backdrop-blur-[8px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]"></div>
+      </div>
 
-      {/* Smooth center blur for premium text readability without hard edges */}
-      <div className="absolute inset-0 z-[2] backdrop-blur-md"
-        style={{
-          maskImage: 'radial-gradient(ellipse at center, black 0%, transparent 60%)',
-          WebkitMaskImage: 'radial-gradient(ellipse at center, black 0%, transparent 60%)'
-        }}
-      />
+      {/* Center Wide Color Overlay for Text Readability */}
+      <div className="absolute inset-0 z-[1] flex items-center justify-center pointer-events-none">
+        <div className="w-full h-[150%] sm:w-[150%] max-w-[1200px] max-h-[1000px] bg-[#F6F1E9]/85 [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]"></div>
+      </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-44">
-        <div className="relative max-w-2xl mx-auto text-center flex flex-col items-center">
+        <div className="relative max-w-3xl mx-auto text-center flex flex-col items-center py-16 px-4 sm:px-12">
 
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
