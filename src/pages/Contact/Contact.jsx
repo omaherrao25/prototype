@@ -196,8 +196,8 @@ export default function Contact() {
       </section>
 
       {/* 2. CONTACT INFORMATION SECTION */}
-      <section className="section-pad bg-[#FAF8F3]/30">
-        <div className="container-pad">
+      <section className="py-16 lg:py-24 bg-[#FAF8F3]/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -227,8 +227,8 @@ export default function Contact() {
       </section>
 
       {/* 3. LUXURY CONTACT FORM SECTION */}
-      <section id="contact-form" className="section-pad">
-        <div className="container-pad max-w-6xl">
+      <section id="contact-form" className="py-16 lg:py-24">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 border border-[#E9E4DC] rounded-[2rem] overflow-hidden bg-white shadow-luxury">
 
             {/* Left Side: Editorial Content */}
@@ -359,8 +359,8 @@ export default function Contact() {
       </section>
 
       {/* 4. SUPPORT & TRUST SECTION */}
-      <section className="py-16 border-t border-[#E9E4DC]">
-        <div className="container-pad">
+      <section className="py-16 lg:py-20 border-t border-[#E9E4DC]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -388,7 +388,7 @@ export default function Contact() {
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#EFE7DC]/50 to-transparent pointer-events-none"></div>
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[#314D3D]/5 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="container-pad relative z-10 text-center max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
