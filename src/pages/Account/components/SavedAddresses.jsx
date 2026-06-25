@@ -46,7 +46,7 @@ const SavedAddresses = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1 }}
             key={address.id}
-            className={`bg-white border rounded-2xl p-6 sm:p-8 transition-all duration-300 relative ${
+            className={`bg-offwhite border rounded-2xl p-6 sm:p-8 transition-all duration-300 relative ${
               address.isDefault ? 'border-eco-green/40 shadow-sm' : 'border-eco-border hover:shadow-sm'
             }`}
           >

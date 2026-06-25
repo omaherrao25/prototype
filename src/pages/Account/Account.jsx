@@ -28,7 +28,7 @@ const Account = () => {
   };
 
   return (
-    <div className="min-h-screen bg-eco-bg pt-24 pb-16 font-body">
+    <div className="min-h-screen bg-white pt-24 pb-16 font-body">
       <div className="container-pad max-w-[1400px]">
         {/* Header - Mobile Only */}
         <div className="lg:hidden mb-8">

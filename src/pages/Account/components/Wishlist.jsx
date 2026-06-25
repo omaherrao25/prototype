@@ -35,7 +35,7 @@ const Wishlist = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: idx * 0.1 }}
           key={item.id}
-          className="bg-white rounded-2xl overflow-hidden border border-eco-border group hover:shadow-[0_12px_40px_rgb(0,0,0,0.06)] transition-all duration-500"
+          className="bg-offwhite rounded-2xl overflow-hidden border border-eco-border group hover:shadow-[0_12px_40px_rgb(0,0,0,0.06)] transition-all duration-500"
         >
           <div className="relative aspect-[4/5] overflow-hidden bg-eco-beige">
             <img 

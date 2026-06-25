@@ -61,7 +61,7 @@ const OrdersList = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1 }}
             key={order.id}
-            className="bg-white border border-eco-border rounded-2xl p-6 sm:p-8 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-shadow duration-300 group"
+            className="bg-offwhite border border-eco-border rounded-2xl p-6 sm:p-8 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-shadow duration-300 group"
           >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b border-eco-border/50 pb-6">
               <div>

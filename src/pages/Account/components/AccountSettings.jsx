@@ -29,12 +29,12 @@ const AccountSettings = () => {
       {/* Change Password */}
       <section>
         <h3 className="font-heading text-2xl text-eco-text mb-6">Change Password</h3>
-        <div className="bg-white border border-eco-border rounded-2xl p-6 sm:p-8 space-y-4">
+        <div className="bg-offwhite border border-eco-border rounded-2xl p-6 sm:p-8 space-y-4">
           <div>
             <label className="block text-sm font-medium text-eco-text/80 mb-2">Current Password</label>
             <input 
               type="password" 
-              className="w-full bg-eco-bg border border-eco-border rounded-lg px-4 py-3 text-eco-text focus:outline-none focus:border-eco-green/50 transition-colors"
+              className="w-full bg-white border border-eco-border rounded-lg px-4 py-3 text-eco-text focus:outline-none focus:border-eco-green/50 transition-colors"
               placeholder="••••••••"
             />
           </div>
@@ -42,7 +42,7 @@ const AccountSettings = () => {
             <label className="block text-sm font-medium text-eco-text/80 mb-2">New Password</label>
             <input 
               type="password" 
-              className="w-full bg-eco-bg border border-eco-border rounded-lg px-4 py-3 text-eco-text focus:outline-none focus:border-eco-green/50 transition-colors"
+              className="w-full bg-white border border-eco-border rounded-lg px-4 py-3 text-eco-text focus:outline-none focus:border-eco-green/50 transition-colors"
               placeholder="••••••••"
             />
           </div>
@@ -55,7 +55,7 @@ const AccountSettings = () => {
       {/* Notifications */}
       <section>
         <h3 className="font-heading text-2xl text-eco-text mb-6">Notification Preferences</h3>
-        <div className="bg-white border border-eco-border rounded-2xl p-6 sm:p-8 space-y-6">
+        <div className="bg-offwhite border border-eco-border rounded-2xl p-6 sm:p-8 space-y-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="font-medium text-eco-text">Email Notifications</p>
@@ -89,7 +89,7 @@ const AccountSettings = () => {
       {/* Privacy Settings */}
       <section>
         <h3 className="font-heading text-2xl text-eco-text mb-6">Privacy</h3>
-        <div className="bg-white border border-eco-border rounded-2xl p-6 sm:p-8">
+        <div className="bg-offwhite border border-eco-border rounded-2xl p-6 sm:p-8">
           <p className="text-sm text-eco-text/80 leading-relaxed mb-6">
             We value your privacy and security. You can download a copy of your personal data or request to delete your account permanently.
           </p>

@@ -23,7 +23,7 @@ const DashboardOverview = ({ setActiveTab }) => {
     <div className="space-y-12 pb-10">
       {/* Profile Overview */}
       <motion.div 
-        className="bg-white border border-eco-border rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+        className="bg-offwhite border border-eco-border rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-6 shadow-sm hover:shadow-md transition-shadow duration-300"
         whileHover={{ y: -2 }}
       >
         <div className="w-24 h-24 rounded-full bg-eco-beige overflow-hidden flex-shrink-0 flex items-center justify-center border-2 border-white shadow-sm">
@@ -45,7 +45,7 @@ const DashboardOverview = ({ setActiveTab }) => {
           <motion.div
             key={idx}
             onClick={() => setActiveTab(stat.tab)}
-            className="bg-white border border-eco-border rounded-2xl p-6 cursor-pointer group shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300"
+            className="bg-offwhite border border-eco-border rounded-2xl p-6 cursor-pointer group shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300"
             whileHover={{ y: -4 }}
           >
             <div className="flex items-center justify-between mb-4">
@@ -67,7 +67,7 @@ const DashboardOverview = ({ setActiveTab }) => {
             <motion.div
               key={idx}
               onClick={() => action.tab !== 'dashboard' && setActiveTab(action.tab)}
-              className="bg-white border border-eco-border rounded-xl p-4 flex flex-col items-center justify-center gap-3 cursor-pointer group hover:border-eco-green/30 hover:shadow-sm transition-all duration-300 min-h-[100px]"
+              className="bg-offwhite border border-eco-border rounded-xl p-4 flex flex-col items-center justify-center gap-3 cursor-pointer group hover:border-eco-green/30 hover:shadow-sm transition-all duration-300 min-h-[100px]"
               whileHover={{ scale: 1.02 }}
             >
               <action.icon strokeWidth={1.5} className="w-6 h-6 text-eco-green/70 group-hover:text-eco-green transition-colors duration-300" />

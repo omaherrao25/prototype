@@ -64,12 +64,18 @@ export default function Navbar({ activeTheme }) {
     </>
   )
 
+  const isAccountActive = location.pathname === '/account';
+
   const iconsGroup = (
     <>
-      <Link to="/account" className="p-2 text-charcoal/70 hover:text-charcoal transition-colors block">
+      <Link 
+        to="/account" 
+        className={`p-2 rounded-full transition-colors block text-charcoal/70 hover:text-charcoal ${!isAccountActive ? 'hover:bg-[#EFE6DF]' : ''}`}
+        style={isAccountActive ? { backgroundColor: '#EFE6DF', color: highlightedText } : {}}
+      >
         <User size={19} strokeWidth={1.5} />
       </Link>
-      <button className="relative p-2 text-charcoal/70 hover:text-charcoal transition-colors">
+      <button className="relative p-2 rounded-full text-charcoal/70 hover:text-charcoal hover:bg-[#EFE6DF] transition-colors">
         <ShoppingBag size={19} strokeWidth={1.5} />
         {cartCount > 0 && (
           <span className="absolute top-1 right-0 w-[15px] h-[15px] bg-[#2F4F3A] text-white text-[9px] font-bold rounded-full flex items-center justify-center leading-none shadow-sm">
