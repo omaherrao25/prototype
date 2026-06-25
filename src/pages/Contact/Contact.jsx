@@ -1,16 +1,15 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Globe, ShieldCheck, RefreshCw, Hand, Leaf, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Import assets
-import heroBg from '../../assets/contact/hero_bg.png';
 import formBg from '../../assets/contact/form_bg.png';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
   }
@@ -63,6 +62,14 @@ const trustFeatures = [
 ];
 
 export default function Contact() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -88,67 +95,110 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-white min-h-screen pt-24 font-body text-[#1E1E1E]">
-      
+    <div className="bg-white min-h-screen font-body text-[#1E1E1E]">
+
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden section-pad">
-        {/* Abstract subtle background */}
-        <div className="absolute inset-0 pointer-events-none opacity-40">
-          <motion.img 
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeOut" }}
-            src={heroBg} 
-            alt="Botanical shadow" 
-            className="w-full h-full object-cover object-center mix-blend-multiply"
+      <section
+        ref={ref}
+        className="relative min-h-[85vh] flex items-center overflow-hidden bg-white"
+      >
+        {/* Background botanical image with parallax */}
+        <motion.div
+          className="absolute inset-0 z-0 scale-110"
+          style={{ y: bgY }}
+        >
+          <img
+            src="/images/contact_hero_minimal.png"
+            alt="Hero Background"
+            className="w-full h-full object-cover object-center"
           />
+        </motion.div>
+
+        {/* Subtle cinematic overlay */}
+        <div className="absolute inset-0 z-10 bg-black/5 mix-blend-overlay pointer-events-none"></div>
+
+        {/* Center Wide Blur Effect */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+          <div className="w-full h-[150%] sm:w-[150%] max-w-[1200px] max-h-[1000px] backdrop-blur-[8px] [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_70%)]"></div>
         </div>
 
-        <div className="container-pad relative z-10 text-center max-w-4xl mx-auto py-12 lg:py-24">
-          <motion.p 
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            className="eyebrow mb-6"
-          >
-            Contact Ecoveda
-          </motion.p>
-          <motion.h1 
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            className="font-heading text-5xl md:text-6xl lg:text-7xl font-normal mb-6 text-[#314D3D]"
-          >
-            Let’s Connect.
-          </motion.h1>
-          <motion.p 
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            className="text-lg md:text-xl text-[#1E1E1E]/70 max-w-2xl mx-auto mb-10 font-light leading-relaxed"
-          >
-            We’re here to help you discover mindful skincare and answer every question with care and intention.
-          </motion.p>
-          <motion.div 
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <a href="#contact-form" className="btn-primary w-full sm:w-auto">
-              Email Us
-            </a>
-            <Link to="/shop" className="btn-outline w-full sm:w-auto bg-white/50 backdrop-blur-sm">
-              Explore Collection
-            </Link>
-          </motion.div>
+        {/* Center Wide Color Overlay for Text Readability */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
+          <div className="w-full h-[150%] sm:w-[150%] max-w-[1200px] max-h-[1000px] bg-white/85 [mask-image:radial-gradient(ellipse_at_center,black_25%,transparent_70%)]"></div>
         </div>
+
+        {/* Content */}
+        <motion.div
+          className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 lg:pt-32 lg:pb-16"
+          style={{ y: textY }}
+        >
+          <div className="w-full mx-auto text-center">
+
+            <motion.p 
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="eyebrow mb-6 text-charcoal/60 uppercase tracking-widest text-[11px] font-medium"
+            >
+              Contact Ecoveda
+            </motion.p>
+            
+            {/* Main Heading */}
+            <motion.h1 
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={1}
+              className="font-heading font-light text-charcoal mb-8 leading-[1.1]"
+              style={{ fontSize: 'clamp(2.5rem, 5.5vw, 4.8rem)' }}
+            >
+              Let’s Connect.
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p 
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={2}
+              className="font-body text-[1rem] sm:text-[1.1rem] lg:text-[1.15rem] leading-[1.8] text-charcoal/60 max-w-xl mx-auto mb-12"
+              style={{ fontFamily: "'Inter', sans-serif" }}
+            >
+              We’re here to help you discover mindful skincare and answer every question with care and intention.
+            </motion.p>
+
+            {/* Buttons */}
+            <motion.div 
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={3}
+              className="flex flex-wrap items-center justify-center gap-4 sm:gap-5"
+            >
+              <a 
+                href="#contact-form" 
+                className="group relative px-8 py-4 bg-[#2F4F3A] text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(49,77,61,0.25)]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                <span className="relative z-10">Email Us</span>
+                <div className="absolute inset-0 bg-[#3A6046] transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100" />
+              </a>
+              <Link 
+                to="/shop" 
+                className="px-8 py-4 border border-[#1E1E1E]/15 text-[#1E1E1E]/60 text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full transition-all duration-500 hover:border-[#2F4F3A]/40 hover:text-[#2F4F3A]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                Explore Collection
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
       </section>
 
       {/* 2. CONTACT INFORMATION SECTION */}
       <section className="section-pad bg-[#FAF8F3]/30">
         <div className="container-pad">
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -180,13 +230,13 @@ export default function Contact() {
       <section id="contact-form" className="section-pad">
         <div className="container-pad max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 border border-[#E9E4DC] rounded-[2rem] overflow-hidden bg-white shadow-luxury">
-            
+
             {/* Left Side: Editorial Content */}
             <div className="relative p-10 lg:p-16 flex flex-col justify-center bg-[#FAF8F3]">
               <div className="absolute inset-0 z-0 opacity-60 mix-blend-multiply">
-                <img 
-                  src={formBg} 
-                  alt="Soft botanical light" 
+                <img
+                  src={formBg}
+                  alt="Soft botanical light"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -231,8 +281,8 @@ export default function Contact() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-[12px] font-medium text-[#1E1E1E]/80 uppercase tracking-wider">Full Name</label>
-                        <input 
-                          type="text" 
+                        <input
+                          type="text"
                           name="name"
                           required
                           value={formData.name}
@@ -243,8 +293,8 @@ export default function Contact() {
                       </div>
                       <div className="space-y-2">
                         <label className="text-[12px] font-medium text-[#1E1E1E]/80 uppercase tracking-wider">Email Address</label>
-                        <input 
-                          type="email" 
+                        <input
+                          type="email"
                           name="email"
                           required
                           value={formData.email}
@@ -254,12 +304,12 @@ export default function Contact() {
                         />
                       </div>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-[12px] font-medium text-[#1E1E1E]/80 uppercase tracking-wider">Phone Number</label>
-                        <input 
-                          type="tel" 
+                        <input
+                          type="tel"
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
@@ -269,8 +319,8 @@ export default function Contact() {
                       </div>
                       <div className="space-y-2">
                         <label className="text-[12px] font-medium text-[#1E1E1E]/80 uppercase tracking-wider">Subject</label>
-                        <input 
-                          type="text" 
+                        <input
+                          type="text"
                           name="subject"
                           required
                           value={formData.subject}
@@ -283,7 +333,7 @@ export default function Contact() {
 
                     <div className="space-y-2">
                       <label className="text-[12px] font-medium text-[#1E1E1E]/80 uppercase tracking-wider">Message</label>
-                      <textarea 
+                      <textarea
                         name="message"
                         required
                         value={formData.message}
@@ -294,8 +344,8 @@ export default function Contact() {
                       ></textarea>
                     </div>
 
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       className="w-full btn-primary py-4 rounded-xl text-[13px] hover:shadow-lg transition-all"
                     >
                       Send Message
@@ -311,7 +361,7 @@ export default function Contact() {
       {/* 4. SUPPORT & TRUST SECTION */}
       <section className="py-16 border-t border-[#E9E4DC]">
         <div className="container-pad">
-          <motion.div 
+          <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
@@ -319,7 +369,7 @@ export default function Contact() {
             className="flex flex-wrap lg:flex-nowrap justify-center items-center gap-4 md:gap-6 lg:gap-8 xl:gap-12"
           >
             {trustFeatures.map((feature, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 variants={fadeUp}
                 className="flex items-center gap-3 text-[#1E1E1E]/70 hover:text-[#314D3D] transition-colors group cursor-default"
