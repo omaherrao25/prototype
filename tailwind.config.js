@@ -14,6 +14,12 @@ export default {
         'sage-dark': '#5A7350',
         'beige-dark': '#DDD0BC',
         'forest-light': '#3D6B4F',
+        'eco-bg': '#FFFFFF',
+        'eco-beige': '#F7F3EE',
+        'eco-green': '#314D3D',
+        'eco-gold': '#C7A06C',
+        'eco-text': '#1E1E1E',
+        'eco-border': '#E8E2D8',
       },
       fontFamily: {
         heading: ['"Cormorant Garamond"', 'Georgia', 'serif'],

@@ -66,9 +66,9 @@ export default function Navbar({ activeTheme }) {
 
   const iconsGroup = (
     <>
-      <button className="p-2 text-charcoal/70 hover:text-charcoal transition-colors">
+      <Link to="/account" className="p-2 text-charcoal/70 hover:text-charcoal transition-colors block">
         <User size={19} strokeWidth={1.5} />
-      </button>
+      </Link>
       <button className="relative p-2 text-charcoal/70 hover:text-charcoal transition-colors">
         <ShoppingBag size={19} strokeWidth={1.5} />
         {cartCount > 0 && (
