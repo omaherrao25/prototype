@@ -232,8 +232,8 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-0 border border-[#E9E4DC] rounded-[2rem] overflow-hidden bg-white shadow-luxury">
 
             {/* Left Side: Editorial Content */}
-            <div className="relative p-10 lg:p-16 flex flex-col justify-center bg-[#FAF8F3]">
-              <div className="absolute inset-0 z-0 opacity-60 mix-blend-multiply">
+            <div className="relative p-10 lg:p-16 flex flex-col justify-center">
+              <div className="absolute inset-0 z-0 opacity-60 mix-blend-multiply [mask-image:linear-gradient(to_bottom,black_70%,transparent)] lg:[mask-image:linear-gradient(to_right,black_60%,transparent)]">
                 <img
                   src={formBg}
                   alt="Soft botanical light"
