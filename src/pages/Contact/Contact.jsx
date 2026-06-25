@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 import formBg from '../../assets/contact/form_bg.png';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-  }
+    transition: { duration: 1, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }
+  })
 };
 
 const staggerContainer = {
@@ -134,17 +134,10 @@ export default function Contact() {
         >
           <div className="w-full mx-auto text-center">
 
-            <motion.p 
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
-              className="eyebrow mb-6 text-charcoal/60 uppercase tracking-widest text-[11px] font-medium"
-            >
-              Contact Ecoveda
-            </motion.p>
-            
+
+
             {/* Main Heading */}
-            <motion.h1 
+            <motion.h1
               variants={fadeUp}
               initial="hidden"
               animate="visible"
@@ -156,7 +149,7 @@ export default function Contact() {
             </motion.h1>
 
             {/* Description */}
-            <motion.p 
+            <motion.p
               variants={fadeUp}
               initial="hidden"
               animate="visible"
@@ -168,23 +161,23 @@ export default function Contact() {
             </motion.p>
 
             {/* Buttons */}
-            <motion.div 
+            <motion.div
               variants={fadeUp}
               initial="hidden"
               animate="visible"
               custom={3}
               className="flex flex-wrap items-center justify-center gap-4 sm:gap-5"
             >
-              <a 
-                href="#contact-form" 
+              <a
+                href="#contact-form"
                 className="group relative px-8 py-4 bg-[#2F4F3A] text-white text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full overflow-hidden transition-all duration-500 hover:shadow-[0_8px_30px_rgba(49,77,61,0.25)]"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 <span className="relative z-10">Email Us</span>
                 <div className="absolute inset-0 bg-[#3A6046] transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100" />
               </a>
-              <Link 
-                to="/shop" 
+              <Link
+                to="/shop"
                 className="px-8 py-4 border border-[#1E1E1E]/15 text-[#1E1E1E]/60 text-[11.5px] sm:text-[12px] font-medium tracking-[0.15em] uppercase rounded-full transition-all duration-500 hover:border-[#2F4F3A]/40 hover:text-[#2F4F3A]"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
