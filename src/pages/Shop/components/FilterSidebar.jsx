@@ -38,7 +38,7 @@ const FilterSection = ({ title, options, activeFilters, onToggleFilter, defaultO
                       checked={isActive} 
                       onChange={() => onToggleFilter(option)} 
                     />
-                    <div className={`w-3.5 h-3.5 rounded-sm border flex items-center justify-center transition-colors ${isActive ? 'bg-charcoal border-charcoal' : 'border-charcoal/30 group-hover:border-charcoal/60'}`}>
+                    <div className={`w-3.5 h-3.5 rounded-sm border flex items-center justify-center transition-colors ${isActive ? 'bg-[#9C795C] border-[#9C795C]' : 'border-charcoal/30 group-hover:border-[#9C795C]/60'}`}>
                       {isActive && <Check size={10} className="text-white" strokeWidth={3} />}
                     </div>
                     <span className="font-body text-[13px] text-charcoal/70 group-hover:text-charcoal transition-colors select-none">
@@ -63,7 +63,6 @@ export default function FilterSidebar({ activeFilters, onToggleFilter }) {
         options={filterOptions.categories} 
         activeFilters={activeFilters.categories || []} 
         onToggleFilter={(val) => onToggleFilter('categories', val)} 
-        defaultOpen={true} 
       />
       <FilterSection 
         title="Skin Type" 
@@ -76,7 +75,6 @@ export default function FilterSidebar({ activeFilters, onToggleFilter }) {
         options={filterOptions.ingredients} 
         activeFilters={activeFilters.ingredients || []} 
         onToggleFilter={(val) => onToggleFilter('ingredients', val)} 
-        defaultOpen={true}
       />
       <FilterSection 
         title="Scent" 

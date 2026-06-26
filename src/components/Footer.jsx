@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Leaf, ArrowRight, Mail, Phone, MapPin, Package, RefreshCw, CreditCard, Headphones } from 'lucide-react'
 import { FaCcVisa, FaCcMastercard, FaCcAmex, FaCcPaypal } from 'react-icons/fa'
@@ -28,11 +29,22 @@ const serviceFeatures = [
   { Icon: Headphones, label: '24/7 Support', sub: "We're always here to help" },
 ]
 
-const navCols = {
-  Shop: ['All Soaps', 'Bestsellers', 'New Arrivals', 'Gift Sets', 'Accessories'],
-  Help: ['FAQs', 'Shipping & Returns', 'Track Order', 'Terms & Conditions', 'Privacy Policy', 'Contact Us'],
-  'About Us': ['Our Story', 'The Process', 'Ingredients', 'Sustainability', 'Journal'],
-}
+const footerLinks = [
+  {
+    heading: 'Explore',
+    links: [
+      { label: 'Home', path: '/' },
+      { label: 'Shop', path: '/shop' },
+    ]
+  },
+  {
+    heading: 'Information',
+    links: [
+      { label: 'About Us', path: '/about' },
+      { label: 'Contact', path: '/contact' },
+    ]
+  }
+]
 
 const paymentIcons = [
   { name: 'Visa', Icon: FaCcVisa },
@@ -103,9 +115,9 @@ export default function Footer() {
             </div>
             <div className="space-y-3">
               {[
-                [Phone, '+91 98765 43210'],
-                [Mail, 'hello@ecoveda.com'],
-                [MapPin, 'Mumbai, India 400001'],
+                [Phone, '+91 9876543210'],
+                [Mail, 'ecoveda@gmail.com'],
+                [MapPin, 'Nashik, India 422009'],
               ].map(([Icon, text]) => (
                 <div key={text} className="flex items-center gap-3 text-[#F6F1E9]/50 text-[13px] font-body">
                   <Icon size={14} className="flex-shrink-0" strokeWidth={1.5} />
@@ -116,15 +128,15 @@ export default function Footer() {
           </div>
 
           {/* Nav columns */}
-          {Object.entries(navCols).map(([heading, links]) => (
+          {footerLinks.map(({ heading, links }) => (
             <div key={heading} className="col-span-1">
               <h4 className="font-body font-bold text-[#F6F1E9]/90 text-[11px] tracking-[0.16em] uppercase mb-6">{heading}</h4>
               <ul className="space-y-3.5">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="font-body text-[13.5px] text-[#F6F1E9]/50 hover:text-[#9C795C] hover:pl-1 transition-all duration-300 block">
-                      {link}
-                    </a>
+                  <li key={link.label}>
+                    <Link to={link.path} className="font-body text-[13.5px] text-[#F6F1E9]/50 hover:text-[#9C795C] hover:pl-1 transition-all duration-300 block">
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -132,7 +144,7 @@ export default function Footer() {
           ))}
 
           {/* Newsletter */}
-          <div className="col-span-1 sm:col-span-2 lg:col-span-1">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-2">
             <h4 className="font-body font-bold text-[#F6F1E9]/90 text-[11px] tracking-[0.16em] uppercase mb-6">Stay Connected</h4>
             <p className="font-body text-[13.5px] text-[#F6F1E9]/50 mb-6 leading-relaxed">
               Join our newsletter for exclusive offers &amp; skincare rituals.

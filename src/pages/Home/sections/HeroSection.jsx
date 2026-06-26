@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { soaps } from '../../../data/soaps'
+import { Link } from 'react-router-dom'
 
 export default function HeroSection({ activeTheme, setActiveTheme }) {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -69,12 +70,13 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
               </motion.p>
 
               <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-5 mb-10">
-                <button
-                  className="px-8 py-4 text-[12px] sm:text-[13px] uppercase tracking-widest font-bold transition-all duration-500 hover:scale-105 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)]"
+                <Link
+                  to="/shop"
+                  className="px-8 py-4 text-[12px] sm:text-[13px] uppercase tracking-widest font-bold transition-all duration-500 hover:scale-105 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)] inline-block text-center"
                   style={{ backgroundColor: activeTheme?.text || '#2F4F3A', color: '#FFFFFF' }}
                 >
                   Shop Now
-                </button>
+                </Link>
                 <button
                   className="px-8 py-4 text-[12px] sm:text-[13px] uppercase tracking-widest font-bold transition-all duration-300 hover:scale-105 border border-charcoal/40 hover:border-charcoal text-charcoal rounded-full"
                 >

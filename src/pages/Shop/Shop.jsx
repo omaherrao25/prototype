@@ -14,11 +14,9 @@ export default function Shop() {
     scents: []
   });
   const [sortOption, setSortOption] = useState('Featured');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  // Scroll to top on mount
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
 
   const handleToggleFilter = (category, value) => {
     setActiveFilters(prev => {
@@ -50,6 +48,13 @@ export default function Shop() {
 
   const filteredProducts = useMemo(() => {
     let result = products.filter(product => {
+      // Check Search Query
+      if (searchQuery.trim() !== '') {
+        if (!product.name.toLowerCase().includes(searchQuery.trim().toLowerCase())) {
+          return false;
+        }
+      }
+ 
       // Check Categories
       if (activeFilters.categories.length > 0 && !activeFilters.categories.includes(product.category)) return false;
       
@@ -94,12 +99,12 @@ export default function Shop() {
     }
 
     return result;
-  }, [activeFilters, sortOption]);
+  }, [activeFilters, sortOption, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-[#FDFBF7] pt-32 pb-24">
+    <div className="min-h-screen bg-white pt-28 lg:pt-32 pb-20">
       {/* Header Area */}
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-16 text-center">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-12 lg:mb-14 text-center">
         <motion.p 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -112,13 +117,13 @@ export default function Shop() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-heading text-4xl sm:text-5xl lg:text-6xl text-charcoal font-normal"
+          className="font-heading text-4xl sm:text-5xl lg:text-6xl text-[#9C795C] font-normal uppercase tracking-wide"
         >
           Shop All
         </motion.h1>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
         
         {/* Sticky Sidebar */}
         <div className="w-full lg:w-[240px] flex-shrink-0 lg:sticky lg:top-32">
@@ -134,11 +139,13 @@ export default function Shop() {
             totalItems={filteredProducts.length}
             sortOption={sortOption}
             setSortOption={setSortOption}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
           />
 
           {/* Product Grid */}
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
+            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-10 lg:gap-y-12">
               {filteredProducts.map((product, idx) => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -158,7 +165,7 @@ export default function Shop() {
           
           {/* Load More (Mock) */}
           {filteredProducts.length > 0 && (
-            <div className="mt-24 flex flex-col items-center">
+            <div className="mt-16 lg:mt-20 flex flex-col items-center">
               <p className="font-body text-[12px] text-charcoal/50 mb-6">Showing {filteredProducts.length} of {products.length} items</p>
               <button className="px-10 py-4 bg-[#2F4F3A] text-white rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)] font-body text-[11px] font-bold uppercase tracking-[0.15em] hover:scale-105 transition-all duration-300">
                 Load More

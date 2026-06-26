@@ -5,7 +5,7 @@ import { ShoppingBag, User, Menu, X } from 'lucide-react'
 
 const navLinks = [
   { label: 'Home', path: '/' },
-  { label: 'Products', path: '/shop' },
+  { label: 'Shop', path: '/shop' },
   { label: 'About', path: '/about' },
   { label: 'Contact', path: '/contact' },
 ]
@@ -41,22 +41,20 @@ export default function Navbar({ activeTheme }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const isHomePage = location.pathname === '/'
-  const highlightedBg = (isScrolled || !isHomePage) ? '#EFE6D5' : (activeTheme?.bgDark || '#EFEBE9')
-  const highlightedText = (isScrolled || !isHomePage) ? '#2F4F3A' : (activeTheme?.text || '#4E342E')
+  const isLightPages = ['/shop', '/about', '/contact'].includes(location.pathname)
+  const highlightedBg = isLightPages ? '#EFE6D5' : (isScrolled ? '#EFE6D5' : (activeTheme?.bgDark || '#EFEBE9'))
+  const highlightedText = isLightPages ? '#2F4F3A' : (isScrolled ? '#2F4F3A' : (activeTheme?.text || '#4E342E'))
 
   const linksGroup = (
     <>
       {navLinks.map((link) => {
-        const isHighlighted = location.pathname === link.path || (location.pathname === '/' && link.path === '/') && location.pathname !== '/shop'; // Simplistic highlight logic
         const activeHighlight = location.pathname === link.path;
         return (
           <Link
             key={link.label}
             to={link.path}
-            className={`px-5 py-2 rounded-full text-[13.5px] font-body font-medium transition-colors duration-500 ${
-              !activeHighlight ? 'text-charcoal/70 hover:text-charcoal' : ''
-            }`}
+            className={`px-5 py-2 rounded-full text-[13.5px] font-body font-medium transition-colors duration-500 ${!activeHighlight ? 'text-charcoal/70 hover:text-charcoal' : ''
+              }`}
             style={activeHighlight ? { backgroundColor: highlightedBg, color: highlightedText } : {}}
           >
             {link.label}
@@ -66,12 +64,18 @@ export default function Navbar({ activeTheme }) {
     </>
   )
 
+  const isAccountActive = location.pathname === '/account';
+
   const iconsGroup = (
     <>
-      <button className="p-2 text-charcoal/70 hover:text-charcoal transition-colors">
+      <Link 
+        to="/account" 
+        className={`p-2 rounded-full transition-colors block text-charcoal/70 hover:text-charcoal ${!isAccountActive ? 'hover:bg-[#EFE6DF]' : ''}`}
+        style={isAccountActive ? { backgroundColor: '#EFE6DF', color: highlightedText } : {}}
+      >
         <User size={19} strokeWidth={1.5} />
-      </button>
-      <button className="relative p-2 text-charcoal/70 hover:text-charcoal transition-colors">
+      </Link>
+      <button className="relative p-2 rounded-full text-charcoal/70 hover:text-charcoal hover:bg-[#EFE6DF] transition-colors">
         <ShoppingBag size={19} strokeWidth={1.5} />
         {cartCount > 0 && (
           <span className="absolute top-1 right-0 w-[15px] h-[15px] bg-[#2F4F3A] text-white text-[9px] font-bold rounded-full flex items-center justify-center leading-none shadow-sm">
@@ -90,7 +94,7 @@ export default function Navbar({ activeTheme }) {
       className="fixed top-0 w-full z-50 pt-6 px-4 sm:px-6 lg:px-8 pointer-events-none"
     >
       <nav className="max-w-7xl mx-auto h-[60px] pointer-events-auto relative">
-        
+
         {/* Mobile toggle */}
         <div className="absolute right-4 sm:right-6 lg:right-8 xl:hidden z-50 mt-1">
           <button
@@ -103,12 +107,11 @@ export default function Navbar({ activeTheme }) {
 
         {/* Desktop Navbar - Pure CSS Transitions for absolute perfection */}
         <div className="hidden xl:block w-full h-full relative">
-          
+
           {/* Logo */}
-          <div 
-            className={`absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] z-30 flex items-center ${
-              isScrolled ? 'left-[calc(50%-320px)]' : 'left-0'
-            }`}
+          <div
+            className={`absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] z-30 flex items-center ${isScrolled ? 'left-[calc(50%-320px)]' : 'left-0'
+              }`}
           >
             <EcovedaLogo compact={isScrolled} />
             {/* Left Divider (Fade in when scrolled) */}
@@ -116,19 +119,17 @@ export default function Navbar({ activeTheme }) {
           </div>
 
           {/* Center Links Pill Wrapper (Also acts as the merged background container) */}
-          <div 
-            className={`absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center z-20 ${
-              isScrolled ? 'left-[calc(50%-8px)]' : 'left-1/2'
-            } -translate-x-1/2`}
+          <div
+            className={`absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center z-20 ${isScrolled ? 'left-[calc(50%-8px)]' : 'left-1/2'
+              } -translate-x-1/2`}
           >
-            <div 
-              className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center rounded-full relative ${
-                isScrolled 
-                  ? 'bg-[#FDFBF7]/95 backdrop-blur-xl shadow-md border border-beige-dark/20 p-1.5 pl-[170px] pr-[125px]' 
-                  : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-white/40 p-1.5 pl-1.5 pr-1.5'
-              }`}
+            <div
+              className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center rounded-full relative ${isScrolled
+                ? 'bg-[#FDFBF7]/60 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/60 p-1.5 pl-[170px] pr-[125px]'
+                : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] border border-white/40 p-1.5 pl-1.5 pr-1.5'
+                }`}
             >
-              
+
               {/* Links Group */}
               <div className="flex items-center gap-1 z-10 px-2">
                 {linksGroup}
@@ -138,20 +139,18 @@ export default function Navbar({ activeTheme }) {
           </div>
 
           {/* Right Icons Pill */}
-          <div 
-            className={`absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center z-30 ${
-              isScrolled ? 'left-[calc(50%+200px)]' : 'left-[calc(88%-90px)]'
-            }`}
+          <div
+            className={`absolute top-1/2 -translate-y-1/2 transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center z-30 ${isScrolled ? 'left-[calc(50%+200px)]' : 'left-[calc(88%-90px)]'
+              }`}
           >
             {/* Right Divider (Fade in when scrolled) */}
             <div className={`absolute left-[-5px] top-1/2 -translate-y-1/2 w-px h-6 bg-charcoal/10 transition-opacity duration-[700ms] ${isScrolled ? 'opacity-100' : 'opacity-0'}`} />
-            
-            <div 
-              className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center gap-2 ${
-                isScrolled 
-                  ? 'p-1.5 px-3 bg-transparent shadow-none border-transparent' 
-                  : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] rounded-full p-1.5 px-3 border border-white/40'
-              }`}
+
+            <div
+              className={`transition-all duration-[700ms] ease-[0.22,1,0.36,1] flex items-center gap-2 ${isScrolled
+                ? 'p-1.5 px-3 bg-transparent shadow-none border-transparent'
+                : 'bg-white/50 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.05)] rounded-full p-1.5 px-3 border border-white/40'
+                }`}
             >
               {iconsGroup}
             </div>
@@ -170,13 +169,13 @@ export default function Navbar({ activeTheme }) {
             className="absolute top-full left-0 w-full mt-4 px-4 xl:hidden pointer-events-auto"
           >
             <div className="bg-[#FDFBF7]/95 backdrop-blur-xl border border-beige-dark/20 rounded-3xl p-5 shadow-xl">
-               <div className="space-y-1">
-                 {navLinks.map((link) => (
-                   <Link key={link.label} to={link.path} onClick={() => setIsMobileOpen(false)} className="block py-3 px-4 rounded-xl hover:bg-beige-dark/10 font-body font-medium text-charcoal/80">
-                     {link.label}
-                   </Link>
-                 ))}
-               </div>
+              <div className="space-y-1">
+                {navLinks.map((link) => (
+                  <Link key={link.label} to={link.path} onClick={() => setIsMobileOpen(false)} className="block py-3 px-4 rounded-xl hover:bg-beige-dark/10 font-body font-medium text-charcoal/80">
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </motion.div>
         )}
