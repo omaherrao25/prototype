@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  LayoutDashboard, 
+  User, 
   ShoppingBag, 
   Heart, 
   MapPin, 
@@ -11,7 +11,7 @@ import {
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
   const menuItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { id: 'my-account', label: 'My Account', icon: User },
     { id: 'orders', label: 'Orders', icon: ShoppingBag },
     { id: 'wishlist', label: 'Wishlist', icon: Heart },
     { id: 'addresses', label: 'Addresses', icon: MapPin },

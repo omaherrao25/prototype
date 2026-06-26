@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from './components/Sidebar';
-import DashboardOverview from './components/DashboardOverview';
+import MyAccountOverview from './components/MyAccountOverview';
 import OrdersList from './components/OrdersList';
 import Wishlist from './components/Wishlist';
 import SavedAddresses from './components/SavedAddresses';
 import AccountSettings from './components/AccountSettings';
 
 const Account = () => {
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState('my-account');
 
   const renderContent = () => {
     switch (activeTab) {
-      case 'dashboard':
-        return <DashboardOverview setActiveTab={setActiveTab} />;
+      case 'my-account':
+        return <MyAccountOverview setActiveTab={setActiveTab} />;
       case 'orders':
         return <OrdersList />;
       case 'wishlist':
@@ -23,7 +23,7 @@ const Account = () => {
       case 'settings':
         return <AccountSettings />;
       default:
-        return <DashboardOverview setActiveTab={setActiveTab} />;
+        return <MyAccountOverview setActiveTab={setActiveTab} />;
     }
   };
 
@@ -46,7 +46,7 @@ const Account = () => {
             {/* Header - Desktop Only */}
             <div className="hidden lg:block mb-10">
               <h1 className="font-heading text-4xl text-eco-text capitalize tracking-wide">
-                {activeTab === 'dashboard' ? 'Overview' : activeTab}
+                {activeTab === 'my-account' ? 'My Account' : activeTab.replace('-', ' ')}
               </h1>
               <div className="h-px w-16 bg-eco-gold/60 mt-4"></div>
             </div>
