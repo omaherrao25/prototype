@@ -26,7 +26,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/product/:id" element={<Product />} />
-          <Route path="/account" element={<Account />} />
+          <Route path="/account/*" element={<Account />} />
         </Routes>
         <Footer />
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   User, 
@@ -9,13 +10,23 @@ import {
   LogOut 
 } from 'lucide-react';
 
-const Sidebar = ({ activeTab, setActiveTab }) => {
+const Sidebar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const path = location.pathname;
+
+  let activeTab = 'my-account';
+  if (path.includes('/account/order')) activeTab = 'orders';
+  else if (path.includes('/account/wishlist')) activeTab = 'wishlist';
+  else if (path.includes('/account/addresses')) activeTab = 'addresses';
+  else if (path.includes('/account/settings')) activeTab = 'settings';
+
   const menuItems = [
-    { id: 'my-account', label: 'My Account', icon: User },
-    { id: 'orders', label: 'Orders', icon: ShoppingBag },
-    { id: 'wishlist', label: 'Wishlist', icon: Heart },
-    { id: 'addresses', label: 'Addresses', icon: MapPin },
-    { id: 'settings', label: 'Settings', icon: Settings },
+    { id: 'my-account', label: 'My Account', icon: User, path: '/account' },
+    { id: 'orders', label: 'Orders', icon: ShoppingBag, path: '/account/order' },
+    { id: 'wishlist', label: 'Wishlist', icon: Heart, path: '/account/wishlist' },
+    { id: 'addresses', label: 'Addresses', icon: MapPin, path: '/account/addresses' },
+    { id: 'settings', label: 'Settings', icon: Settings, path: '/account/settings' },
   ];
 
   return (
@@ -25,7 +36,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
         {menuItems.map((item) => (
           <button
             key={item.id}
-            onClick={() => setActiveTab(item.id)}
+            onClick={() => navigate(item.path)}
             className={`flex items-center gap-4 px-5 py-3.5 rounded-xl transition-all duration-300 text-sm font-medium tracking-wide ${
               activeTab === item.id
                 ? 'bg-eco-beige text-eco-green'
@@ -51,7 +62,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           {menuItems.map((item) => (
             <button
               key={item.id}
-              onClick={() => setActiveTab(item.id)}
+              onClick={() => navigate(item.path)}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-full transition-all duration-300 text-xs sm:text-sm font-medium whitespace-nowrap ${
                 activeTab === item.id
                   ? 'bg-eco-green text-white shadow-md'
