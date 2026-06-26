@@ -6,61 +6,66 @@ const Wishlist = () => {
   const wishlistItems = [
     {
       id: 1,
-      name: 'Revitalizing Face Serum',
-      price: '$58.00',
-      ingredient: 'Rosehip & Vitamin C',
-      image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      name: 'Coffee Scrub Soap (100g)',
+      price: '₹199',
+      ingredient: 'Roasted Coffee & Cocoa',
+      image: '/images/Coffee soap without bg.png',
     },
     {
       id: 2,
-      name: 'Purifying Clay Mask',
-      price: '$34.00',
-      ingredient: 'Matcha & Bentonite',
-      image: 'https://images.unsplash.com/photo-1596755389378-c11ddece8a47?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      name: 'Turmeric Glow Soap (100g)',
+      price: '₹179',
+      ingredient: 'Turmeric & Sandalwood',
+      image: '/images/Turmeric soap without bg.png',
     },
     {
       id: 3,
-      name: 'Nourishing Body Butter',
-      price: '$45.00',
-      ingredient: 'Shea & Cocoa',
-      image: 'https://images.unsplash.com/photo-1608248593842-83b6cb5922eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+      name: 'Aloe Vera & Mint Soap (100g)',
+      price: '₹149',
+      ingredient: 'Fresh Aloe & Peppermint',
+      image: '/images/Aloe vera soap.png',
     }
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    <div className="space-y-4 max-w-5xl mx-auto">
       {wishlistItems.map((item, idx) => (
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: idx * 0.1 }}
           key={item.id}
-          className="bg-offwhite rounded-2xl overflow-hidden border border-eco-border group hover:shadow-[0_12px_40px_rgb(0,0,0,0.06)] transition-all duration-500"
+          className="bg-white border border-gray-100 shadow-sm rounded-xl p-5 hover:shadow-md transition-all flex flex-col sm:flex-row gap-6 items-center group"
         >
-          <div className="relative aspect-[4/5] overflow-hidden bg-eco-beige">
+          {/* Image */}
+          <div className="w-20 h-20 flex-shrink-0 bg-[#FDFBF7] rounded-lg p-2 border border-beige-dark/20 group-hover:border-beige-dark/40 transition-colors">
             <img 
               src={item.image} 
               alt={item.name} 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              className="w-full h-full object-contain mix-blend-multiply"
             />
-            <button className="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-eco-text/70 hover:text-red-500 hover:bg-white transition-colors duration-300">
-              <Trash2 strokeWidth={1.5} className="w-5 h-5" />
-            </button>
           </div>
           
-          <div className="p-6">
-            <div className="mb-4">
-              <span className="text-xs font-medium tracking-widest text-eco-gold uppercase mb-2 block">
-                {item.ingredient}
-              </span>
-              <h3 className="font-heading text-2xl text-eco-text">{item.name}</h3>
-              <p className="text-lg text-eco-text/80 mt-1">{item.price}</p>
+          {/* Details */}
+          <div className="flex-1 flex flex-col sm:flex-row w-full items-center justify-between gap-6">
+            <div className="flex-[2] text-center sm:text-left">
+              <h3 className="text-gray-900 font-medium text-lg tracking-tight group-hover:text-[#2F4F3A] transition-colors">{item.name}</h3>
+              <p className="text-sm text-gray-500 mt-1">Ingredient: {item.ingredient}</p>
             </div>
             
-            <button className="w-full btn-outline border-eco-border flex items-center justify-center gap-2 py-3 rounded-lg hover:bg-eco-green hover:text-white hover:border-eco-green transition-all duration-300">
-              <ShoppingCart strokeWidth={1.5} className="w-4 h-4" />
-              Add to Cart
-            </button>
+            <div className="flex-1 text-center sm:text-left">
+              <span className="font-semibold text-gray-900 text-lg">{item.price}</span>
+            </div>
+
+            <div className="flex-[1.5] flex flex-col items-center sm:items-end gap-3 w-full sm:w-auto">
+              <button className="w-full sm:w-auto bg-[#ff6122] hover:bg-[#e6551b] text-white flex items-center justify-center gap-2 py-2.5 px-6 rounded-md text-sm font-medium transition-colors shadow-sm">
+                <ShoppingCart strokeWidth={2} className="w-4 h-4" />
+                Add to Cart
+              </button>
+              <button className="flex items-center gap-1.5 text-gray-400 hover:text-red-500 text-sm font-medium transition-colors mt-1">
+                <Trash2 strokeWidth={2} className="w-4 h-4" /> Remove
+              </button>
+            </div>
           </div>
         </motion.div>
       ))}

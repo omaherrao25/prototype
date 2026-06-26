@@ -7,7 +7,7 @@ const SavedAddresses = () => {
     {
       id: 1,
       label: 'Home',
-      name: 'Priya Sharma',
+      name: 'John Doe',
       addressLine1: '124 Lotus Apartment, Block C',
       addressLine2: 'Koregaon Park',
       city: 'Pune',
@@ -19,7 +19,7 @@ const SavedAddresses = () => {
     {
       id: 2,
       label: 'Work',
-      name: 'Priya Sharma',
+      name: 'John Doe',
       addressLine1: 'TechPark Tower, 5th Floor',
       addressLine2: 'Hinjewadi Phase 1',
       city: 'Pune',
