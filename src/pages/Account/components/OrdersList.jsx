@@ -11,13 +11,15 @@ import {
   Copy, 
   Download, 
   ChevronRight, 
-  Receipt 
+  Receipt,
+  Search
 } from 'lucide-react';
 
 const OrdersList = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [showAllUpdates, setShowAllUpdates] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const orders = [
     {
@@ -36,6 +38,10 @@ const OrdersList = () => {
       orderConfirmedDate: 'Aug 01, 2025'
     }
   ];
+
+  const filteredOrders = orders.filter(order =>
+    order.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const downloadInvoice = (order) => {
     const doc = new jsPDF();
@@ -362,8 +368,23 @@ const OrdersList = () => {
   }
 
   return (
-    <div className="space-y-4 max-w-5xl mx-auto">
-      {orders.map((order) => (
+    <div className="max-w-5xl mx-auto">
+      {/* Search Bar */}
+      <div className="mb-8 relative max-w-md">
+        <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+          <Search className="h-4 w-4 text-gray-400" />
+        </div>
+        <input
+          type="text"
+          placeholder="Search your orders..."
+          className="block w-full pl-11 pr-4 py-3 border border-gray-200 rounded-full bg-gray-50/50 hover:bg-gray-50 text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-300 transition-all"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+
+      <div className="space-y-4">
+        {filteredOrders.map((order) => (
         <motion.div
           key={order.id}
           className="bg-white border border-gray-200 rounded p-4 hover:shadow-md transition-all cursor-pointer flex flex-col sm:flex-row gap-6 items-center"
@@ -406,6 +427,13 @@ const OrdersList = () => {
           </div>
         </motion.div>
       ))}
+      
+      {filteredOrders.length === 0 && (
+        <div className="text-center py-12 bg-white border border-gray-200 rounded">
+          <p className="text-gray-500">No orders found matching "{searchQuery}"</p>
+        </div>
+      )}
+      </div>
     </div>
   );
 };

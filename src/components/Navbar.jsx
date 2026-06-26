@@ -64,7 +64,7 @@ export default function Navbar({ activeTheme }) {
     </>
   )
 
-  const isAccountActive = location.pathname === '/account';
+  const isAccountActive = location.pathname.startsWith('/account');
 
   const iconsGroup = (
     <>
