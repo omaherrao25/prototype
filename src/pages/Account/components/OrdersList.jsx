@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 import { 
   Star, 
   MapPin, 
@@ -15,24 +17,114 @@ import {
 const OrdersList = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const [showAllUpdates, setShowAllUpdates] = useState(false);
 
   const orders = [
     {
       id: 'OD435091509161977100',
-      name: 'Botanical Night Serum (30ml)',
-      color: 'Amber',
+      name: 'Neem & Tulsi Soap (100g)',
+      skinType: 'Oily & Acne-Prone Skin',
       seller: 'Ecoveda Naturals',
-      price: '₹1,249',
-      listingPrice: '₹1,599',
-      sellingPrice: '₹1,349',
-      totalFees: '₹50',
-      discount: '-₹150',
-      image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=300&q=80',
+      price: '₹249',
+      listingPrice: '₹299',
+      sellingPrice: '₹249',
+      totalFees: '₹20',
+      discount: '-₹50',
+      image: '/images/Neem Soap without bg.png',
       status: 'Delivered',
       deliveryDate: 'Aug 04, 2025',
       orderConfirmedDate: 'Aug 01, 2025'
     }
   ];
+
+  const downloadInvoice = (order) => {
+    const doc = new jsPDF();
+    
+    // Header
+    doc.setFontSize(16);
+    doc.text('Bill Invoice', 105, 15, { align: 'center' });
+    
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Bill of Supply Details', 14, 25);
+    
+    doc.setFont('helvetica', 'normal');
+    doc.text(`Bill of Supply Number : FAADB26001428482`, 14, 30);
+    doc.text(`Bill of Supply Date : ${order.orderConfirmedDate}`, 14, 35);
+    doc.text(`Order Number : ${order.id}`, 14, 40);
+    
+    doc.setFont('helvetica', 'bold');
+    doc.text('Nature of transaction : INTRA', 120, 25);
+    doc.setFont('helvetica', 'normal');
+    doc.text('Nature Of Supply : Service', 120, 30);
+    
+    doc.line(14, 43, 196, 43);
+    
+    // Addresses
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Billed From', 14, 50);
+    doc.text('Billed To', 105, 50);
+    
+    doc.setFont('helvetica', 'normal');
+    doc.text('Ecoveda Naturals', 14, 55);
+    doc.text('101 Eco Hub, Green Street', 14, 60);
+    doc.text('Mumbai, Maharashtra, India - 400001', 14, 65);
+    doc.text('GSTIN : 27AABCF8078M1Z1', 14, 70);
+    
+    doc.text('John Doe', 105, 55);
+    doc.text('123 Green Street, Eco Valley, Nature City', 105, 60);
+    doc.text('Maharashtra, IN-MH, India - 456789', 105, 65);
+    
+    doc.line(14, 73, 196, 73);
+    
+    doc.setFont('helvetica', 'bold');
+    doc.text('Shipped From', 14, 80);
+    doc.text('Shipped To', 105, 80);
+    
+    doc.setFont('helvetica', 'normal');
+    doc.text('Ecoveda Warehouse', 14, 85);
+    doc.text('Eco Industrial Park, Pune', 14, 90);
+    doc.text('Maharashtra, India - 411001', 14, 95);
+    
+    doc.text('John Doe', 105, 85);
+    doc.text('123 Green Street, Eco Valley, Nature City', 105, 90);
+    doc.text('Maharashtra, IN-MH, India - 456789', 105, 95);
+    
+    const formattedPrice = order.price.replace('₹', 'Rs. ');
+    const formattedSellingPrice = order.sellingPrice.replace('₹', 'Rs. ');
+
+    // Main Table
+    autoTable(doc, {
+      startY: 100,
+      head: [['Particulars', 'SAC', 'Qty', 'Gross Amount', 'Taxable Value', 'SGST', 'CGST', 'Total']],
+      body: [
+        ['GT Charges', '996511', '1.0', formattedPrice, formattedPrice, '0.00', '0.00', formattedPrice]
+      ],
+      theme: 'grid',
+      styles: { fontSize: 8 },
+      headStyles: { fillColor: [240, 240, 240], textColor: [0, 0, 0] },
+      foot: [['', '', 'Total', formattedPrice, formattedPrice, '0.00', '0.00', formattedPrice]]
+    });
+    
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'bold');
+    doc.text('DETAILS OF GOODS TRANSPORTED BY GTA SUPPLIER', 105, doc.lastAutoTable.finalY + 10, { align: 'center' });
+    
+    // Details of Goods Table
+    autoTable(doc, {
+      startY: doc.lastAutoTable.finalY + 15,
+      head: [['Description of Goods', 'Qty', 'Gross Weight of Consignment', 'Value of goods']],
+      body: [
+        [order.name, '1.0', '120.0 grams', formattedSellingPrice]
+      ],
+      theme: 'grid',
+      styles: { fontSize: 8 },
+      headStyles: { fillColor: [240, 240, 240], textColor: [0, 0, 0] }
+    });
+    
+    doc.save(`${order.id}.pdf`);
+  };
 
   if (id) {
     const order = orders.find(o => o.id === id) || orders[0];
@@ -58,7 +150,7 @@ const OrdersList = () => {
               <div className="flex justify-between pb-6 border-b border-gray-200">
                 <div>
                   <h3 className="text-lg text-gray-900">{order.name}</h3>
-                  <p className="text-sm text-gray-500 mt-2">{order.color}</p>
+                  <p className="text-sm text-gray-500 mt-2">Skin Type: {order.skinType}</p>
                   <p className="text-sm text-gray-500 mt-2">Seller: {order.seller}</p>
                   <div className="mt-3 flex items-center gap-3">
                     <span className="text-xl font-medium text-gray-900">{order.price}</span>
@@ -72,26 +164,121 @@ const OrdersList = () => {
 
               {/* Tracking */}
               <div className="py-8 border-b border-gray-200 relative px-2">
-                <div className="absolute left-[13px] top-10 bottom-10 w-0.5 bg-green-500"></div>
-                
-                <div className="flex items-center gap-6 mb-12 relative z-10">
-                  <div className="w-3 h-3 rounded-full bg-green-500 ring-4 ring-white"></div>
-                  <div>
-                    <p className="font-medium text-gray-900">Order Confirmed, {order.orderConfirmedDate}</p>
-                  </div>
+                <div className="absolute left-[13px] top-10 bottom-10 w-0.5 bg-gray-200 overflow-hidden">
+                  <motion.div 
+                    className="w-full bg-green-500 origin-top"
+                    initial={{ scaleY: 0 }}
+                    animate={{ scaleY: 1 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    style={{ height: '100%' }}
+                  />
                 </div>
                 
-                <div className="flex items-center gap-6 relative z-10">
-                  <div className="w-3 h-3 rounded-full bg-green-500 ring-4 ring-white"></div>
+                <div className="flex items-start gap-6 mb-8 relative z-10">
+                  <div className="w-3 h-3 rounded-full bg-green-500 ring-4 ring-white mt-1.5 flex-shrink-0"></div>
                   <div>
-                    <p className="font-medium text-gray-900">Delivered, {order.deliveryDate}</p>
+                    <p className="font-medium text-gray-900">Order Confirmed <span className="text-gray-400 font-normal">Fri, 1st Aug '25</span></p>
+                    <AnimatePresence>
+                      {showAllUpdates && (
+                        <motion.div 
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="mt-4 space-y-4 text-sm pb-2">
+                            <div>
+                              <p className="text-gray-800">Your Order has been placed.</p>
+                              <p className="text-gray-400">Fri, 1st Aug '25 - 8:23pm</p>
+                            </div>
+                            <div>
+                              <p className="text-gray-800">Seller has processed your order.</p>
+                              <p className="text-gray-400">Fri, 1st Aug '25 - 9:19pm</p>
+                            </div>
+                            <div>
+                              <p className="text-gray-800">Your item has been picked up by delivery partner.</p>
+                              <p className="text-gray-400">Fri, 1st Aug '25 - 9:19pm</p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </div>
+
+                <AnimatePresence>
+                  {showAllUpdates && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="flex items-start gap-6 mb-8 relative z-10">
+                        <div className="w-3 h-3 rounded-full bg-green-500 ring-4 ring-white mt-1.5 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-medium text-gray-900">Shipped <span className="text-gray-400 font-normal">Fri, 1st Aug '25</span></p>
+                          <div className="mt-4 space-y-4 text-sm pb-2">
+                            <div>
+                              <p className="text-gray-900 font-medium">Ekart Logistics - FMPP3227469154</p>
+                              <p className="text-gray-800">Your item has been shipped.</p>
+                              <p className="text-gray-400">Fri, 1st Aug '25 - 9:56pm</p>
+                            </div>
+                            <div>
+                              <p className="text-gray-800">Your item has been received in the hub nearest to you</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-6 mb-8 relative z-10">
+                        <div className="w-3 h-3 rounded-full bg-green-500 ring-4 ring-white mt-1.5 flex-shrink-0"></div>
+                        <div>
+                          <p className="font-medium text-gray-900">Out For Delivery <span className="text-gray-400 font-normal">Mon, 4th Aug '25</span></p>
+                          <div className="mt-4 space-y-4 text-sm pb-2">
+                            <div>
+                              <p className="text-gray-800">Your item is out for delivery</p>
+                              <p className="text-gray-400">Mon, 4th Aug '25 - 9:52am</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+                
+                <div className="flex items-start gap-6 relative z-10">
+                  <div className="w-3 h-3 rounded-full bg-green-500 ring-4 ring-white mt-1.5 flex-shrink-0"></div>
+                  <div>
+                    <p className="font-medium text-gray-900">Delivered <span className="text-gray-400 font-normal">Mon, 4th Aug '25</span></p>
+                    <AnimatePresence>
+                      {showAllUpdates && (
+                        <motion.div 
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="mt-4 space-y-4 text-sm pb-2">
+                            <div>
+                              <p className="text-gray-800">Your item has been delivered</p>
+                              <p className="text-gray-400">Mon, 4th Aug '25 - 2:21pm</p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
 
               <div className="pt-4">
-                <button className="text-blue-600 font-medium text-sm flex items-center gap-1 hover:text-blue-800">
-                  See All Updates <ChevronRight className="w-4 h-4" />
+                <button 
+                  onClick={() => setShowAllUpdates(!showAllUpdates)}
+                  className="text-blue-600 font-medium text-sm flex items-center gap-1 hover:text-blue-800"
+                >
+                  {showAllUpdates ? 'Hide Updates' : 'See All Updates'} 
+                  <ChevronRight className={`w-4 h-4 transition-transform ${showAllUpdates ? '-rotate-90' : 'rotate-90'}`} />
                 </button>
               </div>
             </div>
@@ -161,7 +348,10 @@ const OrdersList = () => {
                 </span>
               </div>
 
-              <button className="w-full py-2.5 border border-gray-300 rounded flex items-center justify-center gap-2 text-gray-700 font-medium hover:bg-gray-50 transition-colors">
+              <button 
+                onClick={() => downloadInvoice(order)}
+                className="w-full py-2.5 border border-gray-300 rounded flex items-center justify-center gap-2 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+              >
                 <Download className="w-4 h-4" /> Download Invoice
               </button>
             </div>
@@ -176,39 +366,39 @@ const OrdersList = () => {
       {orders.map((order) => (
         <motion.div
           key={order.id}
-          className="bg-white border border-gray-200 rounded p-6 hover:shadow-md transition-all cursor-pointer flex flex-col sm:flex-row gap-8 items-center sm:items-start"
+          className="bg-white border border-gray-200 rounded p-4 hover:shadow-md transition-all cursor-pointer flex flex-col sm:flex-row gap-6 items-center"
           onClick={() => navigate(`/account/order/${order.id}`)}
           whileHover={{ y: -2 }}
         >
           {/* Image */}
-          <div className="w-24 h-32 flex-shrink-0">
+          <div className="w-16 h-16 flex-shrink-0">
             <img src={order.image} alt={order.name} className="w-full h-full object-contain" />
           </div>
 
           {/* Details */}
-          <div className="flex-1 flex flex-col sm:flex-row w-full justify-between gap-6">
-            <div className="flex-[1.5]">
-              <h3 className="text-gray-900 hover:text-blue-600 transition-colors">{order.name}</h3>
-              <p className="text-sm text-gray-500 mt-2">Color: {order.color}</p>
+          <div className="flex-1 flex flex-col sm:flex-row w-full items-center justify-between gap-6">
+            <div className="flex-[2] text-center sm:text-left">
+              <h3 className="text-gray-900 hover:text-blue-600 transition-colors text-lg">{order.name}</h3>
+              <p className="text-sm text-gray-500 mt-1">Skin Type: {order.skinType}</p>
             </div>
             
-            <div className="flex-1">
+            <div className="flex-1 text-center sm:text-left">
               <span className="font-medium text-gray-900">{order.price}</span>
             </div>
 
-            <div className="flex-[1.5] space-y-2">
-              <div className="flex items-center gap-2">
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
-                <span className="font-medium text-gray-900">Delivered on {order.deliveryDate}</span>
+            <div className="flex-[1.5] space-y-1 text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                <span className="font-medium text-gray-900 text-sm">Delivered on {order.deliveryDate}</span>
               </div>
-              <p className="text-xs text-gray-600">Your item has been delivered</p>
+              <p className="text-xs text-gray-500">Your item has been delivered</p>
               
               <button 
                 onClick={(e) => {
                   e.stopPropagation();
-                  // Handle rate & review
+                  navigate(`/account/order/${order.id}/write-review`);
                 }}
-                className="flex items-center gap-1 text-blue-600 font-medium text-sm mt-4 hover:text-blue-800 transition-colors"
+                className="flex items-center justify-center sm:justify-start gap-1 text-blue-600 font-medium text-sm mt-2 hover:text-blue-800 transition-colors"
               >
                 <Star className="w-4 h-4 fill-current" /> Rate & Review Product
               </button>

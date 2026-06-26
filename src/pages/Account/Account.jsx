@@ -7,6 +7,7 @@ import OrdersList from './components/OrdersList';
 import Wishlist from './components/Wishlist';
 import SavedAddresses from './components/SavedAddresses';
 import AccountSettings from './components/AccountSettings';
+import WriteReview from './components/WriteReview';
 
 const Account = () => {
   const location = useLocation();
@@ -55,6 +56,7 @@ const Account = () => {
                   <Route path="/" element={<MyAccountOverview />} />
                   <Route path="/order" element={<OrdersList />} />
                   <Route path="/order/:id" element={<OrdersList />} />
+                  <Route path="/order/:id/write-review" element={<WriteReview />} />
                   <Route path="/wishlist" element={<Wishlist />} />
                   <Route path="/addresses" element={<SavedAddresses />} />
                   <Route path="/settings" element={<AccountSettings />} />
