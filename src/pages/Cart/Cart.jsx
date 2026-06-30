@@ -55,13 +55,13 @@ export default function Cart() {
   const shipping = subtotal > 1500 ? 0 : 49.00;
   const tax = subtotal * 0.18;
   const total = subtotal > 0 ? subtotal + shipping + tax : 0;
-  
+
   const freeShippingThreshold = 1500;
   const remainingForFreeShipping = Math.max(0, freeShippingThreshold - subtotal);
   const progressPercent = Math.min(100, (subtotal / freeShippingThreshold) * 100);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -69,14 +69,14 @@ export default function Cart() {
       className="cart-page"
     >
       <div className="cart-container">
-        
+
         <div className="cart-breadcrumb">
           <Link to="/">Home</Link>
           <span>/</span>
           <span style={{ color: '#1E1E1E' }}>Cart</span>
         </div>
 
-        <motion.h1 
+        <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -84,13 +84,13 @@ export default function Cart() {
         >
           Your Cart
         </motion.h1>
-        
+
 
 
         <div className="cart-layout">
           {/* Left Side: Cart Items & Shipping Progress */}
           <div className="cart-items-section">
-            
+
 
 
             {cart.length > 0 ? (
@@ -104,7 +104,7 @@ export default function Cart() {
 
                 <AnimatePresence>
                   {cart.map((item, index) => (
-                    <motion.div 
+                    <motion.div
                       key={item.id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -140,9 +140,9 @@ export default function Cart() {
                             <Plus size={16} strokeWidth={2} />
                           </button>
                         </div>
-                        
+
                         {/* Mobile specific total */}
-                        <div className="item-total" style={{ display: 'none' /* Handled by css normally */}}>
+                        <div className="item-total" style={{ display: 'none' /* Handled by css normally */ }}>
                           ₹{(item.price * item.quantity).toFixed(2)}
                         </div>
                       </div>
@@ -158,7 +158,7 @@ export default function Cart() {
                 </AnimatePresence>
               </>
             ) : (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="empty-cart"
@@ -171,7 +171,7 @@ export default function Cart() {
               </motion.div>
             )}
 
-            <motion.div 
+            <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -182,7 +182,7 @@ export default function Cart() {
               <div className="shipping-details">
                 {remainingForFreeShipping > 0 ? (
                   <div className="shipping-text">
-                    Your order qualifies for free shipping! 
+                    Your order qualifies for free shipping!
                     <span className="shipping-amount">₹{subtotal.toFixed(0)} / ₹{freeShippingThreshold}</span>
                   </div>
                 ) : (
@@ -191,8 +191,8 @@ export default function Cart() {
                   </div>
                 )}
                 <div className="shipping-bar-container">
-                  <div 
-                    className="shipping-bar-fill" 
+                  <div
+                    className="shipping-bar-fill"
                     style={{ width: `${progressPercent}%` }}
                   />
                 </div>
@@ -212,7 +212,7 @@ export default function Cart() {
 
           {/* Right Side: Order Summary */}
           <div className="cart-summary-section">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -220,12 +220,12 @@ export default function Cart() {
             >
               <div className="order-summary">
                 <h2 className="summary-title">Order Summary</h2>
-                
+
                 <div className="summary-row">
                   <span>Subtotal</span>
                   <span className="summary-row-bold">₹{subtotal.toFixed(2)}</span>
                 </div>
-                
+
                 <div className="summary-row">
                   <span>Shipping</span>
                   <span className="summary-row-bold">{shipping === 0 ? 'Free' : `₹${shipping.toFixed(2)}`}</span>
@@ -235,7 +235,7 @@ export default function Cart() {
                     <Truck size={12} /> Standard Delivery (3-5 days)
                   </div>
                 )}
-                
+
                 <div className="summary-row">
                   <span>Tax (GST 18%)</span>
                   <span className="summary-row-bold">₹{tax.toFixed(2)}</span>
@@ -256,10 +256,7 @@ export default function Cart() {
                   </div>
                 </div>
 
-                <div className="coupon-input-wrapper">
-                  <input type="text" placeholder="Enter coupon code" className="coupon-input" />
-                  <button className="coupon-btn">Apply</button>
-                </div>
+
 
                 <button className="checkout-btn" disabled={cart.length === 0} style={{ opacity: cart.length === 0 ? 0.5 : 1 }}>
                   Proceed to Checkout
@@ -269,19 +266,19 @@ export default function Cart() {
                 <div className="trust-indicators">
                   <div className="trust-item">
                     <ShieldCheck className="trust-icon" size={24} strokeWidth={1.5} />
-                    <span className="trust-text">Secure<br/>Payments</span>
+                    <span className="trust-text">Secure<br />Payments</span>
                   </div>
                   <div className="trust-item">
                     <Leaf className="trust-icon" size={24} strokeWidth={1.5} />
-                    <span className="trust-text">Natural<br/>& Safe</span>
+                    <span className="trust-text">Natural<br />& Safe</span>
                   </div>
                   <div className="trust-item">
                     <HeartHandshake className="trust-icon" size={24} strokeWidth={1.5} />
-                    <span className="trust-text">Cruelty<br/>Free</span>
+                    <span className="trust-text">Cruelty<br />Free</span>
                   </div>
                   <div className="trust-item">
                     <RotateCcw className="trust-icon" size={24} strokeWidth={1.5} />
-                    <span className="trust-text">Easy<br/>Returns</span>
+                    <span className="trust-text">Easy<br />Returns</span>
                   </div>
                 </div>
               </div>
