@@ -7,30 +7,30 @@ import './Cart.css';
 const initialCart = [
   {
     id: 1,
-    name: 'Rose Petals Divine',
-    category: 'Handmade Soap',
-    price: 349.00,
+    name: 'Rose Soap',
+    category: 'Facial Soaps',
+    price: 279.00,
     quantity: 1,
     image: '/images/Rose Soap without bg.png',
-    tag: 'For Glowing Skin'
+    tag: 'Hydration & Brightening'
   },
   {
     id: 2,
-    name: 'Neem & Tulsi Detox',
-    category: 'Handmade Soap',
-    price: 329.00,
+    name: 'Neem & Tulsi Soap',
+    category: 'Body Soaps',
+    price: 249.00,
     quantity: 1,
     image: '/images/Neem Soap without bg.png',
-    tag: 'For Clear & Healthy Skin'
+    tag: 'Acne & Detox'
   },
   {
     id: 3,
-    name: 'Sandalwood Serenity',
-    category: 'Handmade Soap',
-    price: 359.00,
+    name: 'Turmeric Glow Soap',
+    category: 'Facial Soaps',
+    price: 249.00,
     quantity: 1,
-    image: '/images/Turmeric soap without bg.png', // Using Turmeric as placeholder
-    tag: 'Calming & Soothing'
+    image: '/images/Turmeric soap without bg.png',
+    tag: 'Brightening'
   }
 ];
 
@@ -85,50 +85,13 @@ export default function Cart() {
           Your Cart
         </motion.h1>
         
-        <motion.p 
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="cart-header-subtitle"
-        >
-          Mindful choices for your mindful self.
-        </motion.p>
+
 
         <div className="cart-layout">
           {/* Left Side: Cart Items & Shipping Progress */}
           <div className="cart-items-section">
             
-            <motion.div 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="cart-shipping-progress"
-            >
-              <Leaf className="shipping-icon" size={24} strokeWidth={1.5} />
-              <div className="shipping-details">
-                {remainingForFreeShipping > 0 ? (
-                  <div className="shipping-text">
-                    Your order qualifies for free shipping! 
-                    <span className="shipping-amount">₹{subtotal.toFixed(0)} / ₹{freeShippingThreshold}</span>
-                  </div>
-                ) : (
-                  <div className="shipping-text">
-                    Congratulations! You get free shipping.
-                  </div>
-                )}
-                <div className="shipping-bar-container">
-                  <div 
-                    className="shipping-bar-fill" 
-                    style={{ width: `${progressPercent}%` }}
-                  />
-                </div>
-                {remainingForFreeShipping > 0 && (
-                  <div style={{ fontSize: '13px', color: 'rgba(30,30,30,0.6)', marginTop: '8px' }}>
-                    Add ₹{remainingForFreeShipping.toFixed(2)} more to get free shipping.
-                  </div>
-                )}
-              </div>
-            </motion.div>
+
 
             {cart.length > 0 ? (
               <>
@@ -207,6 +170,39 @@ export default function Cart() {
                 </Link>
               </motion.div>
             )}
+
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="cart-shipping-progress"
+              style={{ marginTop: '40px', marginBottom: '0px' }}
+            >
+              <Leaf className="shipping-icon" size={24} strokeWidth={1.5} />
+              <div className="shipping-details">
+                {remainingForFreeShipping > 0 ? (
+                  <div className="shipping-text">
+                    Your order qualifies for free shipping! 
+                    <span className="shipping-amount">₹{subtotal.toFixed(0)} / ₹{freeShippingThreshold}</span>
+                  </div>
+                ) : (
+                  <div className="shipping-text">
+                    Congratulations! You get free shipping.
+                  </div>
+                )}
+                <div className="shipping-bar-container">
+                  <div 
+                    className="shipping-bar-fill" 
+                    style={{ width: `${progressPercent}%` }}
+                  />
+                </div>
+                {remainingForFreeShipping > 0 && (
+                  <div style={{ fontSize: '13px', color: 'rgba(30,30,30,0.6)', marginTop: '8px' }}>
+                    Add ₹{remainingForFreeShipping.toFixed(2)} more to get free shipping.
+                  </div>
+                )}
+              </div>
+            </motion.div>
 
             <Link to="/shop" className="continue-shopping">
               <ArrowLeft size={16} strokeWidth={2} />
