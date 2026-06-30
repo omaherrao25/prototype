@@ -8,6 +8,7 @@ import About from './pages/About/About'
 import Contact from './pages/Contact/Contact'
 import Account from './pages/Account/Account'
 import Footer from './components/Footer'
+import Cart from './pages/Cart/Cart'
 import { soaps } from './data/soaps'
 
 import ScrollToTop from './components/ScrollToTop'
@@ -25,8 +26,9 @@ export default function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/product/:id" element={<Product />} />
-          <Route path="/account" element={<Account />} />
+          <Route path="/account/*" element={<Account />} />
         </Routes>
         <Footer />
       </div>
