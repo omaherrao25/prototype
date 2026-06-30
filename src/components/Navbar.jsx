@@ -53,7 +53,7 @@ export default function Navbar({ activeTheme }) {
           <Link
             key={link.label}
             to={link.path}
-            className={`px-5 py-2 rounded-full text-[13.5px] font-body font-medium transition-colors duration-500 ${!activeHighlight ? 'text-charcoal/70 hover:text-charcoal' : ''
+            className={`px-5 py-2 rounded-full text-[13.5px] font-body font-medium transition-colors duration-300 ${!activeHighlight ? 'text-charcoal/70 hover:text-charcoal hover:bg-[#EFE6DF]' : ''
               }`}
             style={activeHighlight ? { backgroundColor: highlightedBg, color: highlightedText } : {}}
           >
@@ -65,6 +65,7 @@ export default function Navbar({ activeTheme }) {
   )
 
   const isAccountActive = location.pathname.startsWith('/account');
+  const isCartActive = location.pathname === '/cart';
 
   const iconsGroup = (
     <>
@@ -75,7 +76,11 @@ export default function Navbar({ activeTheme }) {
       >
         <User size={19} strokeWidth={1.5} />
       </Link>
-      <Link to="/cart" className="relative p-2 rounded-full text-charcoal/70 hover:text-charcoal hover:bg-[#EFE6DF] transition-colors">
+      <Link 
+        to="/cart" 
+        className={`relative p-2 rounded-full transition-colors block text-charcoal/70 hover:text-charcoal ${!isCartActive ? 'hover:bg-[#EFE6DF]' : ''}`}
+        style={isCartActive ? { backgroundColor: '#EFE6DF', color: highlightedText } : {}}
+      >
         <ShoppingBag size={19} strokeWidth={1.5} />
         {cartCount > 0 && (
           <span className="absolute top-1 right-0 w-[15px] h-[15px] bg-[#2F4F3A] text-white text-[9px] font-bold rounded-full flex items-center justify-center leading-none shadow-sm">
