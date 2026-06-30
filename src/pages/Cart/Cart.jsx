@@ -293,54 +293,6 @@ export default function Cart() {
           </div>
         </div>
 
-        {/* Bottom Trust Bar */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7 }}
-          className="trust-bar"
-        >
-          <div className="trust-bar-item">
-            <div className="trust-bar-icon">
-              <Leaf size={24} strokeWidth={1.5} />
-            </div>
-            <div className="trust-bar-text">
-              <span className="trust-bar-title">Free Shipping</span>
-              <span className="trust-bar-desc">On orders above ₹1500</span>
-            </div>
-          </div>
-          
-          <div className="trust-bar-item">
-            <div className="trust-bar-icon">
-              <ShieldCheck size={24} strokeWidth={1.5} />
-            </div>
-            <div className="trust-bar-text">
-              <span className="trust-bar-title">Secure Payments</span>
-              <span className="trust-bar-desc">100% protected checkout</span>
-            </div>
-          </div>
-          
-          <div className="trust-bar-item">
-            <div className="trust-bar-icon">
-              <HeartHandshake size={24} strokeWidth={1.5} />
-            </div>
-            <div className="trust-bar-text">
-              <span className="trust-bar-title">Natural & Safe</span>
-              <span className="trust-bar-desc">Handmade with care</span>
-            </div>
-          </div>
-          
-          <div className="trust-bar-item">
-            <div className="trust-bar-icon">
-              <Package size={24} strokeWidth={1.5} />
-            </div>
-            <div className="trust-bar-text">
-              <span className="trust-bar-title">Easy Returns</span>
-              <span className="trust-bar-desc">Hassle-free returns</span>
-            </div>
-          </div>
-        </motion.div>
 
       </div>
     </motion.div>
