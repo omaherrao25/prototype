@@ -75,14 +75,14 @@ export default function Navbar({ activeTheme }) {
       >
         <User size={19} strokeWidth={1.5} />
       </Link>
-      <button className="relative p-2 rounded-full text-charcoal/70 hover:text-charcoal hover:bg-[#EFE6DF] transition-colors">
+      <Link to="/cart" className="relative p-2 rounded-full text-charcoal/70 hover:text-charcoal hover:bg-[#EFE6DF] transition-colors">
         <ShoppingBag size={19} strokeWidth={1.5} />
         {cartCount > 0 && (
           <span className="absolute top-1 right-0 w-[15px] h-[15px] bg-[#2F4F3A] text-white text-[9px] font-bold rounded-full flex items-center justify-center leading-none shadow-sm">
             {cartCount}
           </span>
         )}
-      </button>
+      </Link>
     </>
   )
 
