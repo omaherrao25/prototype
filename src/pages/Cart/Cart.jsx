@@ -176,7 +176,7 @@ export default function Cart() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="cart-shipping-progress"
-              style={{ marginTop: '40px', marginBottom: '0px' }}
+              style={{ marginTop: '32px', marginBottom: '0px' }}
             >
               <Leaf className="shipping-icon" size={24} strokeWidth={1.5} />
               <div className="shipping-details">
