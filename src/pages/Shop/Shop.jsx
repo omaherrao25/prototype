@@ -114,9 +114,9 @@ export default function Shop() {
   }, [activeFilters, sortOption, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-white pt-28 lg:pt-32 pb-20">
+    <div className="min-h-screen bg-white pt-24 lg:pt-28 pb-16">
       {/* Header Area */}
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-12 lg:mb-14 text-center">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 mb-8 lg:mb-10 text-center">
         <motion.p 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -135,7 +135,7 @@ export default function Shop() {
         </motion.h1>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row gap-10 lg:gap-14 items-start">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
         
         {/* Sticky Sidebar */}
         <div className="w-full lg:w-[240px] flex-shrink-0 lg:sticky lg:top-32">
@@ -157,13 +157,13 @@ export default function Shop() {
 
           {/* Product Grid */}
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-x-3 gap-y-8 sm:gap-x-5 sm:gap-y-10 lg:gap-y-12">
+            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-x-3 gap-y-6 sm:gap-x-5 sm:gap-y-8 lg:gap-y-10">
               {filteredProducts.map((product, idx) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
           ) : (
-            <div className="py-32 flex flex-col items-center justify-center text-center">
+            <div className="py-20 flex flex-col items-center justify-center text-center">
               <p className="font-heading text-2xl text-charcoal/40 mb-4">No products found</p>
               <p className="font-body text-[14px] text-charcoal/60 max-w-md">Try adjusting your filters or clearing them to see more products.</p>
               <button 
@@ -177,7 +177,7 @@ export default function Shop() {
           
           {/* Load More (Mock) */}
           {filteredProducts.length > 0 && (
-            <div className="mt-16 lg:mt-20 flex flex-col items-center">
+            <div className="mt-12 lg:mt-16 flex flex-col items-center">
               <p className="font-body text-[12px] text-charcoal/50 mb-6">Showing {filteredProducts.length} of {products.length} items</p>
               <button className="px-10 py-4 bg-[#2F4F3A] text-white rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)] font-body text-[11px] font-bold uppercase tracking-[0.15em] hover:scale-105 transition-all duration-300">
                 Load More
