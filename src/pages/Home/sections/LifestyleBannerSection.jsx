@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 export default function LifestyleBannerSection() {
   const ref = useRef(null)
