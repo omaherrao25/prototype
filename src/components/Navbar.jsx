@@ -206,7 +206,7 @@ export default function Navbar({ activeTheme }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 bg-[#FDFBF7]/90 backdrop-blur-2xl xl:hidden flex flex-col pt-[100px] px-8 pb-safe-b"
+            className="fixed inset-0 z-40 bg-[#FDFBF7]/90 backdrop-blur-2xl xl:hidden flex flex-col pt-[100px] px-8 pb-[env(safe-area-inset-bottom,0px)] pointer-events-auto"
           >
             <div className="flex-1 flex flex-col justify-center gap-8 mb-10">
               {navLinks.map((link, i) => (
