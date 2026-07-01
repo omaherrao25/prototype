@@ -20,14 +20,14 @@ const Account = () => {
   else if (location.pathname.includes('/account/settings')) activeTabName = 'Settings';
 
   return (
-    <div className="min-h-screen bg-white pt-24 pb-16 font-body">
+    <div className="min-h-screen bg-white pt-24 lg:pt-28 pb-16 font-body">
       <div className="container-pad max-w-[1400px]">
         {/* Header - Mobile Only */}
-        <div className="lg:hidden mb-8">
+        <div className="lg:hidden mb-6">
           <h1 className="font-heading text-3xl text-eco-text">My Account</h1>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Sidebar */}
           <div className="lg:w-64 flex-shrink-0">
             <Sidebar />
@@ -36,7 +36,7 @@ const Account = () => {
           {/* Main Content Area */}
           <div className="flex-1 min-w-0">
             {/* Header - Desktop Only */}
-            <div className="hidden lg:block mb-10">
+            <div className="hidden lg:block mb-8">
               <h1 className="font-heading text-4xl text-eco-text capitalize tracking-wide">
                 {activeTabName}
               </h1>

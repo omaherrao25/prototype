@@ -138,22 +138,22 @@ const OrdersList = () => {
       <motion.div 
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
-        className="space-y-6 max-w-6xl mx-auto"
+        className="space-y-4 max-w-6xl mx-auto"
       >
         {/* Breadcrumbs */}
-        <div className="text-sm text-gray-500 flex items-center gap-2 mb-6">
+        <div className="text-sm text-gray-500 flex items-center gap-2 mb-4">
           <button onClick={() => navigate('/account/order')} className="hover:text-eco-green transition-colors">My Orders</button>
           <ChevronRight className="w-3 h-3" />
           <span className="text-gray-900">{order.id}</span>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-4">
           {/* Left Column */}
           <div className="flex-1 space-y-4">
             {/* Product & Tracking Card */}
-            <div className="bg-white border border-gray-200 rounded p-6">
+            <div className="bg-white border border-gray-200 rounded p-5">
               {/* Product Info */}
-              <div className="flex justify-between pb-6 border-b border-gray-200">
+              <div className="flex justify-between pb-4 border-b border-gray-200">
                 <div>
                   <h3 className="text-lg text-gray-900">{order.name}</h3>
                   <p className="text-sm text-gray-500 mt-2">Skin Type: {order.skinType}</p>
@@ -169,7 +169,7 @@ const OrdersList = () => {
               </div>
 
               {/* Tracking */}
-              <div className="py-8 border-b border-gray-200 relative px-2">
+              <div className="py-6 border-b border-gray-200 relative px-2">
                 <div className="absolute left-[13px] top-10 bottom-10 w-0.5 bg-gray-200 overflow-hidden">
                   <motion.div 
                     className="w-full bg-green-500 origin-top"

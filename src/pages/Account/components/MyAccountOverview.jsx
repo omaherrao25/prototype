@@ -21,8 +21,8 @@ const MyAccountOverview = () => {
   return (
     <div className="pb-10 max-w-3xl">
       {/* Personal Information */}
-      <div className="mb-12">
-        <div className="flex items-center gap-6 mb-6">
+      <div className="mb-8">
+        <div className="flex items-center gap-4 mb-4">
           <h2 className="text-xl font-semibold text-gray-900 tracking-wide">Personal Information</h2>
           <button 
             onClick={() => setEditPersonal(!editPersonal)}
@@ -32,7 +32,7 @@ const MyAccountOverview = () => {
           </button>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           <input
             type="text"
             name="firstName"
@@ -85,8 +85,8 @@ const MyAccountOverview = () => {
       </div>
 
       {/* Email Address */}
-      <div className="mb-12">
-        <div className="flex items-center gap-6 mb-6">
+      <div className="mb-8">
+        <div className="flex items-center gap-4 mb-4">
           <h2 className="text-xl font-semibold text-gray-900 tracking-wide">Email Address</h2>
           <button 
             onClick={() => setEditEmail(!editEmail)}
@@ -109,8 +109,8 @@ const MyAccountOverview = () => {
       </div>
 
       {/* Mobile Number */}
-      <div className="mb-12">
-        <div className="flex items-center gap-6 mb-6">
+      <div className="mb-8">
+        <div className="flex items-center gap-4 mb-4">
           <h2 className="text-xl font-semibold text-gray-900 tracking-wide">Mobile Number</h2>
           <button 
             onClick={() => setEditMobile(!editMobile)}
