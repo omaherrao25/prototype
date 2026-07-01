@@ -56,7 +56,7 @@ export default function Cart() {
   const tax = subtotal * 0.18;
   const total = subtotal > 0 ? subtotal + shipping + tax : 0;
 
-  const freeShippingThreshold = 1500;
+  const freeShippingThreshold = 1499;
   const remainingForFreeShipping = Math.max(0, freeShippingThreshold - subtotal);
   const progressPercent = Math.min(100, (subtotal / freeShippingThreshold) * 100);
 

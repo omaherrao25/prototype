@@ -23,7 +23,7 @@ const SocialSVGs = {
 }
 
 const serviceFeatures = [
-  { Icon: Package, label: 'Free Shipping', sub: 'On orders above ₹999' },
+  { Icon: Package, label: 'Free Shipping', sub: 'On orders above ₹1499' },
   { Icon: CreditCard, label: 'Secure Payments', sub: 'UPI, Cards, Net Banking & more' },
   { Icon: RefreshCw, label: 'Easy Returns', sub: '7-day return policy' },
   { Icon: Headphones, label: '24/7 Support', sub: "We're always here to help" },
@@ -135,7 +135,7 @@ export default function Footer() {
           {/* Nav columns (Accordion on mobile) */}
           {footerLinks.map(({ heading, links }) => (
             <div key={heading} className="col-span-1 border-b border-[#F6F1E9]/10 sm:border-none pb-4 sm:pb-0">
-              <button 
+              <button
                 onClick={() => toggleAccordion(heading)}
                 className="w-full flex items-center justify-between sm:hidden py-2"
               >
@@ -147,13 +147,13 @@ export default function Footer() {
                   <ChevronDown size={16} className="text-[#F6F1E9]/60" />
                 </motion.div>
               </button>
-              
+
               {/* Desktop heading */}
               <h4 className="hidden sm:block font-body font-bold text-[#F6F1E9]/90 text-[11px] tracking-[0.16em] uppercase mb-6">{heading}</h4>
-              
+
               <AnimatePresence initial={false}>
                 {(openAccordion === heading || window.innerWidth >= 640) && (
-                  <motion.ul 
+                  <motion.ul
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
