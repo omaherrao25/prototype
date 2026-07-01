@@ -8,7 +8,7 @@ export default function CommunitySection() {
   return (
     <section
       ref={ref}
-      className="relative py-24 lg:py-36 overflow-hidden"
+      className="relative py-12 md:py-16 lg:py-20 overflow-hidden"
       style={{ backgroundColor: '#FFFFFF' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

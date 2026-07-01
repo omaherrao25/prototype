@@ -33,7 +33,7 @@ export default function FAQSection() {
   return (
     <section
       ref={ref}
-      className="relative py-16 lg:py-24 overflow-hidden"
+      className="relative py-12 md:py-16 lg:py-20 overflow-hidden"
       style={{ backgroundColor: '#FFFFFF' }}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

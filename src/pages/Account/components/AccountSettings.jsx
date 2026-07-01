@@ -25,11 +25,11 @@ const AccountSettings = () => {
   const [promotions, setPromotions] = useState(false);
 
   return (
-    <div className="space-y-10 max-w-3xl">
+    <div className="space-y-8 max-w-3xl">
       {/* Notifications */}
       <section>
-        <h3 className="font-heading text-2xl text-eco-text mb-6">Notification Preferences</h3>
-        <div className="bg-offwhite border border-eco-border rounded-2xl p-6 sm:p-8 space-y-6">
+        <h3 className="font-heading text-2xl text-eco-text mb-4">Notification Preferences</h3>
+        <div className="bg-offwhite border border-eco-border rounded-2xl p-5 sm:p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="font-medium text-eco-text">Email Notifications</p>
@@ -62,9 +62,9 @@ const AccountSettings = () => {
 
       {/* Privacy Settings */}
       <section>
-        <h3 className="font-heading text-2xl text-eco-text mb-6">Privacy</h3>
-        <div className="bg-offwhite border border-eco-border rounded-2xl p-6 sm:p-8">
-          <p className="text-sm text-eco-text/80 leading-relaxed mb-6">
+        <h3 className="font-heading text-2xl text-eco-text mb-4">Privacy</h3>
+        <div className="bg-offwhite border border-eco-border rounded-2xl p-5 sm:p-6">
+          <p className="text-sm text-eco-text/80 leading-relaxed mb-4">
             We value your privacy and security. You can download a copy of your personal data or request to delete your account permanently.
           </p>
           <div className="flex flex-wrap gap-4">

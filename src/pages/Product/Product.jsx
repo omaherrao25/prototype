@@ -154,15 +154,15 @@ export default function Product() {
 
 
               {/* Quantity + Add to Cart */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-end gap-3 mb-3">
-                <div>
-                  <p className="font-body text-[10px] font-bold uppercase tracking-widest text-charcoal/40 mb-2">
+              <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 sm:gap-3 mb-6 sm:mb-3">
+                <div className="w-full sm:w-auto flex items-center justify-between sm:block border-b sm:border-none border-charcoal/10 pb-4 sm:pb-0">
+                  <p className="font-body text-[12px] sm:text-[10px] font-bold uppercase tracking-widest text-charcoal/50 sm:text-charcoal/40 mb-0 sm:mb-2">
                     Quantity
                   </p>
                   <QuantitySelector value={quantity} onChange={setQuantity} />
                 </div>
 
-                <div className="flex-1 w-full sm:w-auto">
+                <div className="flex-1 w-full sm:w-auto hidden sm:block">
                   <motion.button
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.98 }}
@@ -229,6 +229,17 @@ export default function Product() {
           </div>
         </div>
       </section>
+
+      {/* Sticky Mobile Add to Cart CTA */}
+      <div className="sm:hidden sticky-bottom-cta flex justify-center pb-safe-b bg-white/95 backdrop-blur-sm border-t border-black/5 pt-3 pb-3 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+        <motion.button
+          whileHover={{ scale: 1.01 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full flex items-center justify-center bg-forest text-white font-body text-[13px] font-bold uppercase tracking-[0.15em] rounded-full shadow-luxury min-h-touch h-[52px]"
+        >
+          Add to Cart · ₹{product.price * quantity}
+        </motion.button>
+      </div>
     </main>
   )
 }

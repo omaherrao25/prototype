@@ -7,9 +7,7 @@
     box-sizing: border-box;
   }
 
-  html {
-    /* Removed scroll-behavior: smooth to prevent conflicts with React Router page transitions */
-  }
+  /* Removed scroll-behavior: smooth to prevent conflicts with React Router page transitions */
 
   body {
     margin: 0;
@@ -19,6 +17,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
   }
 
   #root {
@@ -157,10 +157,23 @@
   }
 
   .section-pad {
-    @apply py-14 lg:py-20;
+    @apply py-12 lg:py-20;
   }
 
   .container-pad {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-5 lg:px-8;
+  }
+
+  .touch-action-pan {
+    touch-action: pan-x pan-y;
+  }
+
+  .sticky-bottom-cta {
+    @apply fixed bottom-0 left-0 w-full z-40 bg-white/90 backdrop-blur-xl border-t border-charcoal/10 pt-4 px-4 shadow-sticky-cta;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  }
+
+  .mobile-drawer {
+    @apply fixed inset-0 z-50 bg-offwhite/95 backdrop-blur-2xl flex flex-col;
   }
 }

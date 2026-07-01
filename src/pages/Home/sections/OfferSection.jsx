@@ -20,8 +20,8 @@ function useCountdown(initialHours = 23, initialMins = 59, initialSecs = 52) {
 
 const TimeUnit = ({ value, label }) => (
   <div className="flex flex-col items-center">
-    <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-full border border-[#9C795C]/20 bg-white/40 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.03)] mb-4">
-      <span className="font-body text-4xl sm:text-[2.5rem] font-light text-[#314D3D] tabular-nums leading-none">
+    <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 flex items-center justify-center rounded-full border border-[#9C795C]/20 bg-white/40 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.03)] mb-4">
+      <span className="font-body text-3xl sm:text-4xl lg:text-[2.5rem] font-light text-[#314D3D] tabular-nums leading-none">
         {String(value).padStart(2, '0')}
       </span>
     </div>
@@ -35,18 +35,18 @@ export default function OfferSection() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} className="relative py-20 lg:py-32 bg-[#F6F1E9]">
+    <section ref={ref} className="relative py-12 md:py-16 lg:py-24 bg-[#F6F1E9]">
       {/* Subtle decorative background blurs */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#EFE8DD] rounded-full blur-[100px] opacity-60 pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#EFE8DD] rounded-full blur-[100px] opacity-60 pointer-events-none transform -translate-x-1/3 translate-y-1/3"></div>
+      <div className="absolute top-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-[#EFE8DD] rounded-full blur-[100px] opacity-60 pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
+      <div className="absolute bottom-0 left-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-[#EFE8DD] rounded-full blur-[100px] opacity-60 pointer-events-none transform -translate-x-1/3 translate-y-1/3"></div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-12 text-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-5 sm:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-heading text-[2.75rem] sm:text-5xl lg:text-[4rem] font-normal tracking-wide text-[#9C795C] uppercase mb-6 leading-[1.1]">
+          <h2 className="font-heading text-[2.5rem] sm:text-5xl lg:text-[4rem] font-normal tracking-wide text-[#9C795C] uppercase mb-5 sm:mb-6 leading-[1.1]">
             Enjoy <span className="italic text-[#314D3D] normal-case">10% off</span><br />your first order
           </h2>
 
@@ -57,11 +57,11 @@ export default function OfferSection() {
           </p>
 
           {/* Countdown */}
-          <div className="flex items-start justify-center gap-6 sm:gap-10 mb-16">
+          <div className="flex items-start justify-center gap-4 sm:gap-10 mb-12 sm:mb-16">
             <TimeUnit value={h} label="Hours" />
-            <span className="font-body text-4xl sm:text-[2.5rem] font-light text-[#9C795C]/30 leading-none mt-5 sm:mt-6">:</span>
+            <span className="font-body text-3xl sm:text-4xl lg:text-[2.5rem] font-light text-[#9C795C]/30 leading-none mt-4 sm:mt-5 lg:mt-6">:</span>
             <TimeUnit value={m} label="Minutes" />
-            <span className="font-body text-4xl sm:text-[2.5rem] font-light text-[#9C795C]/30 leading-none mt-5 sm:mt-6">:</span>
+            <span className="font-body text-3xl sm:text-4xl lg:text-[2.5rem] font-light text-[#9C795C]/30 leading-none mt-4 sm:mt-5 lg:mt-6">:</span>
             <TimeUnit value={s} label="Seconds" />
           </div>
 

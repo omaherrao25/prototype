@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
   const t = testimonials[active]
 
   return (
-    <section ref={ref} className="py-16 lg:py-24 bg-white overflow-hidden">
+    <section ref={ref} className="py-12 md:py-16 lg:py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center">
 
@@ -77,8 +77,8 @@ export default function TestimonialsSection() {
             transition={{ duration: 0.6 }}
             className="order-2 lg:order-1"
           >
-            <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase mb-5">
-              Loved by real<br />people
+            <h2 className="font-heading text-4xl lg:text-5xl font-normal tracking-wide text-[#9C795C] uppercase mb-5">
+              Loved by real<br className="hidden sm:block" /> people
             </h2>
             <div className="flex items-center gap-3 mb-8">
               <Stars n={5} />
@@ -118,39 +118,41 @@ export default function TestimonialsSection() {
             </AnimatePresence>
 
             {/* Controls + avatars */}
-            <div className="flex items-center gap-4 mt-8">
-              <button 
-                onClick={prev} 
-                disabled={!canScrollLeft}
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                  !canScrollLeft 
-                    ? 'bg-transparent border border-gray-300 text-gray-300 cursor-not-allowed' 
-                    : 'bg-[#9C795C] text-white hover:bg-[#8A6A50]'
-                }`}
-              >
-                <ChevronLeft size={20} strokeWidth={1.5} />
-              </button>
-              <button 
-                onClick={next} 
-                disabled={!canScrollRight}
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                  !canScrollRight 
-                    ? 'bg-transparent border border-gray-300 text-gray-300 cursor-not-allowed' 
-                    : 'bg-[#9C795C] text-white hover:bg-[#8A6A50]'
-                }`}
-              >
-                <ChevronRight size={20} strokeWidth={1.5} />
-              </button>
+            <div className="flex flex-wrap items-center gap-4 mt-8 pt-4 sm:pt-0">
+              <div className="flex items-center gap-4">
+                <button 
+                  onClick={prev} 
+                  disabled={!canScrollLeft}
+                  className={`w-11 h-11 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    !canScrollLeft 
+                      ? 'bg-transparent border border-gray-300 text-gray-300 cursor-not-allowed' 
+                      : 'bg-[#9C795C] text-white hover:bg-[#8A6A50]'
+                  }`}
+                >
+                  <ChevronLeft size={20} strokeWidth={1.5} />
+                </button>
+                <button 
+                  onClick={next} 
+                  disabled={!canScrollRight}
+                  className={`w-11 h-11 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    !canScrollRight 
+                      ? 'bg-transparent border border-gray-300 text-gray-300 cursor-not-allowed' 
+                      : 'bg-[#9C795C] text-white hover:bg-[#8A6A50]'
+                  }`}
+                >
+                  <ChevronRight size={20} strokeWidth={1.5} />
+                </button>
+              </div>
 
-              <div className="w-px h-7 bg-beige-dark/60 mx-1" />
+              <div className="hidden sm:block w-px h-7 bg-beige-dark/60 mx-1" />
 
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-3 sm:gap-2.5 mt-2 sm:mt-0 w-full sm:w-auto">
                 {testimonials.map((tm, i) => (
                   <motion.button
                     key={i}
                     onClick={() => setActive(i)}
                     whileHover={{ scale: 1.1 }}
-                    className={`w-10 h-10 rounded-full font-body font-bold text-xs text-white transition-all duration-200 ${
+                    className={`w-11 h-11 sm:w-10 sm:h-10 rounded-full font-body font-bold text-xs text-white transition-all duration-200 ${
                       i === active ? 'ring-2 ring-sage ring-offset-2 scale-110' : 'opacity-55 hover:opacity-100'
                     }`}
                     style={{ background: tm.color }}

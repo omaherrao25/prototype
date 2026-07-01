@@ -53,7 +53,7 @@ export default function ActiveFiltersBar({ activeFilters, onRemoveFilter, onClea
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         
         {/* Left Side: Active Filter Tags / Status */}
-        <div className="flex flex-wrap items-center gap-3 flex-1 min-w-0">
+        <div className="flex flex-wrap sm:flex-nowrap sm:overflow-x-auto sm:scrollbar-hide items-center gap-3 flex-1 min-w-0 pb-2 sm:pb-0">
           {activeTags.length > 0 ? (
             <button 
               onClick={onClearAll}
@@ -74,14 +74,14 @@ export default function ActiveFiltersBar({ activeFilters, onRemoveFilter, onClea
         </div>
 
         {/* Right Side: Search & Sort */}
-        <div className="flex items-center gap-3 justify-end flex-shrink-0">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 justify-end flex-shrink-0 w-full sm:w-auto">
           
           {/* Expandable Search */}
           <motion.div 
             ref={searchContainerRef}
             initial={false}
-            animate={{ width: isSearchExpanded || searchQuery ? 220 : 36 }}
-            className={`relative flex items-center bg-white rounded-full shadow-sm overflow-hidden transition-colors ${isSearchExpanded || searchQuery ? 'border border-charcoal/10' : 'border border-transparent hover:border-charcoal/10 cursor-pointer'}`}
+            animate={{ width: window.innerWidth < 640 ? '100%' : (isSearchExpanded || searchQuery ? 220 : 36) }}
+            className={`relative flex items-center bg-white rounded-full shadow-sm overflow-hidden transition-colors ${isSearchExpanded || searchQuery || window.innerWidth < 640 ? 'border border-charcoal/10' : 'border border-transparent hover:border-charcoal/10 cursor-pointer'}`}
             onClick={handleSearchClick}
           >
             <div className="w-9 h-9 flex items-center justify-center flex-shrink-0">
@@ -93,14 +93,14 @@ export default function ActiveFiltersBar({ activeFilters, onRemoveFilter, onClea
               placeholder="Search products..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className={`w-full pr-4 py-2 bg-transparent font-body text-[12.5px] text-charcoal placeholder:text-charcoal/40 focus:outline-none transition-opacity ${isSearchExpanded || searchQuery ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              className={`w-full pr-4 py-2 bg-transparent font-body text-[12.5px] text-charcoal placeholder:text-charcoal/40 focus:outline-none transition-opacity ${isSearchExpanded || searchQuery || window.innerWidth < 640 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             />
           </motion.div>
 
           {/* Sort Dropdown */}
-          <div className="relative z-50 flex-shrink-0" ref={sortRef}>
+          <div className="relative z-40 flex-shrink-0 w-full sm:w-auto" ref={sortRef}>
             <div 
-              className="flex items-center gap-2 cursor-pointer group px-4 py-2 bg-white border border-charcoal/10 rounded-full shadow-sm hover:border-[#9C795C] transition-colors h-9"
+              className="flex items-center justify-between sm:justify-start gap-2 cursor-pointer group px-4 py-2 bg-white border border-charcoal/10 rounded-full shadow-sm hover:border-[#9C795C] transition-colors h-9"
               onClick={() => setIsSortOpen(!isSortOpen)}
             >
               <span className="font-body text-[11px] font-bold uppercase tracking-widest text-charcoal/60 group-hover:text-charcoal whitespace-nowrap">
@@ -116,7 +116,7 @@ export default function ActiveFiltersBar({ activeFilters, onRemoveFilter, onClea
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 5 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute right-0 top-full mt-2 w-48 bg-white border border-black/5 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] py-2"
+                  className="absolute right-0 sm:right-0 left-0 sm:left-auto top-full mt-2 w-full sm:w-48 bg-white border border-black/5 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] py-2"
                 >
                   {sortOptions.map((option) => (
                     <button
