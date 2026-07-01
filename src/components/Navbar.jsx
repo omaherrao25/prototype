@@ -81,15 +81,15 @@ export default function Navbar({ activeTheme }) {
 
   const iconsGroup = (
     <>
-      <Link 
-        to="/account" 
+      <Link
+        to="/account"
         className={`p-2 rounded-full transition-colors block text-charcoal/70 hover:text-charcoal ${!isAccountActive ? 'hover:bg-[#EFE6DF]' : ''}`}
         style={isAccountActive ? { backgroundColor: '#EFE6DF', color: highlightedText } : {}}
       >
         <User size={19} strokeWidth={1.5} />
       </Link>
-      <Link 
-        to="/cart" 
+      <Link
+        to="/cart"
         className={`relative p-2 rounded-full transition-colors block text-charcoal/70 hover:text-charcoal ${!isCartActive ? 'hover:bg-[#EFE6DF]' : ''}`}
         style={isCartActive ? { backgroundColor: '#EFE6DF', color: highlightedText } : {}}
       >
@@ -108,14 +108,24 @@ export default function Navbar({ activeTheme }) {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 w-full z-50 pt-6 px-4 sm:px-6 lg:px-8 pointer-events-none"
+      className="fixed top-0 w-full z-50 pt-4 sm:pt-6 pb-2 px-4 sm:px-6 lg:px-8 pointer-events-none"
     >
-      <nav className="max-w-7xl mx-auto h-[60px] pointer-events-auto relative">
+      {/* Mobile Scrolled Background */}
+      <div 
+        className={`absolute inset-x-4 sm:inset-x-6 top-4 sm:top-6 h-[60px] z-0 bg-white/60 backdrop-blur-xl border border-white/50 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.06)] transition-all duration-500 xl:hidden pointer-events-auto ${isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} 
+      />
+
+      <nav className="max-w-7xl mx-auto h-[60px] pointer-events-auto relative z-10">
+
+        {/* Mobile Logo (Mobile Only) */}
+        <div className="absolute left-4 sm:left-6 xl:hidden z-50 top-1/2 -translate-y-1/2 flex items-center">
+          <EcovedaLogo compact={isScrolled} />
+        </div>
 
         {/* Mobile toggle & Icons (Mobile Only) */}
-        <div className="absolute right-4 sm:right-6 xl:hidden z-50 mt-1 flex items-center gap-3">
-          <Link 
-            to="/cart" 
+        <div className="absolute right-4 sm:right-6 xl:hidden z-50 top-1/2 -translate-y-1/2 flex items-center gap-3">
+          <Link
+            to="/cart"
             className="relative p-2 text-charcoal/80 hover:text-charcoal bg-white/50 backdrop-blur-md rounded-full shadow-sm border border-white/40"
           >
             <ShoppingBag size={20} strokeWidth={1.6} />
@@ -217,9 +227,9 @@ export default function Navbar({ activeTheme }) {
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.4, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <Link 
-                    to={link.path} 
-                    onClick={() => setIsMobileOpen(false)} 
+                  <Link
+                    to={link.path}
+                    onClick={() => setIsMobileOpen(false)}
                     className="font-heading text-4xl sm:text-5xl text-charcoal/90 hover:text-[#9C795C] transition-colors block"
                   >
                     {link.label}
@@ -228,7 +238,7 @@ export default function Navbar({ activeTheme }) {
               ))}
             </div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
