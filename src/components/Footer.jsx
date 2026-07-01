@@ -70,8 +70,8 @@ export default function Footer() {
   return (
     <footer className="relative z-10 -mt-12 overflow-hidden bg-[#314D3D] text-[#F6F1E9] rounded-t-[30px] sm:rounded-t-[60px] lg:rounded-t-[80px]">
       {/* ── Service strip ── */}
-      <div className="border-t border-[#F6F1E9]/10 border-b border-[#F6F1E9]/10">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-8 lg:py-10">
+      <div className="border-y border-[#F6F1E9]/10">
+        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-6 lg:py-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-4 lg:divide-x divide-[#F6F1E9]/10">
             {serviceFeatures.map(({ Icon, label, sub }) => (
               <div key={label} className="flex items-center gap-4 lg:px-6 lg:first:pl-0">
@@ -89,8 +89,8 @@ export default function Footer() {
       </div>
 
       {/* ── Main footer ── */}
-      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14 lg:py-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-10">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-10 lg:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8">
 
           {/* Brand */}
           <div className="col-span-1 sm:col-span-2 lg:col-span-2 flex flex-col items-center sm:items-start text-center sm:text-left">
@@ -103,10 +103,10 @@ export default function Footer() {
                 <p className="font-body text-[9px] tracking-[0.25em] text-[#9C795C] uppercase">Handcrafted Wellness</p>
               </div>
             </div>
-            <p className="font-body text-[14.5px] text-[#F6F1E9]/60 leading-relaxed mb-8 max-w-[280px]">
+            <p className="font-body text-[14.5px] text-[#F6F1E9]/60 leading-relaxed mb-6 max-w-[280px]">
               Ecoveda brings you the best of nature. Handmade with love for healthy, glowing skin &amp; a sustainable planet.
             </p>
-            <div className="flex items-center gap-3 mb-10">
+            <div className="flex items-center gap-3 mb-8">
               {Object.entries(SocialSVGs).map(([name, Icon]) => (
                 <motion.a
                   key={name}
