@@ -40,11 +40,11 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
         className="relative overflow-hidden transition-colors duration-1000 ease-in-out rounded-bl-[80px] lg:rounded-bl-[120px]"
         style={{ backgroundColor: '#F4EDE0' }}
       >
-        <div className="relative flex items-stretch min-h-[85vh] lg:min-h-[95vh]">
+        <div className="relative flex items-stretch min-h-[75vh] sm:min-h-[80vh] lg:min-h-[95vh]">
 
           {/* Left: Copy */}
           <div
-            className="relative z-20 w-full lg:w-[50%] flex items-center justify-center lg:justify-start px-6 sm:px-10 lg:pl-20 xl:pl-36 2xl:pl-44 pt-28 pb-12 sm:pt-32 sm:pb-16 lg:py-0 transition-all duration-1000"
+            className="relative z-20 w-full lg:w-[50%] flex items-center justify-center lg:justify-start px-6 sm:px-10 lg:pl-20 xl:pl-36 2xl:pl-44 pt-[35vh] sm:pt-[38vh] pb-16 sm:pb-20 lg:pt-0 lg:pb-0 transition-all duration-1000"
           >
             <motion.div
               variants={containerVariants}
@@ -72,7 +72,7 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
               <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center w-full sm:w-auto gap-4 sm:gap-5 mb-10">
                 <Link
                   to="/shop"
-                  className="w-full sm:w-auto px-8 py-4 text-[12px] sm:text-[13px] uppercase tracking-widest font-bold transition-all duration-500 hover:scale-[1.02] sm:hover:scale-105 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)] inline-block text-center flex items-center justify-center min-h-touch"
+                  className="w-full sm:w-auto px-8 py-4 text-[12px] sm:text-[13px] uppercase tracking-widest font-bold transition-all duration-500 hover:scale-[1.02] sm:hover:scale-105 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)] text-center flex items-center justify-center min-h-touch"
                   style={{ backgroundColor: activeTheme?.text || '#2F4F3A', color: '#FFFFFF' }}
                 >
                   Shop Now
@@ -141,32 +141,31 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
             </div>
           </div>
 
-          {/* Mobile: Image background (fallback) & Dots */}
-          <div className="lg:hidden absolute inset-0 z-0 overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={activeIndex}
-                src={soaps[activeIndex].image}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 0.35, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 1.2, ease: "easeOut" }}
-                className="w-full h-full object-cover object-bottom"
-              />
-            </AnimatePresence>
-            <div
-              className="absolute inset-0 transition-colors duration-1000"
-              style={{
-                background: `linear-gradient(to bottom, #F4EDE0F2, #F4EDE0B3, #F4EDE0F9)`
-              }}
-            />
+          {/* Mobile: Image foreground & Dots */}
+          <div className="lg:hidden absolute inset-0 z-30 pointer-events-none overflow-hidden">
+            {/* Sliding Soap Image (Overlapping Heading) */}
+            <div className="absolute top-[12vh] sm:top-[14vh] inset-x-0 h-[38vh] flex items-center justify-center">
+              <AnimatePresence mode="popLayout">
+                <motion.img
+                  key={activeIndex}
+                  src={soaps[activeIndex].image}
+                  initial={{ opacity: 0, x: 200, scale: 0.9 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: -200, scale: 0.9 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="w-auto h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.25)]"
+                />
+              </AnimatePresence>
+            </div>
             
             {/* Mobile Dots Indicator */}
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10">
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10 pointer-events-auto">
               {soaps.map((_, i) => (
-                <div 
+                <button 
                   key={i} 
+                  onClick={() => setActiveIndex(i)}
                   className={`h-1.5 rounded-full transition-all duration-500 ${i === activeIndex ? 'w-6 bg-charcoal/60' : 'w-1.5 bg-charcoal/20'}`}
+                  aria-label={`Slide ${i + 1}`}
                 />
               ))}
             </div>
