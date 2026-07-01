@@ -7,9 +7,7 @@
     box-sizing: border-box;
   }
 
-  html {
-    /* Removed scroll-behavior: smooth to prevent conflicts with React Router page transitions */
-  }
+  /* Removed scroll-behavior: smooth to prevent conflicts with React Router page transitions */
 
   body {
     margin: 0;
