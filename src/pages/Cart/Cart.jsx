@@ -286,8 +286,17 @@ export default function Cart() {
           </div>
         </div>
 
-
       </div>
+
+      {/* Sticky Mobile Checkout CTA */}
+      {cart.length > 0 && (
+        <div className="lg:hidden sticky-bottom-cta flex flex-col items-center justify-center pb-safe-b bg-white/95 backdrop-blur-sm border-t border-black/5 pt-3 pb-3 px-4 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] z-50">
+          <button className="checkout-btn" disabled={cart.length === 0} style={{ margin: 0, padding: '16px' }}>
+            Checkout • ₹{total.toFixed(2)}
+            <ArrowRight size={18} strokeWidth={2} />
+          </button>
+        </div>
+      )}
     </motion.div>
   );
 }

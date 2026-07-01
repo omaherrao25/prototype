@@ -41,9 +41,9 @@ export default function ProductCard({ product }) {
           <button 
             onClick={handleAddToCart}
             aria-label="Add to cart"
-            className={`absolute bottom-3 right-3 z-10 w-10 h-10 rounded-full flex items-center justify-center shadow-sm border border-black/5 transform translate-y-2 transition-all duration-300 group-hover:translate-y-0 ${added ? 'bg-[#9C795C] text-white opacity-100 scale-105' : 'bg-white/80 backdrop-blur-md text-charcoal opacity-0 group-hover:opacity-100 hover:bg-white hover:scale-110'}`}
+            className={`absolute bottom-2 right-2 sm:bottom-3 sm:right-3 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center shadow-sm border border-black/5 transform translate-y-0 sm:translate-y-2 transition-all duration-300 sm:group-hover:translate-y-0 active:scale-95 ${added ? 'bg-[#9C795C] text-white opacity-100 scale-105' : 'bg-white/90 sm:bg-white/80 backdrop-blur-md text-charcoal opacity-100 sm:opacity-0 sm:group-hover:opacity-100 hover:bg-white sm:hover:scale-110'}`}
           >
-            {added ? <Check size={18} strokeWidth={2.5} /> : <ShoppingBag size={18} strokeWidth={1.5} />}
+            {added ? <Check size={16} strokeWidth={2.5} className="sm:w-[18px] sm:h-[18px]" /> : <ShoppingBag size={16} strokeWidth={1.5} className="sm:w-[18px] sm:h-[18px]" />}
           </button>
         </div>
 

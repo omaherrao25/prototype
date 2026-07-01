@@ -44,19 +44,19 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
 
           {/* Left: Copy */}
           <div
-            className="relative z-20 w-full lg:w-[50%] flex items-center justify-center lg:justify-start px-6 sm:px-10 lg:pl-20 xl:pl-36 2xl:pl-44 py-20 lg:py-0 transition-all duration-1000"
+            className="relative z-20 w-full lg:w-[50%] flex items-center justify-center lg:justify-start px-6 sm:px-10 lg:pl-20 xl:pl-36 2xl:pl-44 pt-28 pb-12 sm:pt-32 sm:pb-16 lg:py-0 transition-all duration-1000"
           >
             <motion.div
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="max-w-[480px] mt-12 lg:mt-20 xl:mt-28"
+              className="w-full max-w-[480px] mt-12 lg:mt-20 xl:mt-28 flex flex-col items-center text-center lg:items-start lg:text-left"
             >
 
               <motion.h1
                 variants={itemVariants}
-                className="font-heading font-bold leading-[1.05] tracking-[-0.01em] mb-6 text-charcoal"
-                style={{ fontSize: 'clamp(3rem, 5.5vw, 5.5rem)' }}
+                className="font-heading font-bold leading-[1.05] tracking-[-0.01em] mb-4 sm:mb-6 text-charcoal"
+                style={{ fontSize: 'clamp(2.8rem, 8vw, 5.5rem)' }}
               >
                 Handcrafted<br />
                 <span className="italic" style={{ color: activeTheme?.text, transition: 'color 1s ease' }}>artisan</span> soaps.
@@ -64,21 +64,21 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
 
               <motion.p
                 variants={itemVariants}
-                className="font-body text-[1rem] sm:text-[1.1rem] leading-relaxed mb-10 max-w-[380px] text-charcoal opacity-80"
+                className="font-body text-[15px] sm:text-[1.1rem] leading-relaxed mb-8 sm:mb-10 max-w-[380px] text-charcoal opacity-80"
               >
                 Experience the purest ingredients from nature. Our soaps are handcrafted to nourish, protect, and restore your skin naturally.
               </motion.p>
 
-              <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-5 mb-10">
+              <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center w-full sm:w-auto gap-4 sm:gap-5 mb-10">
                 <Link
                   to="/shop"
-                  className="px-8 py-4 text-[12px] sm:text-[13px] uppercase tracking-widest font-bold transition-all duration-500 hover:scale-105 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)] inline-block text-center"
+                  className="w-full sm:w-auto px-8 py-4 text-[12px] sm:text-[13px] uppercase tracking-widest font-bold transition-all duration-500 hover:scale-[1.02] sm:hover:scale-105 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.15)] inline-block text-center flex items-center justify-center min-h-touch"
                   style={{ backgroundColor: activeTheme?.text || '#2F4F3A', color: '#FFFFFF' }}
                 >
                   Shop Now
                 </Link>
                 <button
-                  className="px-8 py-4 text-[12px] sm:text-[13px] uppercase tracking-widest font-bold transition-all duration-300 hover:scale-105 border border-charcoal/40 hover:border-charcoal text-charcoal rounded-full"
+                  className="w-full sm:w-auto px-8 py-4 text-[12px] sm:text-[13px] uppercase tracking-widest font-bold transition-all duration-300 hover:scale-[1.02] sm:hover:scale-105 border border-charcoal/40 hover:border-charcoal text-charcoal rounded-full flex items-center justify-center min-h-touch"
                 >
                   Learn More
                 </button>
@@ -141,25 +141,35 @@ export default function HeroSection({ activeTheme, setActiveTheme }) {
             </div>
           </div>
 
-          {/* Mobile: Image background (fallback) */}
-          <div className="lg:hidden absolute inset-0 z-0">
+          {/* Mobile: Image background (fallback) & Dots */}
+          <div className="lg:hidden absolute inset-0 z-0 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.img
                 key={activeIndex}
                 src={soaps[activeIndex].image}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.3 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
-                className="w-full h-full object-cover"
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 0.35, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="w-full h-full object-cover object-bottom"
               />
             </AnimatePresence>
             <div
               className="absolute inset-0 transition-colors duration-1000"
               style={{
-                background: `linear-gradient(to bottom, #F4EDE0E6, #F4EDE0A6, #F4EDE0EB)`
+                background: `linear-gradient(to bottom, #F4EDE0F2, #F4EDE0B3, #F4EDE0F9)`
               }}
             />
+            
+            {/* Mobile Dots Indicator */}
+            <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-10">
+              {soaps.map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`h-1.5 rounded-full transition-all duration-500 ${i === activeIndex ? 'w-6 bg-charcoal/60' : 'w-1.5 bg-charcoal/20'}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </motion.section>

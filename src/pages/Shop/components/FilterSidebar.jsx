@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, Check } from 'lucide-react';
+import { Plus, Minus, Check, X } from 'lucide-react';
 import { filterOptions } from '../../../data/products';
 
 const FilterSection = ({ title, options, activeFilters, onToggleFilter, defaultOpen = false }) => {
@@ -55,9 +55,9 @@ const FilterSection = ({ title, options, activeFilters, onToggleFilter, defaultO
   );
 };
 
-export default function FilterSidebar({ activeFilters, onToggleFilter }) {
-  return (
-    <div className="w-full lg:w-[240px] flex-shrink-0">
+export default function FilterSidebar({ activeFilters, onToggleFilter, isMobileDrawer, onClose }) {
+  const content = (
+    <>
       <FilterSection 
         title="Category" 
         options={filterOptions.categories} 
@@ -88,6 +88,36 @@ export default function FilterSidebar({ activeFilters, onToggleFilter }) {
         activeFilters={activeFilters.concerns || []} 
         onToggleFilter={(val) => onToggleFilter('concerns', val)} 
       />
+    </>
+  );
+
+  if (isMobileDrawer) {
+    return (
+      <div className="flex flex-col h-full bg-white">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-black/5">
+          <span className="font-heading text-2xl text-charcoal">Filters</span>
+          <button onClick={onClose} className="p-2 -mr-2 text-charcoal/60 hover:text-charcoal rounded-full">
+            <X size={20} />
+          </button>
+        </div>
+        <div className="flex-1 overflow-y-auto px-6 py-2">
+          {content}
+        </div>
+        <div className="p-6 border-t border-black/5 pb-safe-b bg-white">
+          <button 
+            onClick={onClose}
+            className="w-full py-4 bg-[#2F4F3A] text-white rounded-full font-body text-[13px] font-bold uppercase tracking-widest min-h-touch"
+          >
+            Apply Filters
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full lg:w-[240px] flex-shrink-0 hidden lg:block">
+      {content}
     </div>
   );
 }

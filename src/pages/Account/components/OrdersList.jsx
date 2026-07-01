@@ -142,7 +142,7 @@ const OrdersList = () => {
       >
         {/* Breadcrumbs */}
         <div className="text-sm text-gray-500 flex items-center gap-2 mb-6">
-          <button onClick={() => navigate('/account/order')} className="hover:text-blue-600 transition-colors">My Orders</button>
+          <button onClick={() => navigate('/account/order')} className="hover:text-eco-green transition-colors">My Orders</button>
           <ChevronRight className="w-3 h-3" />
           <span className="text-gray-900">{order.id}</span>
         </div>
@@ -281,7 +281,7 @@ const OrdersList = () => {
               <div className="pt-4">
                 <button 
                   onClick={() => setShowAllUpdates(!showAllUpdates)}
-                  className="text-blue-600 font-medium text-sm flex items-center gap-1 hover:text-blue-800"
+                  className="text-eco-green font-medium text-sm flex items-center gap-1 hover:text-eco-green/80"
                 >
                   {showAllUpdates ? 'Hide Updates' : 'See All Updates'} 
                   <ChevronRight className={`w-4 h-4 transition-transform ${showAllUpdates ? '-rotate-90' : 'rotate-90'}`} />
@@ -293,7 +293,7 @@ const OrdersList = () => {
 
             {/* Order ID */}
             <div className="flex items-center gap-2 text-sm text-gray-600 pt-2">
-              Order #{order.id} <button className="hover:text-blue-600 transition-colors"><Copy className="w-4 h-4 text-blue-500" /></button>
+              Order #{order.id} <button className="hover:text-eco-green transition-colors"><Copy className="w-4 h-4 text-eco-green/80" /></button>
             </div>
           </div>
 
@@ -399,7 +399,7 @@ const OrdersList = () => {
           {/* Details */}
           <div className="flex-1 flex flex-col sm:flex-row w-full items-center justify-between gap-6">
             <div className="flex-[2] text-center sm:text-left">
-              <h3 className="text-gray-900 hover:text-blue-600 transition-colors text-lg">{order.name}</h3>
+              <h3 className="text-gray-900 hover:text-eco-green transition-colors text-lg">{order.name}</h3>
               <p className="text-sm text-gray-500 mt-1">Skin Type: {order.skinType}</p>
             </div>
             
@@ -419,7 +419,7 @@ const OrdersList = () => {
                   e.stopPropagation();
                   navigate(`/account/order/${order.id}/write-review`);
                 }}
-                className="flex items-center justify-center sm:justify-start gap-1 text-blue-600 font-medium text-sm mt-2 hover:text-blue-800 transition-colors"
+                className="flex items-center justify-center sm:justify-start gap-1 text-eco-green font-medium text-sm mt-2 hover:text-eco-green/80 transition-colors"
               >
                 <Star className="w-4 h-4 fill-current" /> Rate & Review Product
               </button>

@@ -5,28 +5,30 @@ export default function WhyEcovedaSection() {
   return (
     <section className="py-16 lg:py-24 bg-white flex flex-col items-center justify-center text-center px-6">
       <div className="max-w-[1000px] mx-auto w-full">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7 }}
-          className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] mb-5 uppercase"
-        >
-          Why Ecoveda?
-        </motion.h2>
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7 }}
+            className="font-heading text-3xl sm:text-5xl font-normal tracking-wide text-[#9C795C] mb-5 uppercase"
+          >
+            Why Ecoveda?
+          </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-body text-[14.5px] text-charcoal/60 leading-relaxed mb-20 max-w-2xl mx-auto"
-        >
-          We believe in the power of nature to heal and protect. Our products are formulated with pure,
-          botanical ingredients to give your skin the delicate care it deserves without any harsh chemicals.
-        </motion.p>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="font-body text-[14.5px] text-charcoal/60 leading-relaxed max-w-2xl mx-auto"
+          >
+            We believe in the power of nature to heal and protect. Our products are formulated with pure,
+            botanical ingredients to give your skin the delicate care it deserves without any harsh chemicals.
+          </motion.p>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-16 sm:gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-8 lg:gap-12">
           {/* Item 1 */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

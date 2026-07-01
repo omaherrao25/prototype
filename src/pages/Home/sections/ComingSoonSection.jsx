@@ -40,14 +40,14 @@ export default function ComingSoonSection() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {upcomingCollections.map((item, i) => (
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative rounded-2xl bg-[#F8F8F8] h-[380px] flex flex-col overflow-hidden shadow-sm"
+              className="group relative rounded-2xl bg-[#F8F8F8] h-[260px] sm:h-[380px] flex flex-col overflow-hidden shadow-sm"
             >
               {/* Product Image */}
               <div className="absolute inset-0 z-0">
@@ -68,9 +68,9 @@ export default function ComingSoonSection() {
               </div>
 
               {/* Info Pill */}
-              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md rounded-xl p-4 flex flex-col justify-center items-center text-center shadow-[0_4px_20px_rgba(0,0,0,0.05)] z-10 transition-transform duration-500 group-hover:-translate-y-1">
-                <h3 className="font-heading text-[22px] font-normal text-charcoal leading-none mb-2">{item.title}</h3>
-                <p className="font-body text-[10.5px] text-charcoal/50 leading-none uppercase tracking-widest">{item.sub}</p>
+              <div className="absolute bottom-3 sm:bottom-4 left-3 right-3 sm:left-4 sm:right-4 bg-white/95 backdrop-blur-md rounded-xl p-3 sm:p-4 flex flex-col justify-center items-center text-center shadow-[0_4px_20px_rgba(0,0,0,0.05)] z-10 transition-transform duration-500 group-hover:-translate-y-1">
+                <h3 className="font-heading text-[18px] sm:text-[22px] font-normal text-charcoal leading-none mb-1.5 sm:mb-2">{item.title}</h3>
+                <p className="font-body text-[9px] sm:text-[10.5px] text-charcoal/50 leading-none uppercase tracking-widest">{item.sub}</p>
               </div>
             </motion.div>
           ))}

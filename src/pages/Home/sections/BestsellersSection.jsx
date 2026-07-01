@@ -68,7 +68,7 @@ const ProductCard = ({ p: prod, idx }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.45, delay: idx * 0.05 }}
-      className="flex-shrink-0 w-[260px] sm:w-[280px] group relative rounded-2xl bg-[#F8F8F8] h-[350px] flex flex-col overflow-hidden"
+      className="flex-shrink-0 w-[240px] xs:w-[250px] sm:w-[280px] group relative rounded-2xl bg-[#F8F8F8] h-[320px] sm:h-[350px] flex flex-col overflow-hidden"
     >
       {/* Product Image */}
       <Link to={`/product/bestseller-${prod.id}`} className="absolute inset-0 z-0 block">
@@ -152,7 +152,7 @@ export default function BestsellersSection() {
           transition={{ duration: 0.6 }}
           className="relative flex items-center justify-center mb-9 lg:mb-11 min-h-[48px]"
         >
-          <h2 className="font-heading text-4xl sm:text-5xl font-normal tracking-wide text-[#9C795C] uppercase text-center">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-normal tracking-wide text-[#9C795C] uppercase text-center">
             Our Bestsellers
           </h2>
           <div className="absolute right-0 hidden sm:flex items-center gap-3">
@@ -177,7 +177,7 @@ export default function BestsellersSection() {
         <div
           ref={scrollRef}
           onScroll={checkScroll}
-          className="flex gap-4 sm:gap-6 overflow-x-auto overflow-y-hidden scrollbar-hide -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 pb-2"
+          className="flex gap-4 sm:gap-6 overflow-x-auto overflow-y-hidden scrollbar-hide -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 pb-2 touch-action-pan"
           style={{ scrollSnapType: 'x mandatory' }}
         >
           {products.map((prod, i) => (

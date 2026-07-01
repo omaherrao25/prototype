@@ -19,7 +19,7 @@ export default function LifestyleBannerSection() {
   return (
     <section
       ref={ref}
-      className="relative w-full h-auto sm:h-[85vh] min-h-[700px] flex items-center overflow-hidden bg-[#F6F1E9]"
+      className="relative w-full h-auto sm:h-[85vh] min-h-[500px] sm:min-h-[700px] flex items-center overflow-hidden bg-[#F6F1E9]"
     >
       {/* Background Image with Parallax */}
       <motion.div
@@ -56,23 +56,23 @@ export default function LifestyleBannerSection() {
         >
 
           {/* Heading */}
-          <h2 className="font-heading text-[3.2rem] sm:text-[4.75rem] leading-[1.02] text-[#1C1C1C] mb-6 font-normal tracking-tight">
+          <h2 className="font-heading text-[2.8rem] sm:text-[4.75rem] leading-[1.05] sm:leading-[1.02] text-[#1C1C1C] mb-5 sm:mb-6 font-normal tracking-tight">
             Rooted in nature.<br />
             <span className="italic text-[#314D3D]">Crafted with intention.</span>
           </h2>
 
           {/* Description */}
-          <p className="font-body text-[15px] sm:text-[17px] leading-[1.85] text-[#1C1C1C]/80 mb-10 max-w-lg">
+          <p className="font-body text-[14.5px] sm:text-[17px] leading-[1.85] text-[#1C1C1C]/80 mb-8 sm:mb-10 max-w-lg">
             Every Ecoveda product is handmade using skin-loving ingredients inspired by timeless wellness rituals. Designed to nourish your skin while bringing calm and balance to your daily self-care routine.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-5 sm:gap-6">
+          <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
             <MotionLink
               to="/shop"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="font-body px-9 py-4 sm:px-10 sm:py-4.5 bg-[#314D3D] text-[#F6F1E9] rounded-full text-[12px] sm:text-[13px] tracking-[0.1em] uppercase font-semibold shadow-[0_12px_40px_rgba(49,77,61,0.25)] hover:bg-[#23382c] transition-colors flex items-center justify-center gap-3 group w-full sm:w-auto"
+              className="font-body px-9 py-4 sm:px-10 sm:py-4.5 bg-[#314D3D] text-[#F6F1E9] rounded-full text-[12px] sm:text-[13px] tracking-[0.1em] uppercase font-semibold shadow-[0_12px_40px_rgba(49,77,61,0.25)] hover:bg-[#23382c] transition-colors flex items-center justify-center gap-3 group w-full sm:w-auto min-h-[48px]"
             >
               Explore Products
               <ArrowRight size={15} className="transform group-hover:translate-x-1 transition-transform" />
@@ -80,7 +80,7 @@ export default function LifestyleBannerSection() {
 
             <motion.button
               whileHover={{ y: -2, color: '#314D3D' }}
-              className="font-body px-2 py-3 text-[#1C1C1C]/80 text-[12px] sm:text-[13px] tracking-[0.1em] uppercase font-semibold flex items-center justify-center gap-2 border-b border-transparent hover:border-[#C7A06C] transition-all"
+              className="font-body px-2 py-4 text-[#1C1C1C]/80 text-[12px] sm:text-[13px] tracking-[0.1em] uppercase font-semibold flex items-center justify-center gap-2 border-b border-transparent hover:border-[#C7A06C] transition-all w-full sm:w-auto min-h-[48px]"
             >
               Our Story
             </motion.button>

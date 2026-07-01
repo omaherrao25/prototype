@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { SlidersHorizontal } from 'lucide-react';
 import FilterSidebar from './components/FilterSidebar';
 import ActiveFiltersBar from './components/ActiveFiltersBar';
 import ProductCard from './components/ProductCard';
@@ -15,8 +16,19 @@ export default function Shop() {
   });
   const [sortOption, setSortOption] = useState('Featured');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
-
+  // Lock body scroll when mobile filter is open
+  useEffect(() => {
+    if (isMobileFilterOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileFilterOpen]);
 
   const handleToggleFilter = (category, value) => {
     setActiveFilters(prev => {
@@ -145,7 +157,7 @@ export default function Shop() {
 
           {/* Product Grid */}
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-10 lg:gap-y-12">
+            <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 gap-x-3 gap-y-8 sm:gap-x-5 sm:gap-y-10 lg:gap-y-12">
               {filteredProducts.map((product, idx) => (
                 <ProductCard key={product.id} product={product} />
               ))}
@@ -175,6 +187,47 @@ export default function Shop() {
 
         </div>
       </div>
+
+      {/* Sticky Mobile Filter Button */}
+      <div className="lg:hidden sticky-bottom-cta flex justify-center">
+        <button
+          onClick={() => setIsMobileFilterOpen(true)}
+          className="w-full sm:w-[300px] flex items-center justify-center gap-2 py-4 bg-[#2F4F3A] text-white rounded-full font-body text-[13px] font-bold uppercase tracking-widest shadow-luxury min-h-touch"
+        >
+          <SlidersHorizontal size={16} />
+          Filters & Sort
+        </button>
+      </div>
+
+      {/* Mobile Filter Drawer */}
+      <AnimatePresence>
+        {isMobileFilterOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/40 z-[60] lg:hidden backdrop-blur-sm"
+              onClick={() => setIsMobileFilterOpen(false)}
+            />
+            <motion.div
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed inset-x-0 bottom-0 h-[85vh] z-[70] bg-white rounded-t-[32px] overflow-hidden lg:hidden shadow-[0_-10px_40px_rgba(0,0,0,0.1)]"
+            >
+              <FilterSidebar 
+                activeFilters={activeFilters} 
+                onToggleFilter={handleToggleFilter} 
+                isMobileDrawer={true} 
+                onClose={() => setIsMobileFilterOpen(false)} 
+              />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
