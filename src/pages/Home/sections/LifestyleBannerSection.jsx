@@ -47,7 +47,7 @@ export default function LifestyleBannerSection() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-20 w-full h-full flex flex-col items-center justify-center px-6 sm:px-12 py-24 sm:py-0 pointer-events-none">
+      <div className="relative z-20 w-full h-full flex flex-col items-center justify-center px-6 sm:px-12 py-16 sm:py-0 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
           animate={inView ? { opacity: 1, y: 0, filter: 'blur(0px)' } : {}}

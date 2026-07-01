@@ -35,7 +35,7 @@ export default function OfferSection() {
   const inView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section ref={ref} className="relative py-16 lg:py-32 bg-[#F6F1E9]">
+    <section ref={ref} className="relative py-12 md:py-16 lg:py-24 bg-[#F6F1E9]">
       {/* Subtle decorative background blurs */}
       <div className="absolute top-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-[#EFE8DD] rounded-full blur-[100px] opacity-60 pointer-events-none transform translate-x-1/3 -translate-y-1/3"></div>
       <div className="absolute bottom-0 left-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-[#EFE8DD] rounded-full blur-[100px] opacity-60 pointer-events-none transform -translate-x-1/3 translate-y-1/3"></div>
