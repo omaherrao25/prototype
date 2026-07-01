@@ -69,13 +69,6 @@ export default function Cart() {
       className="cart-page"
     >
       <div className="cart-container">
-
-        <div className="cart-breadcrumb">
-          <Link to="/">Home</Link>
-          <span>/</span>
-          <span style={{ color: '#1E1E1E' }}>Cart</span>
-        </div>
-
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -90,9 +83,6 @@ export default function Cart() {
         <div className="cart-layout">
           {/* Left Side: Cart Items & Shipping Progress */}
           <div className="cart-items-section">
-
-
-
             {cart.length > 0 ? (
               <>
                 <div className="cart-items-header">
