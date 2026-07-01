@@ -115,7 +115,7 @@ export default function Navbar({ activeTheme }) {
         className={`absolute inset-x-4 sm:inset-x-6 top-4 sm:top-6 h-[60px] z-0 bg-white/60 backdrop-blur-xl border border-white/50 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.06)] transition-all duration-500 xl:hidden pointer-events-auto ${isScrolled ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`} 
       />
 
-      <nav className="max-w-7xl mx-auto h-[60px] pointer-events-auto relative z-10">
+      <nav className="max-w-7xl mx-auto h-[60px] pointer-events-auto relative z-50">
 
         {/* Mobile Logo (Mobile Only) */}
         <div className="absolute left-4 sm:left-6 xl:hidden z-50 top-1/2 -translate-y-1/2 flex items-center">
@@ -211,60 +211,66 @@ export default function Navbar({ activeTheme }) {
       {/* Cinematic Mobile Menu Drawer */}
       <AnimatePresence>
         {isMobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 bg-[#FDFBF7]/90 backdrop-blur-2xl xl:hidden flex flex-col pt-[100px] px-8 pb-[env(safe-area-inset-bottom,0px)] pointer-events-auto"
-          >
-            <div className="flex-1 flex flex-col justify-center gap-8 mb-10">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={link.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.4, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                >
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsMobileOpen(false)}
-                    className="font-heading text-4xl sm:text-5xl text-charcoal/90 hover:text-[#9C795C] transition-colors block"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-
+          <>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-30 xl:hidden"
+              onClick={() => setIsMobileOpen(false)}
+            />
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.4, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col gap-6 pb-10"
+              initial={{ opacity: 0, scale: 0.95, y: -10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -10 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute top-[84px] sm:top-[92px] right-4 sm:right-6 w-[240px] z-40 bg-white/95 backdrop-blur-3xl xl:hidden flex flex-col p-6 rounded-3xl shadow-[0_12px_40px_rgba(0,0,0,0.12)] border border-white/60 pointer-events-auto origin-top-right"
             >
-              <div className="h-px w-full bg-charcoal/10" />
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col gap-4">
+                {navLinks.map((link, i) => (
+                  <motion.div
+                    key={link.label}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <Link
+                      to={link.path}
+                      onClick={() => setIsMobileOpen(false)}
+                      className="font-heading text-2xl text-charcoal/80 hover:text-charcoal hover:translate-x-1.5 transition-all duration-300 block tracking-wide"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, delay: 0.2 }}
+                className="flex flex-col gap-5 mt-5 pt-5 border-t border-charcoal/5"
+              >
                 <Link
                   to="/account"
                   onClick={() => setIsMobileOpen(false)}
                   className="flex items-center gap-3 text-charcoal/70 hover:text-charcoal transition-colors"
                 >
-                  <User size={20} strokeWidth={1.5} />
-                  <span className="font-body text-sm font-medium tracking-wide">My Account</span>
+                  <User size={18} strokeWidth={1.5} />
+                  <span className="font-body text-[13px] font-medium tracking-wide">My Account</span>
                 </Link>
                 <Link
                   to="/shop"
                   onClick={() => setIsMobileOpen(false)}
-                  className="font-body text-[11px] font-bold uppercase tracking-widest text-white bg-forest px-6 py-3 rounded-full shadow-luxury"
+                  className="font-body text-[11px] font-bold uppercase tracking-widest text-center text-white bg-forest px-6 py-2.5 rounded-full shadow-luxury"
                 >
                   Shop Now
                 </Link>
-              </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.header>
